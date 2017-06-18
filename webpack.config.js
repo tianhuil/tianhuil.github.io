@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
 
-var config = {
+module.exports = {
   entry: APP_DIR + '/index.jsx',
   context: APP_DIR,
   output: {
@@ -19,7 +19,10 @@ var config = {
         include : APP_DIR,
         loader : 'babel-loader'
       },
-      { test: /\.html$/, loader: 'html-loader' }
+      { test: /\.html$/, loader: 'html-loader' },
+      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+      { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
+      { test: /\.(ttf|eot)$/, loader: 'file-loader' }
     ]
   },
   devServer: {
@@ -32,5 +35,3 @@ var config = {
     template: '../index.html'
   })]
 };
-
-module.exports = config;
