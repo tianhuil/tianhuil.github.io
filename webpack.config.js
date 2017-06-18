@@ -19,7 +19,6 @@ module.exports = {
         include : APP_DIR,
         loader : 'babel-loader'
       },
-      { test: /\.html$/, loader: 'html-loader' },
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
       { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
       { test: /\.(ttf|eot)$/, loader: 'file-loader' }
@@ -30,8 +29,17 @@ module.exports = {
     compress: true,
     port: 9000
   },
-  plugins: [new HtmlWebpackPlugin({
-    title: 'My App',
-    template: '../index.html'
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      template: '../index.html'
+    }),
+    new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({compress: true}), //minify everything
+    new webpack.optimize.AggressiveMergingPlugin()//Merge chunks 
+  ]
 };
