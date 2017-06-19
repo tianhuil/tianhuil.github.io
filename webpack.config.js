@@ -13,12 +13,17 @@ module.exports = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
+  devtool: 'cheap-module-source-map',
   module : {
     loaders : [
       {
         test : /\.jsx?/,
         include : APP_DIR,
-        loader : 'babel-loader'
+        loader : 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react']
+        }
       },
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
       { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
