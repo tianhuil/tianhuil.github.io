@@ -1,0 +1,43 @@
+.navbar {
+  border-bottom: 1px solid #dddddd;
+  padding: 15px 15px;
+}
+
+.navbarBrand {
+  color: rgb(25,160,210);
+  font-weight: 200;
+  font-size: 32px;
+}
+
+.navbar-nav a {
+  font-size: 20px;
+  color: #aaaaaa;
+  font-weight: 200;
+}
+
+
+.my-navbar .navbar-nav li.active a {
+  color: #dddddd;
+}
+
+.my-navbar .navbar-nav li.active a:hover,
+.my-navbar .navbar-nav li.active a:focus {
+  color: #aaaaaa;
+}
+
+.my-navbar .navbar-nav li a:hover,
+.my-navbar .navbar-nav li a:focus {
+  background-color: transparent;
+  color: #dddddd;
+}
+
+.circle-image {
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+    border-radius:50%;
+}
+.circle-image img{
+    position:absolute;
+    width:100%;
+}
