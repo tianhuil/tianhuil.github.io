@@ -2,7 +2,6 @@ import React from 'react';
 import {render} from 'react-dom';
 import style from './style.css'
 import { NavbarInstance } from './navbar/navbar'
-import 'bootstrap-loader'
 
 const App = () => (
   <div>
