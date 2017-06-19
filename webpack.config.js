@@ -4,7 +4,9 @@ var path = require('path');
 var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src');
 
-module.exports = {
+var prod = process.argv.indexOf('-p') !== -1;
+
+var configBase = {
   entry: APP_DIR + '/index.jsx',
   context: APP_DIR,
   output: {
@@ -22,7 +24,18 @@ module.exports = {
           presets: ['es2015', 'react']
         }
       },
-      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+      {
+        test: /\.css$/,
+        loader: 'style-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'css-loader',
+        query: {
+          modules: true,
+          localIdentName: '[name]__[local]___[hash:base64:5]'
+        }
+      },
       { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
       { test: /\.(ttf|eot)$/, loader: 'file-loader' }
     ]
@@ -32,19 +45,28 @@ module.exports = {
     compress: true,
     port: 9000
   },
-  devtool: 'cheap-module-source-map',
-  plugins: [
-    new webpack.DefinePlugin({ // <-- key to reducing React's size
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-      comments: false,
-      minimize: false,
-      sourceMap: true
-    }), //minify everything
-    new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks
-  ]
-};
+}
+
+if (prod) {
+  var configExtra = {
+    devtool: 'cheap-module-source-map',
+    plugins: [
+      new webpack.DefinePlugin({ // <-- key to reducing React's size
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false },
+        comments: false,
+        minimize: false,
+        sourceMap: true
+      }), //minify everything
+      new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks
+    ]
+  }
+} else {
+  var configExtra = {}
+}
+
+module.exports = Object.assign({}, configBase, configExtra)
