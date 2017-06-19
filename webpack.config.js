@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src');
@@ -45,28 +46,29 @@ var configBase = {
     compress: true,
     port: 9000
   },
+  plugins: [new ExtractTextPlugin({filename: 'style.css', allChunks: true })]
 }
 
 if (prod) {
-  var configExtra = {
+  var configNew = Object.assign({}, configBase, {
     devtool: 'cheap-module-source-map',
-    plugins: [
-      new webpack.DefinePlugin({ // <-- key to reducing React's size
-        'process.env': {
-          'NODE_ENV': JSON.stringify('production')
-        }
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false },
-        comments: false,
-        minimize: false,
-        sourceMap: true
-      }), //minify everything
-      new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks
-    ]
-  }
-} else {
-  var configExtra = {}
-}
 
-module.exports = Object.assign({}, configBase, configExtra)
+  })
+  configNew.plugins = configNew.plugins.concat([
+    new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+      comments: false,
+      minimize: false,
+      sourceMap: true
+    }), //minify everything
+    new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks
+  ])
+  module.exports = configNew;
+} else {
+  module.exports = configBase;;
+}
