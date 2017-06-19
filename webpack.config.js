@@ -1,10 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
-var APP_DIR = path.resolve(__dirname, 'src/client/app');
+var BUILD_DIR = path.resolve(__dirname, 'dist');
+var APP_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
   entry: APP_DIR + '/index.jsx',
@@ -36,10 +35,6 @@ module.exports = {
     port: 9000
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'My App',
-      template: '../index.html'
-    }),
     new webpack.DefinePlugin({ // <-- key to reducing React's size
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
