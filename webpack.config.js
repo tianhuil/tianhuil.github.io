@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
@@ -39,7 +40,13 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({compress: true}), //minify everything
-    new webpack.optimize.AggressiveMergingPlugin()//Merge chunks 
+    // new BundleAnalyzerPlugin({analyzerPort: 9001}),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+      comments: false,
+      minimize: false,
+      sourceMap: true
+    }), //minify everything
+    new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks 
   ]
 };
