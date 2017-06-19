@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var path = require('path');
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src');
@@ -12,11 +11,10 @@ module.exports = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
-  devtool: 'cheap-module-source-map',
   module : {
     loaders : [
       {
-        test : /\.jsx?/,
+        test : /\.jsx?$/,
         include : APP_DIR,
         loader : 'babel-loader',
         exclude: /node_modules/,
@@ -34,19 +32,19 @@ module.exports = {
     compress: true,
     port: 9000
   },
+  devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.DefinePlugin({ // <-- key to reducing React's size
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    // new BundleAnalyzerPlugin({analyzerPort: 9001}),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       comments: false,
       minimize: false,
       sourceMap: true
     }), //minify everything
-    new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks 
+    new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks
   ]
 };
