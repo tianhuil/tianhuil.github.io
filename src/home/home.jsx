@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './home.css'
 import { Grid, Row, Col, Image } from "react-bootstrap"
+import styles from './home.css'
 
 export const Home = () => (
   <section>

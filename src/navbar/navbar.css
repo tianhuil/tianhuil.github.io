@@ -2,13 +2,14 @@
 
 .navbar {
   border-bottom: 1px solid #dddddd;
+  background: #ffffff !important;
   padding: 15px 15px;
 };
 
-.brand {
-  color: rgb(25,160,210);
-  font-weight: 200;
-  font-size: 32px;
+.brand a {
+  color: rgb(25,160,210)  !important;
+  font-weight: 200 !important;
+  font-size: 32px !important;
 };
 
 .nav {
