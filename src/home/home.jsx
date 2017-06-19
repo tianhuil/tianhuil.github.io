@@ -29,7 +29,10 @@ export const Home = () => (
           </p>
 
           <p>
-            我说普通话和广州话. 中文名字“李天惠”.  Je parle aussi le français, mais pas très bien.  Les Français m'appellent Michel.
+            我说普通话和广州话. 中文名字“李天惠”.
+          </p>
+          <p>
+            Je parle aussi le français, mais pas très bien.  Les Français m'appellent Michel.
           </p>
         </Col>
       </Row>
