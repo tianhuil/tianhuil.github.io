@@ -31,11 +31,7 @@ var configBase = {
       },
       {
         test: /\.css$/,
-        loader: 'css-loader',
-        query: {
-          modules: true,
-          localIdentName: '[name]__[local]___[hash:base64:5]'
-        }
+        loader: 'css-loader'
       },
       { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
       { test: /\.(ttf|eot)$/, loader: 'file-loader' }
