@@ -1,3 +1,5 @@
+/* Navbar */
+
 #app .navbar {
   border-bottom: 1px solid #dddddd;
   padding: 15px 15px;
@@ -9,7 +11,7 @@
   font-size: 32px;
 }
 
-#app .navbar-nav a {
+#app .navbar-nav li a {
   font-size: 20px;
   color: #aaaaaa;
   font-weight: 200;
@@ -20,16 +22,13 @@
   color: #dddddd;
 }
 
-#app .navbar-nav li.active a:hover,
-#app  .navbar-nav li.active a:focus {
-  color: #aaaaaa;
-}
-
 #app .navbar-nav li a:hover,
 #app .navbar-nav li a:focus {
   background-color: transparent;
   color: #dddddd;
 }
+
+/* Global */
 
 .circle-image {
     position:relative;
@@ -44,4 +43,12 @@
 
 body a {
   color: rgb(25,160,210);
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
 }
