@@ -3,16 +3,17 @@
 #app .navbar {
   border-bottom: 1px solid #dddddd;
   padding: 15px 15px;
+  background-color: transparent;
 }
 
 #app .navbar-brand {
   color: rgb(25,160,210);
-  font-weight: 100;
-  font-size: 32px;
+  font-weight: 200;
+  font-size: 46px;
 }
 
 #app .navbar-nav li a {
-  font-size: 16px;
+  font-size: 18px;
   color: #aaaaaa;
   font-weight: 100;
 }
