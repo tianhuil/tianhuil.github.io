@@ -1,32 +1,32 @@
-.my-navbar {
+#app .navbar {
   border-bottom: 1px solid #dddddd;
   padding: 15px 15px;
 }
 
-.my-navbar .navbar-brand {
+#app .navbar-brand {
   color: rgb(25,160,210);
-  font-weight: 200;
+  font-weight: 100;
   font-size: 32px;
 }
 
-.my-navbar .navbar-nav a {
+#app .navbar-nav a {
   font-size: 20px;
   color: #aaaaaa;
   font-weight: 200;
 }
 
 
-.my-navbar .navbar-nav li.active a {
+#app .navbar-nav li.active a {
   color: #dddddd;
 }
 
-.my-navbar .navbar-nav li.active a:hover,
-.my-navbar .navbar-nav li.active a:focus {
+#app .navbar-nav li.active a:hover,
+#app  .navbar-nav li.active a:focus {
   color: #aaaaaa;
 }
 
-.my-navbar .navbar-nav li a:hover,
-.my-navbar .navbar-nav li a:focus {
+#app .navbar-nav li a:hover,
+#app .navbar-nav li a:focus {
   background-color: transparent;
   color: #dddddd;
 }

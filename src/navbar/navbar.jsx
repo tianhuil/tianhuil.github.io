@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const NavbarInstance = () => (
-  <div className={"navbar my-navbar"}>
+  <div className={"navbar"}>
     <div className={"container"}>
       <a className={"navbar-brand"} href="#">Michael Li</a>
       <ul className={"nav navbar-nav navbar-right"}>
