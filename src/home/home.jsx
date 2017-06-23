@@ -1,14 +1,27 @@
 import React from 'react';
 import { Grid, Row, Col, Image } from "react-bootstrap"
-import styles from './home.css'
+
+const styles = {
+  circle: {
+    position:"relative",
+    overflow:"hidden",
+    paddingBottom: "100%",
+    borderRadius:"50%"
+  },
+  circleImage: {
+    position: "absolute",
+    width: "100%"
+  }
+}
+
 
 export const Home = () => (
   <section>
     <Grid>
       <Row>
         <Col sm={4}>
-          <div className={ styles.circle }>
-            <Image src="images/tianhuil.jpg" className={ styles.circleImage }/>
+          <div style={ styles.circle }>
+            <Image src="images/tianhuil.jpg" style={ styles.circleImage }/>
           </div>
         </Col>
         <Col sm={8}>
