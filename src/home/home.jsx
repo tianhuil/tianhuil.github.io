@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Home = () => (
   <section>
-    <div className={"container"}>
+    <div className={"mt30 container"}>
       <div className={"row"}>
         <div className={"col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb15"}>
           <div className={"circle-image"}>
