@@ -35,7 +35,11 @@ export class Layout extends React.Component {
     return (
       <div>
         <Header/>
-        {this.props.children}
+        <section>
+          <div className={"mt30 container"}>
+            {this.props.children}
+          </div>
+        </section>
         <Footer/>
       </div>
     )
