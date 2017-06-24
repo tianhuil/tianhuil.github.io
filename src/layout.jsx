@@ -1,25 +1,25 @@
 import React from 'react';
-// import { a } from "react-router"
+import { Link } from 'react-router-dom'
 
 const Header = () => (
   <div className={"navbar"}>
     <div className={"container"}>
-      <a className={"navbar-brand"} href="#">Michael Li</a>
+      <Link to="#" className={"navbar-brand"}>Michael Li</Link>
       <ul className={"nav navbar-nav navbar-right"}>
         <li>
-          <a href="/#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/#awards">Awards</a>
+          <Link to="/awards">Awards</Link>
         </li>
         <li>
-          <a href="/#companies">Companies</a>
+          <Link to="/companies">Companies</Link>
         </li>
         <li>
-          <a href="/#non-profit">Non-Profit</a>
+          <Link to="/non-profit">Non-Profit</Link>
         </li>
         <li>
-          <a href="/#writing">Writing</a>
+          <Link to="/writing">Writing</Link>
         </li>
       </ul>
     </div>
