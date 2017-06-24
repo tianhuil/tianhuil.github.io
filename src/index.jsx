@@ -11,15 +11,13 @@ import './style.css'
 const history = createBrowserHistory()
 
 const App = () => (
-  <div>
-    <Router history={ history }>
-      <Layout>
-        <Route exact path='/' component={ Home }/>
-        <Route path='/home' component={ Home } />
-        <Route path='/awards' component={ Awards } />
-      </Layout>
-    </Router>
-  </div>
+  <Router history={ history }>
+    <Layout>
+      <Route exact path='/' component={ Home }/>
+      <Route path='/home' component={ Home } />
+      <Route path='/awards' component={ Awards } />
+    </Layout>
+  </Router>
 )
 
 render(<App/>, document.getElementById('app'));
