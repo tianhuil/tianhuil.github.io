@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
-import { Home } from './home.jsx'
-import { Awards } from './awards.jsx'
-import { Layout } from './layout.jsx'
+import { Home } from './modules/home.jsx'
+import { Awards } from './modules/awards.jsx'
+import { Layout } from './modules/layout.jsx'
 import 'bootstrap/dist/css/bootstrap.css'
 import './style.css'
 
