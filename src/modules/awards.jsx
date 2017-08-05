@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const Awards = ({match}) => (
+const Awards = ({match}) => (
   <section>
     <p>Awards</p>
   </section>
 )
+
+export default Awards

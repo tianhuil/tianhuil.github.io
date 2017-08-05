@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Home = ({match}) => (
+const Home = ({match}) => (
   <div className={"row"}>
     <div className={"col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb15"}>
       <div className={"circle-image"}>
@@ -33,3 +33,5 @@ export const Home = ({match}) => (
     </div>
   </div>
 )
+
+export default Home

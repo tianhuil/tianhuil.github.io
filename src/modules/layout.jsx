@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = () => (
   <div className={"navbar"}>
     <div className={"container"}>
-      <Link to="#" className={"navbar-brand"}>Michael Li</Link>
+      <Link to="/#" className={"navbar-brand"}>Michael Li</Link>
       <ul className={"nav navbar-nav navbar-right"}>
         <li>
           <Link to="/">Home</Link>
@@ -30,7 +30,7 @@ const Footer = () => (
   <div></div>
 )
 
-export class Layout extends React.Component {
+class Layout extends React.Component {
   render() {
     return (
       <div>
@@ -45,3 +45,5 @@ export class Layout extends React.Component {
     )
   }
 }
+
+export default Layout
