@@ -15,7 +15,7 @@ const Header = ((props) => (
   <div className="row">
     <div className="mt30 col-xs-12">
       <h1>{props.title}</h1>
-      <p>{props.subtitle}</p>
+      <h2>{props.subtitle}</h2>
     </div>
   </div>
 ))
