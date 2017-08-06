@@ -19,6 +19,7 @@ const Header = ((props) => (
 
 const Companies = ({match}) => (
   <section>
+    {/* Companies */}
     <Header title="Companies" subtitle="A few companies that I've worked for" />
     <div className="row">
       <Company src="/images/google.png" />
@@ -32,9 +33,29 @@ const Companies = ({match}) => (
       <Company src="/images/jpmorgan.png" />
     </div>
 
-    <Header title="Founded" subtitle="I founded The Data Incubator" />
+    {/* Founded */}
+    <Header title="Founded" subtitle="Company I founded" />
     <div className="row">
       <Company src="/images/tdi.jpeg" className="mt15 col-xs-12 col-sm-6 col-sm-offset-3"/>
+    </div>
+
+    {/* Universities */}
+    <Header title="Universities" subtitle="Academic Institutions I've been affiliated with" />
+    <div className="row">
+      <Company src="/images/princeton.svg" />
+      <Company src="/images/cambridge.jpg" />
+      <div className="clearfix visible-xs"></div>
+      <Company src="/images/cornell.png" />
+    </div>
+
+    {/* Awards */}
+    <Header title="Awards" subtitle="Awards I have been fortunate enough to receive" />
+    <div className="row">
+      <Company src="/images/marshall.gif" className="mt15 col-xs-6 col-sm-3" />
+      <Company src="/images/intel-sts.png"  className="mt15 col-xs-6 col-sm-3" />
+      <div className="clearfix visible-xs"></div>
+      <Company src="/images/hertz.jpg"  className="mt15 col-xs-6 col-sm-3" />
+      <Company src="/images/nsf.png" className="mt15 col-xs-6 col-sm-3" />
     </div>
   </section>
 )
