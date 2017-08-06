@@ -22,7 +22,7 @@ const Header = ((props) => (
 const Companies = ({match}) => (
   <section>
     {/* Companies */}
-    <Header title="Companies" subtitle="A few companies that I've worked for" />
+    <Header title="Companies" subtitle="Selected companies that I've worked for" />
     <div className="row">
       <Company src="/images/google.png" url="https://www.google.com" />
       <Company src="/images/foursquare.png" url="https://foursquare.com" />
@@ -44,7 +44,7 @@ const Companies = ({match}) => (
     </div>
 
     {/* Universities */}
-    <Header title="Universities" subtitle="Academic Institutions I've been affiliated with" />
+    <Header title="Universities" subtitle="Academic Institutions where I have degrees or postdocs" />
     <div className="row">
       <Company src="/images/princeton.svg" url="https://www.princeton.edu" />
       <Company src="/images/cambridge.jpg" url="https://www.cam.ac.uk" />
@@ -53,7 +53,7 @@ const Companies = ({match}) => (
     </div>
 
     {/* Awards */}
-    <Header title="Awards" subtitle="Awards I have been fortunate enough to receive" />
+    <Header title="Awards" subtitle="Selected awards I have been fortunate enough to receive" />
     <div className="row">
       <Company src="/images/marshall.gif" url="http://www.marshallscholarship.org/"
                 className="mt15 col-xs-6 col-sm-3" />
@@ -63,6 +63,20 @@ const Companies = ({match}) => (
       <Company src="/images/hertz.jpg" url="http://hertzfoundation.org/default.aspx"
                 className="mt15 col-xs-6 col-sm-3" />
       <Company src="/images/nsf.png" url="https://www.nsfgrfp.org/"
+                className="mt15 col-xs-6 col-sm-3" />
+    </div>
+
+    {/* Boards */}
+    <Header title="Boards" subtitle="Selected boards of which I'm a member" />
+    <div className="row">
+      <Company src="/images/marshall.jpg" url="https://www.marshallscholars.org/"
+                className="mt15 col-xs-6 col-sm-3" />
+      <Company src="/images/any.jpg" url="https://www.americaneedsyou.org/"
+                className="mt15 col-xs-6 col-sm-3" />
+      <div className="clearfix visible-xs"></div>
+      <Company src="/images/lendit.png" url="http://www.lendit.com/"
+                className="mt15 col-xs-6 col-sm-3" />
+      <Company src="/images/strata.svg" url="https://conferences.oreilly.com/strata"
                 className="mt15 col-xs-6 col-sm-3" />
     </div>
   </section>
