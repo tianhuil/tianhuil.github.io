@@ -1,13 +1,14 @@
 import React from 'react';
+import './home.css'
 
 const Home = ({match}) => (
-  <div className={"row"}>
-    <div className={"col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb15"}>
-      <div className={"circle-image"}>
-        <img src="images/tianhuil.jpg" className={"img img-responsive full-wdith"}/>
+  <div className="row">
+    <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb15">
+      <div className="circle-image">
+        <img src="images/tianhuil.jpg" className="img img-responsive full-wdith"/>
       </div>
     </div>
-    <div className={"col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb15"}>
+    <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb15">
       <p>
         <b>Hi! I'm Tianhui Li, but I go by "Michael". I'm a data scientist and an entrepreneur.</b>
       </p>

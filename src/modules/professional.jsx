@@ -1,4 +1,5 @@
 import React from 'react';
+import './professional.css'
 
 const Company = ((props) => (
   <div className={props.className ? props.className : "mt15 col-xs-6 col-sm-4"}>

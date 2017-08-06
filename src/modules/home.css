@@ -1,0 +1,12 @@
+/* Global */
+
+.circle-image {
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+    border-radius:50%;
+}
+.circle-image img{
+    position:absolute;
+    width:100%;
+}

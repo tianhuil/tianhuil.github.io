@@ -1,0 +1,9 @@
+.logo-box {
+  position: relative;
+  text-align: center;
+}
+
+.logo-image {
+  max-height:100%;
+  max-width:80%;
+}
