@@ -17,6 +17,7 @@ const App = () => (
   <BrowserRouter history={ history }>
     <Layout>
       <Route exact path='/' component={ Home }/>
+      <Route path='/home' component={ Home } />
       <Route path='/awards' component={ Awards } />
       <Route path='/companies' component={ Companies } />
       <Route path='/non-profit' component={ NonProfit } />

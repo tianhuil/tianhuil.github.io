@@ -46,11 +46,18 @@
 
 .logo-box {
   position: relative;
+  text-align: center;
 }
 
 .logo-image {
   max-height:100%;
   max-width:80%;
+}
+
+h1 {
+  color: rgb(25,160,210);
+  font-weight: 200;
+  font-size: 36px;
 }
 
 body a {
@@ -60,6 +67,7 @@ body a {
 body p {
   font-weight: 200;
   color: #888888;
+  font-size: 16px;
 }
 
 .mt15 {
