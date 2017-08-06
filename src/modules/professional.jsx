@@ -19,7 +19,7 @@ const Header = ((props) => (
   </div>
 ))
 
-const Companies = ({match}) => (
+const Professional = ({match}) => (
   <section>
     {/* Companies */}
     <Header title="Companies" subtitle="Selected companies that I've worked for" />
@@ -76,10 +76,10 @@ const Companies = ({match}) => (
       <div className="clearfix visible-xs"></div>
       <Company src="/images/lendit.png" url="http://www.lendit.com/"
                 className="mt15 col-xs-6 col-sm-3" />
-      <Company src="/images/strata.svg" url="https://conferences.oreilly.com/strata"
+      <Company src="/images/strata.png" url="https://conferences.oreilly.com/strata"
                 className="mt15 col-xs-6 col-sm-3" />
     </div>
   </section>
 )
 
-export default Companies
+export default Professional
