@@ -42,6 +42,17 @@
     width:100%;
 }
 
+/* Logo */
+
+.logo-box {
+  position: relative;
+}
+
+.logo-image {
+  max-height:100%;
+  max-width:80%;
+}
+
 body a {
   color: rgb(25,160,210);
 }
