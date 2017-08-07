@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './home.css'
 
 const Home = ({match}) => (
@@ -18,7 +19,7 @@ const Home = ({match}) => (
       </p>
 
       <p>
-        I'm very passionate about <a href="#non-profit">non-profit causes</a> around education and <a href="#writing">write regularly</a> about data science and big data.
+        I'm very passionate about <Link to="/professional#boards">non-profit causes</Link> around education and <Link to="/writing">write regularly</Link> about data science and big data.
       </p>
 
       <p>
