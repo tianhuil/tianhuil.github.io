@@ -23,7 +23,7 @@ const Header = ((props) => (
 const Professional = ({match}) => (
   <section>
     {/* Companies */}
-    <Header title="Companies" subtitle="Selected companies that I've worked for" />
+    <Header title="Companies" subtitle="Selected companies that for which I have worked" />
     <div className="row">
       <Company src="/images/google.png" url="https://www.google.com" />
       <Company src="/images/foursquare.png" url="https://foursquare.com" />
