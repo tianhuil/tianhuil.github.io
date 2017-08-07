@@ -22,6 +22,14 @@ body p {
   font-size: 16px;
 }
 
+.mt5 {
+  margin-top: 5px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
 .mt15 {
   margin-top: 15px;
 }
@@ -36,4 +44,14 @@ body p {
 
 .mb30 {
   margin-bottom: 30px;
+}
+
+.logo-box {
+  position: relative;
+  text-align: center;
+}
+
+.logo-image {
+  max-height:100%;
+  max-width:80%;
 }

@@ -1,9 +1,11 @@
-.logo-box {
-  position: relative;
-  text-align: center;
+h1 {
+  color: rgb(25,160,210);
+  font-weight: 200;
+  font-size: 36px;
 }
 
-.logo-image {
-  max-height:100%;
-  max-width:80%;
+h2 {
+  font-weight: 100;
+  color: #888888;
+  font-size: 20px;
 }

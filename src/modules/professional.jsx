@@ -5,7 +5,7 @@ const Company = ((props) => (
   <div className={props.className ? props.className : "mt15 col-xs-6 col-sm-4"}>
     <a href={props.url} >
       <div className="logo-box">
-        <img delayed className="logo-image" src={props.src}/>
+        <img className="logo-image" src={props.src}/>
       </div>
     </a>
   </div>
