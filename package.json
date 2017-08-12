@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:prod": "webpack -p --progress",
     "build:dev": "webpack -d --progress",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "start": "npm run dev"
   },
   "author": "Tianhui Michael Li",
   "license": "ISC",
