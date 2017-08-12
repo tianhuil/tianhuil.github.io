@@ -12,7 +12,7 @@ const Publication = ((props) => (
       </a>
     </div>
     <div className="col-xs-12 col-sm-7">
-      <h2 class="mt5">{ props.name }</h2>
+      <h2 className="mt15">{ props.name }</h2>
       { props.children }
     </div>
   </div>
