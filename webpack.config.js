@@ -62,7 +62,10 @@ if (prod) {
       minimize: false,
       sourceMap: true
     }), //minify everything
-    new webpack.optimize.AggressiveMergingPlugin()  //Merge chunks
+    new webpack.optimize.AggressiveMergingPlugin({
+      minSizeReduce: 1.5,
+      moveToParents: true
+    })  //Merge chunks
   ])
   module.exports = configNew;
 } else {
