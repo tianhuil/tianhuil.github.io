@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { SocialIcon } from 'react-social-icons';
 import './home.css'
 
 const Home = ({match}) => (
@@ -32,6 +33,11 @@ const Home = ({match}) => (
       <p>
         Je parle aussi le français, mais pas très bien.  Les Français m'appellent Michel.
       </p>
+      <div className="mt30">
+        <SocialIcon className="social-icon" url="https://twitter.com/tianhuil" />
+        <SocialIcon className="social-icon" url="https://www.linkedin.com/in/tianhuili" />
+        <SocialIcon className="social-icon" url="https://github.com/tianhuil" />
+      </div>
     </div>
   </div>
 )
