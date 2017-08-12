@@ -44,7 +44,7 @@ const Professional = ({match}) => (
     {/* Founded */}
     <Section id="founded" title="Founded" subtitle="Company I founded" >
       <div className="row">
-        <Company src="/images/tdi.jpeg"
+        <Company src="/images/tdi.jpg"
             url="https://www.thedataincubator.com"
             className="mt15 col-xs-12 col-sm-6 col-sm-offset-3"/>
       </div>
