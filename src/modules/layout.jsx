@@ -8,13 +8,13 @@ const Header = () => (
       <Link to="/" className="navbar-brand">Michael Li</Link>
       <ul className={"nav navbar-nav navbar-right"}>
         <li>
-          <Link to="/home">Home</Link>
+          <Link to="/home.html">Home</Link>
         </li>
         <li>
-          <Link to="/professional">Professional</Link>
+          <Link to="/professional.html">Professional</Link>
         </li>
         <li>
-          <Link to="/writing">Writing</Link>
+          <Link to="/writing.html">Writing</Link>
         </li>
       </ul>
     </div>

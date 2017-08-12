@@ -15,9 +15,9 @@ const App = () => (
   <BrowserRouter history={ history }>
     <Layout>
       <Route exact path='/' component={ Professional }/>
-      <Route path='/home' component={ Home } />
-      <Route path='/professional' component={ Professional } />
-      <Route path='/writing' component={ Writing } />
+      <Route path='/home.html' component={ Home } />
+      <Route path='/professional.html' component={ Professional } />
+      <Route path='/writing.html' component={ Writing } />
     </Layout>
   </BrowserRouter>
 )
