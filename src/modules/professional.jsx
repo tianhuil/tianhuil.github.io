@@ -4,7 +4,8 @@ import './professional.css'
 const Company = ((props) => (
   <div className={props.className ? props.className : "mt15 col-xs-6 col-sm-4"}>
     <a href={props.url} >
-      <div className="logo-box">
+      <div className="logo-frame">
+        <span className="logo-helper"></span>
         <img className="logo-image" src={props.src}/>
       </div>
     </a>
@@ -35,7 +36,7 @@ const Professional = ({match}) => (
         <div className="clearfix visible-sm visible-md visible-lg"></div>
         <Company src="/images/bloomberg.png" url="https://www.bloomberg.com"/>
         <div className="clearfix visible-xs"></div>
-        <Company src="/images/deshaw.png" url="https://deshaw.com" />
+        <Company src="/images/deshaw.jpg" url="https://deshaw.com" />
         <Company src="/images/jpmorgan.png" url="https://www.jpmorgan.com" />
       </div>
     </Section>

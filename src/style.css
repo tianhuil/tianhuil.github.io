@@ -46,12 +46,18 @@ body p {
   margin-bottom: 30px;
 }
 
-.logo-box {
-  position: relative;
+.logo-frame {
   text-align: center;
 }
 
 .logo-image {
   max-height:100%;
   max-width:80%;
+  vertical-align: middle;
+}
+
+.logo-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }

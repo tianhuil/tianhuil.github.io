@@ -5,7 +5,8 @@ const Publication = ((props) => (
   <div className="row mb30">
     <div className="mt15 col-xs-12 col-sm-5">
       <a href={props.url} >
-        <div className="logo-box">
+        <div className="logo-frame">
+          <span className="logo-helper"></span>
           <img className="logo-image" src={props.src}/>
         </div>
       </a>
