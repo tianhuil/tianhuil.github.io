@@ -14,7 +14,7 @@ const history = createBrowserHistory()
 const App = () => (
   <BrowserRouter history={ history }>
     <Layout>
-      <Route exact path='/' component={ Professional }/>
+      <Route exact path='/' component={ Home }/>
       <Route path='/home.html' component={ Home } />
       <Route path='/professional.html' component={ Professional } />
       <Route path='/writing.html' component={ Writing } />
