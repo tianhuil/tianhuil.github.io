@@ -7,7 +7,7 @@ npm install
 ```
 and then run
 ```
-npm start
+npm run dev
 ```
 
 ## To Optimize Images
@@ -29,10 +29,15 @@ popd
 ## To Deploy
 First, build the deploy
 ```
-npm run build:prod
+npm run build
+npm run export
 ```
 
 and then run the deploy script to deploy (check the script for any pre-requisites).
 ```
 ./deploy.sh
 ```
+
+The deploy script relies on two remotes:
+- *origin*: (this one, [git@github.com:tianhuil/tianhuil.git]) and
+- *deploy*: (where the website isdeployed  [git@github.com:tianhuil/tianhuil.github.io.git])
