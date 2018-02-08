@@ -1,9 +1,9 @@
 # Personal Homepage
 
 ## To Start
-We use `yarn` to lock versions.  To install from `yarn.lock`, run
+We use `npm@5` to lock versions.
 ```
-yarn install
+npm install
 ```
 and then run
 ```
