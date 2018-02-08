@@ -6,7 +6,9 @@ const Header = () => (
   <div>
     <div className={"navbar"}>
       <div className={"container"}>
-        <Link href="/" className="navbar-brand">Michael Li</Link>
+        <div className="navbar-brand">
+          <Link href="/" >Michael Li</Link>
+        </div>
         <ul className={"nav navbar-nav navbar-right"}>
           <li>
             <Link href="/">Home</Link>

@@ -22,7 +22,7 @@ const Home = (props) => (
         </p>
 
         <p>
-          I'm very passionate about <Link to="/professional#boards">non-profit causes</Link> around education and <Link to="/writing">write regularly</Link> about data science and big data.
+          I'm very passionate about <Link href="/professional#boards">non-profit causes</Link> around education and <Link href="/writing">write regularly</Link> about data science and big data.
         </p>
 
         <p>
