@@ -8,6 +8,6 @@ function echoblue {
   echo -e "\x1B[1;34m${1}\x1B[0m"
 }
 
-git subtree push --prefix out deploy master
+git push deploy `git subtree split --prefix dist master`:master --force
 git tag -a "Deploy$ts" -m "Deploy on $dt"
 echoblue "Don't forget to git push origin Deploy$ts"
