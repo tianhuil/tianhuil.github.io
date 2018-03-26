@@ -40,4 +40,4 @@ and then run the deploy script to deploy (check the script for any pre-requisite
 
 The deploy script relies on two remotes:
 - *origin*: (this one, [git@github.com:tianhuil/tianhuil.git]) and
-- *deploy*: (where the website isdeployed  [git@github.com:tianhuil/tianhuil.github.io.git])
+- *deploy*: (where the website is deployed  [git@github.com:tianhuil/tianhuil.github.io.git])
