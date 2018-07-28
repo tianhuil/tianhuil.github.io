@@ -9,7 +9,7 @@ const Company = ((props) => (
 ))
 
 const Section = ((props) => (
-  <section id={props.id}>
+  <section id={props.id} className="mb30">
     <div className="row">
       <div className="mt30 col-xs-12">
         <h1>{props.title}</h1>
@@ -55,7 +55,7 @@ const Professional = (props) => (
       <div className="row">
         <Company src="/static/images/tdi.jpg"
             url="https://www.thedataincubator.com"
-            className="mt15 col-xs-12 col-sm-6 col-sm-offset-3"/>
+            className="mt15 col-xs-12 col-sm-6 offset-sm-3"/>
       </div>
     </Section>
 
@@ -103,10 +103,10 @@ const Professional = (props) => (
 
     {/* Space Agencies */}
     <Section id="space-agencies" title="Space Agencies" subtitle="Space Agencies for which I have worked" >
-      <div className="row mb30">
+      <div className="row">
         <Company src="/static/images/nasa.png"
             url="https://www.nasa.gov/"
-            className="mt15 col-xs-12 col-sm-6 col-sm-offset-3"/>
+            className="mt15 col-xs-12 col-sm-6 offset-sm-3"/>
       </div>
     </Section>
   </Layout>
