@@ -77,7 +77,10 @@ class Layout extends React.Component {
           <meta name="twitter:title" content="Michael Li" />
           <meta name="twitter:description" content="Personal Homepage for Tianhui Michael Li" />
           <meta name="twitter:image" content="https://tianhui.li/" />
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+          <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+            crossorigin="anonymous"/>
         </Head>
         <Header />
         <section>
