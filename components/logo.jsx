@@ -2,7 +2,7 @@ import React from 'react';
 
 export default (props) => (
   <a href={props.url} >
-    <div className="logo-frame">
+    <div className="logo-frame d-flex align-items-center h-100">
       <span className="logo-helper"></span>
       <img className="logo-image" src={props.src}/>
     </div>
