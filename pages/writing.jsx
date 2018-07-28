@@ -15,9 +15,7 @@ const Publication = ((props) => (
 ))
 
 const More = <span>
-  <span>More</span>
-  <span className="glyphicon glyphicon-chevron-right"></span>
-  <span className="glyphicon glyphicon-chevron-right"></span>
+  <span>More ...</span>
 </span>
 
 const Article = ((props) => (
