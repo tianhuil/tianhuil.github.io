@@ -88,20 +88,22 @@ const Professional = (props) => (
     <Section id="boards" title="Boards" subtitle="Selected boards of which I'm a member" >
       <div className="row">
         <Company src="/static/images/marshall.jpg" url="https://www.marshallscholars.org/"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt15 col-xs-6 col-sm-4" />
         <Company src="/static/images/any.jpg" url="https://www.americaneedsyou.org/"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt15 col-xs-6 col-sm-4" />
         <div className="clearfix visible-xs"></div>
         <Company src="/static/images/lendit.png" url="http://www.lendit.com/"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt15 col-xs-6 col-sm-4" />
         <Company src="/static/images/strata.png" url="https://conferences.oreilly.com/strata"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt15 col-xs-6 col-sm-4" />
+        <Company src="/static/images/ssp.png" url="https://www.societyforscience.org/"
+                  className="mt15 col-xs-6 col-sm-4" />
       </div>
     </Section>
 
     {/* Space Agencies */}
     <Section id="space-agencies" title="Space Agencies" subtitle="Space Agencies for which I have worked" >
-      <div className="row">
+      <div className="row mb30">
         <Company src="/static/images/nasa.png"
             url="https://www.nasa.gov/"
             className="mt15 col-xs-12 col-sm-6 col-sm-offset-3"/>
