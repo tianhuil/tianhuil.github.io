@@ -76,7 +76,7 @@ class Layout extends React.Component {
           <meta name="twitter:site" content="@tianhuil" />
           <meta name="twitter:title" content="Michael Li" />
           <meta name="twitter:description" content="Personal Homepage for Tianhui Michael Li" />
-          <meta name="twitter:image" content="http://tianhuil.github.io/" />
+          <meta name="twitter:image" content="https://tianhui.li/" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
         </Head>
         <Header />
