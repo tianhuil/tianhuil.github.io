@@ -2,37 +2,55 @@ import React from 'react';
 import Link from 'next/link'
 import Head from 'next/head'
 
+const NavLink = (props) => (
+  <Link href={props.href}>
+    <a className="nav-link">
+      {props.children}
+    </a>
+  </Link>
+)
+
 const Header = () => (
   <div>
-    <div className={"navbar"}>
-      <div className={"container"}>
+    <nav className="navbar navbar-expand-sm mb30">
+      <div className="container">
         <div className="navbar-brand">
-          <Link href="/" >Michael Li</Link>
+          <NavLink href="/" >Michael Li</NavLink>
         </div>
-        <ul className={"nav navbar-nav navbar-right"}>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/professional">Professional</Link>
-          </li>
-          <li>
-            <Link href="/writing">Writing</Link>
-          </li>
-        </ul>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item active">
+              <NavLink className="navbar-link" href="/">Home</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink href="/professional">Professional</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink href="/writing"> Writing </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </nav>
     <style jsx>{`
       .navbar {
         border-bottom: 1px solid #dddddd;
-        padding: 15px 15px;
         background-color: transparent;
+        padding: 6px 16px;
       }
 
       .navbar-brand {
         color: rgb(25,160,210);
         font-weight: 200;
         font-size: 46px;
+        padding: 0px;
+      }
+      .navbar-brand a {
+        padding: 0px;
       }
 
       .navbar-nav li a {
@@ -84,7 +102,7 @@ class Layout extends React.Component {
         </Head>
         <Header />
         <section>
-          <div className={"mt30 container"}>
+          <div className="container">
             {this.props.children}
           </div>
         </section>

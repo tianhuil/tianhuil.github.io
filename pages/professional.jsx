@@ -11,7 +11,7 @@ const Company = ((props) => (
 const Section = ((props) => (
   <section id={props.id} className="mb30">
     <div className="row">
-      <div className="mt30 col-xs-12">
+      <div className="col-xs-12">
         <h1>{props.title}</h1>
         <h2>{props.subtitle}</h2>
       </div>
