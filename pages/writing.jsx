@@ -31,13 +31,13 @@ const Writing = (props) => (
           name="Harvard Business Review">
         <ul>
           <Article url="https://hbr.org/2016/11/the-promise-and-challenge-of-big-data-for-pharma"
-            title="The Promise and Challenge of Big Data for Pharma"/>
+            title="The Promise And Challenge Of Big Data For Pharma"/>
           <Article url="https://hbr.org/2014/08/the-question-to-ask-before-hiring-a-data-scientist"
-            title="The Question to Ask Before Hiring a Data Scientist"/>
+            title="The Question To Ask Before Hiring A Data Scientist"/>
           <Article url="https://hbr.org/2015/10/the-best-data-scientists-know-how-to-tell-stories"
-            title="The Best Data Scientists Know How to Tell Stories"/>
+            title="The Best Data Scientists Know How To Tell Stories"/>
           <Article url="https://hbr.org/2016/11/better-questions-to-ask-your-data-scientists"
-            title="Better Questions to Ask Your Data Scientists"/>
+            title="Better Questions To Ask Your Data Scientists"/>
           <Article url="https://hbr.org/search?term=michael+li"
             more={true}/>
         </ul>
@@ -47,13 +47,13 @@ const Writing = (props) => (
           name="O'Reilly Radar">
         <ul>
           <Article url="https://www.oreilly.com/ideas/leveraging-analytics-1-0-for-the-analytics-2-0-revolution"
-            title="Leveraging analytics 1.0 for the analytics 2.0 revolution"/>
+            title="Leveraging Analytics 1.0 For The Analytics 2.0 Revolution"/>
           <Article url="https://www.oreilly.com/ideas/spark-comparison-aws-vs-gcp"
-            title="Spark comparison: AWS vs. GCP"/>
+            title="Spark Comparison: AWS vs. GCP"/>
           <Article url="https://www.oreilly.com/ideas/three-best-practices-for-building-successful-data-pipelines"
-            title="Three best practices for building successful data pipelines"/>
+            title="Three Best Practices For Building Successful Data Pipelines"/>
           <Article url="https://www.oreilly.com/ideas/5-secrets-for-writing-the-perfect-data-scientist-resume"
-            title="5 secrets for writing the perfect data scientist resume"/>
+            title="5 Secrets For Writing The Perfect Data Scientist Resume"/>
           <Article url="https://www.oreilly.com/people/76a5b-michael-li"
             more={true}/>
         </ul>
@@ -72,6 +72,10 @@ const Writing = (props) => (
         <ul>
           <Article url="https://www.fastcompany.com/3049788/how-to-get-past-buzzwords-and-make-better-hires"
             title="How To Get Past Buzzwords And Make Better Hires"/>
+          <Article url="https://www.fastcompany.com/40574695/youve-probably-been-hiring-the-wrong-kind-of-data-scientist"
+            title="You’ve Probably Been Hiring The Wrong Kind Of Data Scientist"/>
+          <Article url="https://www.fastcompany.com/40513520/how-to-get-a-hot-job-in-data-security-without-being-a-data-scientist"
+            title="How To Land A Cybersecurity Job Even If You’re Not A Data Scientist"/>
         </ul>
       </Publication>
 
@@ -79,9 +83,17 @@ const Writing = (props) => (
           name="TechCrunch">
         <ul>
           <Article url="https://techcrunch.com/2017/06/23/five-building-blocks-of-a-data-driven-culture/"
-            title="Five building blocks of a data-driven culture"/>
+            title="Five Building Blocks Of A Data-driven Culture"/>
           <Article url="https://techcrunch.com/2016/10/19/the-perils-of-polling-in-a-brexit-and-donald-trump-world/"
-            title="The perils of polling in a Brexit and Donald Trump world"/>
+            title="The Perils Of Polling In A Brexit And Donald Trump World"/>
+        </ul>
+      </Publication>
+
+      <Publication src="/static/images/mitsmr.png" url="https://sloanreview.mit.edu/article/give-technical-experts-a-role-in-defining-project-success/"
+          name="MIT Sloan Management Review">
+        <ul>
+          <Article url="https://sloanreview.mit.edu/article/give-technical-experts-a-role-in-defining-project-success/"
+            title="Give Technical Experts A Role In Defining Project Success"/>
         </ul>
       </Publication>
 
@@ -89,22 +101,40 @@ const Writing = (props) => (
           name="VentureBeat">
         <ul>
           <Article url="https://venturebeat.com/2016/07/04/how-to-combat-your-companys-tech-hiring-bias/"
-            title="How to combat your company’s tech hiring bias"/>
+            title="How To Combat Your Company’s Tech Hiring Bias"/>
           <Article url="https://venturebeat.com/2015/07/18/real-data-scientists-have-a-rare-hybrid-of-skill-sets-heres-what-to-look-for/"
-            title="Real data scientists have a rare hybrid of skill sets: Here’s what to look for"/>
+            title="Real Data Scientists Have A Rare Hybrid Of Skill Sets: Here’s What To Look For"/>
         </ul>
       </Publication>
 
       <Publication src="/static/images/entrepreneur.png" url="https://www.entrepreneur.com/author/michael-li2"
-          name="Entrepreneur">
+          name="Entrepreneur Magazine">
         <ul>
           <Article url="https://www.entrepreneur.com/article/269919"
-            title="What Hiring Managers Don't Understand About Hiring for Data Science"/>
+            title="What Hiring Managers Don't Understand About Hiring For Data Science"/>
           <Article url="https://www.entrepreneur.com/article/249167"
-            title="3 Ways Scrappy Entrepreneurs Can Keep Data Scientists on Board and Motivated"/>
+            title="3 Ways Scrappy Entrepreneurs Can Keep Data Scientists On Board And Motivated"/>
           <Article url="https://www.entrepreneur.com/article/244247"
-            title="4 Things a Data Scientist Can Do for Entrepreneurs"/>
+            title="4 Things A Data Scientist Can Do For Entrepreneurs"/>
           <Article url="https://www.entrepreneur.com/author/michael-li2" more={true} />
+        </ul>
+      </Publication>
+
+      <Publication src="/static/images/dataconomy.png" url="http://dataconomy.com/author/tianhuimichaelli/"
+          name="Dataconomy">
+        <ul>
+          <Article url="http://dataconomy.com/2017/09/financial-institutions-data-science/"
+            title="Why Large Financial Institutions Struggle To Adopt Technology And Data Science"/>
+          <Article url="http://dataconomy.com/2016/10/why-employers-miss-millennials/"
+            title="Why Employers Miss Millennial Data Scientists"/>
+        </ul>
+      </Publication>
+
+      <Publication src="/static/images/techtarget.png" url="https://www.techtarget.com/contributor/Tianhui-Michael-Li"
+          name="TechTarget">
+        <ul>
+          <Article url="https://searchbusinessanalytics.techtarget.com/tip/Hiring-vs-training-data-scientists-The-case-for-each-approach"
+            title="Hiring Vs. Training Data Scientists: The Case For Each Approach"/>
         </ul>
       </Publication>
     </section>
