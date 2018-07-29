@@ -12,7 +12,7 @@ const NavLink = (props) => (
 
 const Header = () => (
   <div>
-    <nav className="navbar navbar-expand-sm mb30">
+    <nav className="navbar navbar-expand-sm mb-5">
       <div className="container">
         <div className="navbar-brand">
           <NavLink href="/" >Michael Li</NavLink>
@@ -128,30 +128,6 @@ class Layout extends React.Component {
             font-weight: 200;
             color: #888888;
             font-size: 16px;
-          }
-
-          .mt5 {
-            margin-top: 5px;
-          }
-
-          .mb5 {
-            margin-bottom: 5px;
-          }
-
-          .mt15 {
-            margin-top: 15px;
-          }
-
-          .mb15 {
-            margin-bottom: 15px;
-          }
-
-          .mt30 {
-            margin-top: 30px;
-          }
-
-          .mb30 {
-            margin-bottom: 30px;
           }
         `}</style>
       </div>

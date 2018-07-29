@@ -7,12 +7,12 @@ import Layout from '../components/layout.jsx'
 const Home = (props) => (
   <Layout>
     <div className="row">
-      <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb15">
+      <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb-3">
         <div className="circle-image">
           <img src="static/images/tianhuil.jpg" className="img img-responsive full-wdith"/>
         </div>
       </div>
-      <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb15">
+      <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb-3">
         <p>
           <b>Hi! I'm Tianhui Li, but I go by "Michael". I'm a data scientist and an entrepreneur.</b>
         </p>
@@ -35,7 +35,7 @@ const Home = (props) => (
         <p>
           Je parle aussi le français, mais pas très bien.  Les Français m'appellent Michel.
         </p>
-        <div className="mt30">
+        <div className="mt-4">
           <SocialIcon className="social-icon" url="https://twitter.com/tianhuil" />
           <SocialIcon className="social-icon" url="https://www.linkedin.com/in/tianhuili" />
           <SocialIcon className="social-icon" url="https://github.com/tianhuil" />

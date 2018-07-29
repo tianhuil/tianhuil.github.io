@@ -3,12 +3,12 @@ import Layout from '../components/layout.jsx'
 import Logo from '../components/logo.jsx'
 
 const Publication = ((props) => (
-  <div className="row mb30">
-    <div className="mt15 col-xs-12 col-sm-5">
+  <div className="row mb-5">
+    <div className="mt-3 col-xs-12 col-sm-5">
       <Logo src={props.src} url={props.url} />
     </div>
     <div className="col-xs-12 col-sm-7">
-      <h2 className="mt15">{ props.name }</h2>
+      <h2 className="mt-3">{ props.name }</h2>
       { props.children }
     </div>
   </div>

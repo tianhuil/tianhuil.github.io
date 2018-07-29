@@ -3,13 +3,13 @@ import Layout from '../components/layout.jsx'
 import Logo from '../components/logo.jsx'
 
 const Company = ((props) => (
-  <div className={props.className ? props.className : "mt15 col-xs-6 col-sm-4"}>
+  <div className={props.className ? props.className : "mt-3 col-xs-6 col-sm-4"}>
     <Logo src={props.src} url={props.url} />
   </div>
 ))
 
 const Section = ((props) => (
-  <section id={props.id} className="mb30">
+  <section id={props.id} className="mb-5">
     <div className="row">
       <div className="col-xs-12">
         <h1>{props.title}</h1>
@@ -55,7 +55,7 @@ const Professional = (props) => (
       <div className="row">
         <Company src="/static/images/tdi.jpg"
             url="https://www.thedataincubator.com"
-            className="mt15 col-xs-12 col-sm-6 offset-sm-3"/>
+            className="mt-3 col-xs-12 col-sm-6 offset-sm-3"/>
       </div>
     </Section>
 
@@ -73,14 +73,14 @@ const Professional = (props) => (
     <Section id="awards" title="Awards" subtitle="Selected awards I have been fortunate enough to receive" >
       <div className="row">
         <Company src="/static/images/marshall.gif" url="http://www.marshallscholarship.org/"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt-3 col-xs-6 col-sm-3" />
         <Company src="/static/images/intel-sts.png" url="https://student.societyforscience.org/regeneron-sts"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt-3 col-xs-6 col-sm-3" />
         <div className="clearfix visible-xs"></div>
         <Company src="/static/images/hertz.jpg" url="http://hertzfoundation.org/default.aspx"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt-3 col-xs-6 col-sm-3" />
         <Company src="/static/images/nsf.png" url="https://www.nsfgrfp.org/"
-                  className="mt15 col-xs-6 col-sm-3" />
+                  className="mt-3 col-xs-6 col-sm-3" />
       </div>
     </Section>
 
@@ -88,16 +88,16 @@ const Professional = (props) => (
     <Section id="boards" title="Boards" subtitle="Selected boards of which I'm a member" >
       <div className="row">
         <Company src="/static/images/marshall.jpg" url="https://www.marshallscholars.org/"
-                  className="mt15 col-xs-6 col-sm-4" />
+                  className="mt-3 col-xs-6 col-sm-4" />
         <Company src="/static/images/any.jpg" url="https://www.americaneedsyou.org/"
-                  className="mt15 col-xs-6 col-sm-4" />
+                  className="mt-3 col-xs-6 col-sm-4" />
         <div className="clearfix visible-xs"></div>
         <Company src="/static/images/lendit.png" url="http://www.lendit.com/"
-                  className="mt15 col-xs-6 col-sm-4" />
+                  className="mt-3 col-xs-6 col-sm-4" />
         <Company src="/static/images/strata.png" url="https://conferences.oreilly.com/strata"
-                  className="mt15 col-xs-6 col-sm-4" />
+                  className="mt-3 col-xs-6 col-sm-4" />
         <Company src="/static/images/ssp.png" url="https://www.societyforscience.org/"
-                  className="mt15 col-xs-6 col-sm-4" />
+                  className="mt-3 col-xs-6 col-sm-4" />
       </div>
     </Section>
 
@@ -106,7 +106,7 @@ const Professional = (props) => (
       <div className="row">
         <Company src="/static/images/nasa.png"
             url="https://www.nasa.gov/"
-            className="mt15 col-xs-12 col-sm-6 offset-sm-3"/>
+            className="mt-3 col-xs-12 col-sm-6 offset-sm-3"/>
       </div>
     </Section>
   </Layout>
