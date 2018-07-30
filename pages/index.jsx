@@ -18,7 +18,7 @@ const Home = (props) => (
         </p>
 
         <p>
-          Currently, I'm the founder of <a href="https://www.thedataincubator.com">The Data Incubator</a>, a data science training and placement company.  Previously, I worked at <a href="https://foursquare.com">Foursquare</a>, <a href="https://www.google.com">Google</a>, <a href="a16z.com">Andreessen Horowitz</a>, <a href="https://www.jpmorgan.com/">J.P. Morgan</a>, <a href="https://www.deshaw.com/">D.E. Shaw</a>, and <a href="https://www.nasa.gov">NASA</a>.
+          Currently, I'm the founder of <a href="https://www.thedataincubator.com">The Data Incubator</a>, a data science training and placement company.  Previously, I worked at <a href="https://foursquare.com">Foursquare</a>, <a href="https://www.google.com">Google</a>, <a href="a16z.com">Andreessen Horowitz</a>, <a href="https://www.jpmorgan.com/">J.P. Morgan</a>, <a href="https://www.deshaw.com/">D.E. Shaw</a>, <a href="https://www.bloomberg.com/">Bloomberg</a>, and <a href="https://www.nasa.gov">NASA</a>.
         </p>
 
         <p>
