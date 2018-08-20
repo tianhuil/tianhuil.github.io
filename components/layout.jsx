@@ -10,6 +10,9 @@ const NavLink = (props) => (
   </Link>
 )
 
+const domainURL = "https://tianhui.li"
+const imageURL = domainURL + "/static/images/tianhuil.jpg"
+
 const Header = () => (
   <div>
     <nav className="navbar navbar-expand-sm mb-5">
@@ -82,17 +85,18 @@ const HeadDiv = () => (
     <title>Michael Li</title>
 
     {/* Facebook */}
-    <meta property="og:title" content="Michael Li"/>
-    <meta property="og:image" content="/static/images/tianhuil.jpg"/>
+    <meta property="og:title"       content="Michael Li"/>
+    <meta property="profile:first_name" content="Michael" />
+    <meta property="profile:last_name"  content="Li" />
+    <meta property="profile:gender"     content="male" />
+    <meta property="og:type"        content="profile" />
     <meta property="og:description" content="Personal Homepage for Tianhui Michael Li"/>
-    <meta property="og:url" content="https://tianhui.li"/>
+    <meta property="og:image"       content={imageURL}/>
+    <meta property="og:url"         content={domainURL}/>
 
     {/* Twitter */}
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@tianhuil" />
-    <meta name="twitter:title" content="Michael Li" />
-    <meta name="twitter:description" content="Personal Homepage for Tianhui Michael Li" />
-    <meta name="twitter:image" content="/static/images/tianhuil.jpg" />
+    <meta name="twitter:card"         content="summary" />
+    <meta name="twitter:site"         content="@tianhuil" />
 
     {/* Stylesheet */}
     <link rel="stylesheet"
