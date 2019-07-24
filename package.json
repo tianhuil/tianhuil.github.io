@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "export": "next export",
+    "export": "next export ./ -o out",
     "start": "next start"
   },
   "author": "Tianhui Michael Li",
