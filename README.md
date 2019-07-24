@@ -43,4 +43,4 @@ The deploy script relies on two remotes:
 - *deploy*: (where the website is deployed  [git@github.com:tianhuil/tianhuil.github.io.git])
 
 ## Fix Domain
-You may need to reset the domain in [settings for tianhuil.github.io](https://github.com/tianhuil/tianhuil.github.io/settings) to be [tianhui.li](tianhui.li), not the default github pages.
+You may need to reset the domain in "GitHub Pages" section of the [settings for tianhuil.github.io](https://github.com/tianhuil/tianhuil.github.io/settings) to be [tianhui.li](tianhui.li), not the default github pages url.
