@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "export": "next export ./ -o out",
+    "export": "next export ./ -o out && echo 'tianhui.li' > out/CNAME",
     "start": "next start"
   },
   "author": "Tianhui Michael Li",
