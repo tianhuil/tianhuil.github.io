@@ -19,7 +19,7 @@ brew install jpegoptim
 
 Then run
 ```
-pushd dist/images
+pushd static/images
 sips -Z 640 *.png  # resize png (biggest images)
 optipng *.png  # optimize png
 jpegoptim *.jpg  # optimize jpg
