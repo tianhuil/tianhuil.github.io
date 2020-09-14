@@ -16,7 +16,8 @@
     "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-social-icons": "^4.1.0"
+    "react-social-icons": "^4.1.0",
+    "styled-jsx": "^3.3.0"
   },
   "devDependencies": {}
 }
