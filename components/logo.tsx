@@ -2,6 +2,10 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const Style = styled.div`
+  & {
+    height: 100%;
+  }
+
   .logo-frame {
     text-align: center;
   }

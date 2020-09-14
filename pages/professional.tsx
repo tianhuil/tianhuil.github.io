@@ -101,7 +101,7 @@ const Professional = (props) => (
     <Section
       id="boards"
       title="Boards"
-      subtitle="Selected boards of which I'm a member"
+      subtitle="Selected boards on which I serve (or have served)"
     >
       <div className="row">
         <Company
@@ -112,6 +112,11 @@ const Professional = (props) => (
         <Company
           src="/images/any.jpg"
           url="https://www.americaneedsyou.org/"
+          className="mt-3 col-xs-6 col-sm-4"
+        />
+        <Company
+          src="/images/cpe.png"
+          url="https://policingequity.org/"
           className="mt-3 col-xs-6 col-sm-4"
         />
         <div className="clearfix visible-xs"></div>
