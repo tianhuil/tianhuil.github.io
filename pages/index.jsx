@@ -9,7 +9,7 @@ const Home = (props) => (
     <div className="row">
       <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb-3">
         <div className="circle-image">
-          <img src="static/images/tianhuil.jpg" className="img img-responsive full-wdith"/>
+          <img src="/images/tianhuil.jpg" className="img img-responsive full-wdith"/>
         </div>
       </div>
       <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb-3">

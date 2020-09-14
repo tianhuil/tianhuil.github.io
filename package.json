@@ -5,18 +5,18 @@
   "main": "index.js",
   "repository": "https://github.com/tianhuil/tianhuil",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "export": "next export ./ -o out && echo 'tianhui.li' > out/CNAME",
+    "export": "next export",
     "start": "next start"
   },
   "author": "Tianhui Michael Li",
   "license": "ISC",
   "dependencies": {
-    "next": "^5.1.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-social-icons": "^2.9.0"
+    "next": "^9.5.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-social-icons": "^4.1.0"
   },
   "devDependencies": {}
 }
