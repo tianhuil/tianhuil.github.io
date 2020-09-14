@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 
 const NavLink = (props) => (
-  <Link prefetch href={props.href}>
+  <Link href={props.href}>
     <a className="nav-link">
       {props.children}
     </a>
