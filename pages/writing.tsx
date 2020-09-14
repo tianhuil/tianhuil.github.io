@@ -49,12 +49,24 @@ const Writing = (props) => (
       >
         <ul>
           <Article
+            url="https://techcrunch.com/2020/08/27/will-automation-eliminate-data-science-positions/"
+            title="Will automation eliminate data science positions?"
+          />
+          <Article
+            url="https://techcrunch.com/2020/08/12/whats-different-about-hiring-data-scientists-in-2020/"
+            title="What’s different about hiring data scientists in 2020?"
+          />
+          <Article
             url="https://techcrunch.com/2017/06/23/five-building-blocks-of-a-data-driven-culture/"
             title="Five Building Blocks Of A Data-driven Culture"
           />
           <Article
             url="https://techcrunch.com/2016/10/19/the-perils-of-polling-in-a-brexit-and-donald-trump-world/"
             title="The Perils Of Polling In A Brexit And Donald Trump World"
+          />
+          <Article
+            url="https://techcrunch.com/author/michael-li/"
+            more={true}
           />
         </ul>
       </Publication>
@@ -164,12 +176,24 @@ const Writing = (props) => (
       >
         <ul>
           <Article
+            url="https://venturebeat.com/2020/06/27/a-closer-look-at-sagemaker-studio-aws-machine-learning-ide/"
+            title="A closer look at SageMaker Studio, AWS’ machine learning IDE"
+          />
+          <Article
+            url="https://venturebeat.com/2019/12/08/aws-sagemakers-new-machine-learning-ide-isnt-ready-to-win-over-data-scientists/"
+            title="AWS SageMaker’s new machine learning IDE isn’t ready to win over data scientists"
+          />
+          <Article
             url="https://venturebeat.com/2016/07/04/how-to-combat-your-companys-tech-hiring-bias/"
             title="How To Combat Your Company’s Tech Hiring Bias"
           />
           <Article
             url="https://venturebeat.com/2015/07/18/real-data-scientists-have-a-rare-hybrid-of-skill-sets-heres-what-to-look-for/"
             title="Real Data Scientists Have A Rare Hybrid Of Skill Sets: Here’s What To Look For"
+          />
+          <Article
+            url="https://venturebeat.com/author/michael-li-the-data-incubator/"
+            more={true}
           />
         </ul>
       </Publication>
@@ -181,12 +205,20 @@ const Writing = (props) => (
       >
         <ul>
           <Article
+            url="https://dataconomy.com/2020/03/how-to-stop-fetishizing-ai/"
+            title="How to Stop Fetishizing AI"
+          />
+          <Article
             url="http://dataconomy.com/2017/09/financial-institutions-data-science/"
             title="Why Large Financial Institutions Struggle To Adopt Technology And Data Science"
           />
           <Article
             url="http://dataconomy.com/2016/10/why-employers-miss-millennials/"
             title="Why Employers Miss Millennial Data Scientists"
+          />
+          <Article
+            url="https://dataconomy.com/author/tianhuimichaelli/"
+            more={true}
           />
         </ul>
       </Publication>
