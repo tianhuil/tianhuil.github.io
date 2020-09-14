@@ -4,13 +4,13 @@
 
 We use `npm@5` to lock versions.
 
-```
+```bash
 npm install
 ```
 
 and then run
 
-```
+```bash
 npm run dev
 ```
 
