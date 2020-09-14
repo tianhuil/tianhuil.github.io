@@ -62,8 +62,9 @@ const Home = (props) => (
           </p>
 
           <p>
-            I did my PhD at <a href="https://www.princeton.edu/">Princeton</a>{' '}
-            as a <a href="http://hertzfoundation.org/">Hertz Fellow</a> and a{' '}
+            I completed my PhD at{' '}
+            <a href="https://www.princeton.edu/">Princeton</a> as a{' '}
+            <a href="http://hertzfoundation.org/">Hertz Fellow</a> and a{' '}
             <a href="https://www.nsfgrfp.org/">
               National Science Foundation Fellow
             </a>{' '}
