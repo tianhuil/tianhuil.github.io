@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout'
-import Logo from '../components/logo'
+import { Logo } from '../components/logo'
 
 const Company = (props) => (
   <div className={props.className ? props.className : 'mt-3 col-xs-6 col-sm-4'}>

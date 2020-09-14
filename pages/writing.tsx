@@ -1,6 +1,6 @@
-import React from "react";
-import Layout from "../components/layout";
-import Logo from "../components/logo";
+import React from 'react'
+import Layout from '../components/layout'
+import { Logo } from '../components/logo'
 
 const Publication = (props) => (
   <div className="row mb-5">
@@ -12,19 +12,19 @@ const Publication = (props) => (
       {props.children}
     </div>
   </div>
-);
+)
 
 const More = (
   <span>
     <span>More ...</span>
   </span>
-);
+)
 
 const Article = (props) => (
   <li>
     <a href={props.url}>{props.more ? More : props.title}</a>
   </li>
-);
+)
 
 const Writing = (props) => (
   <Layout>
@@ -234,6 +234,6 @@ const Writing = (props) => (
       </Publication>
     </section>
   </Layout>
-);
+)
 
-export default Writing;
+export default Writing

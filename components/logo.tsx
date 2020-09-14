@@ -19,7 +19,7 @@ const Style = styled.div`
   }
 `
 
-export default (props) => (
+export const Logo = (props) => (
   <Style>
     <a href={props.url}>
       <div className="logo-frame d-flex align-items-center h-100">
