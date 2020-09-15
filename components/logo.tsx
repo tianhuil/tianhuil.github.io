@@ -26,9 +26,9 @@ const Style = styled.div`
 export const Logo = (props) => (
   <Style>
     <a href={props.url}>
-      <div className="logo-frame d-flex align-items-center h-100">
-        <span className="logo-helper"></span>
-        <img className="logo-image" src={props.src} />
+      <div className='logo-frame d-flex align-items-center h-100'>
+        <span className='logo-helper'></span>
+        <img className='logo-image' src={props.src} />
       </div>
     </a>
   </Style>

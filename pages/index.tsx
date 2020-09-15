@@ -24,16 +24,16 @@ const Style = styled.div`
 const Home = (props) => (
   <Layout>
     <Style>
-      <div className="row">
-        <div className="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb-3">
-          <div className="circle-image">
+      <div className='row'>
+        <div className='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb-3'>
+          <div className='circle-image'>
             <img
-              src="/images/tianhuil.jpg"
-              className="img img-responsive full-wdith"
+              src='/images/tianhuil.jpg'
+              className='img img-responsive full-wdith'
             />
           </div>
         </div>
-        <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb-3">
+        <div className='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb-3'>
           <p>
             <b>
               Hi! I'm Tianhui Li, but I go by "Michael". I'm a data scientist
@@ -43,37 +43,37 @@ const Home = (props) => (
 
           <p>
             Currently, I'm the founder of{' '}
-            <a href="https://www.thedataincubator.com">The Data Incubator</a>, a
+            <a href='https://www.thedataincubator.com'>The Data Incubator</a>, a
             data science training and placement company. Previously, I worked at{' '}
-            <a href="https://foursquare.com">Foursquare</a>,{' '}
-            <a href="https://www.google.com">Google</a>,{' '}
-            <a href="https://a16z.com">Andreessen Horowitz</a>,{' '}
-            <a href="https://www.jpmorgan.com/">J.P. Morgan</a>,{' '}
-            <a href="https://www.deshaw.com/">D.E. Shaw</a>,{' '}
-            <a href="https://www.bloomberg.com/">Bloomberg</a>, and{' '}
-            <a href="https://www.nasa.gov">NASA</a>.
+            <a href='https://foursquare.com'>Foursquare</a>,{' '}
+            <a href='https://www.google.com'>Google</a>,{' '}
+            <a href='https://a16z.com'>Andreessen Horowitz</a>,{' '}
+            <a href='https://www.jpmorgan.com/'>J.P. Morgan</a>,{' '}
+            <a href='https://www.deshaw.com/'>D.E. Shaw</a>,{' '}
+            <a href='https://www.bloomberg.com/'>Bloomberg</a>, and{' '}
+            <a href='https://www.nasa.gov'>NASA</a>.
           </p>
 
           <p>
             I'm very passionate about{' '}
-            <Link href="/professional#boards">non-profit causes</Link> around
-            education and <Link href="/writing">write regularly</Link> about
+            <Link href='/professional#boards'>non-profit causes</Link> around
+            education and <Link href='/writing'>write regularly</Link> about
             data science and big data.
           </p>
 
           <p>
             I completed my PhD at{' '}
-            <a href="https://www.princeton.edu/">Princeton</a> as a{' '}
-            <a href="http://hertzfoundation.org/">Hertz Fellow</a> and a{' '}
-            <a href="https://www.nsfgrfp.org/">
+            <a href='https://www.princeton.edu/'>Princeton</a> as a{' '}
+            <a href='http://hertzfoundation.org/'>Hertz Fellow</a> and a{' '}
+            <a href='https://www.nsfgrfp.org/'>
               National Science Foundation Fellow
             </a>{' '}
             and read{' '}
-            <a href="https://www.maths.cam.ac.uk/postgrad/mathiii">
+            <a href='https://www.maths.cam.ac.uk/postgrad/mathiii'>
               Part III of the Mathematics Tripos
             </a>{' '}
-            at <a href="https://www.cam.ac.uk">Cambridge</a> as a{' '}
-            <a href="https://www.marshallscholarship.org">Marshall Scholar</a>.
+            at <a href='https://www.cam.ac.uk'>Cambridge</a> as a{' '}
+            <a href='https://www.marshallscholarship.org'>Marshall Scholar</a>.
           </p>
 
           <p>我说普通话和广州话。中文名字“李天惠”。</p>
@@ -81,18 +81,18 @@ const Home = (props) => (
             Je parle aussi le français, mais pas très bien. Les Français
             m'appellent Michel.
           </p>
-          <div className="mt-4">
+          <div className='mt-4'>
             <SocialIcon
-              className="social-icon"
-              url="https://twitter.com/tianhuil"
+              className='social-icon'
+              url='https://twitter.com/tianhuil'
             />
             <SocialIcon
-              className="social-icon"
-              url="https://www.linkedin.com/in/tianhuili"
+              className='social-icon'
+              url='https://www.linkedin.com/in/tianhuili'
             />
             <SocialIcon
-              className="social-icon"
-              url="https://github.com/tianhuil"
+              className='social-icon'
+              url='https://github.com/tianhuil'
             />
           </div>
         </div>
