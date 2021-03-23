@@ -36,7 +36,7 @@ const Writing = (props) => (
       >
         <ul>
           <Article
-            url='wired.com/preview/story/5d2e3328d757370008b014a0'
+            url='http://www.wsj.com/articles/calculus-is-so-last-century-1457132991'
             title='Calculus Is So Last Century'
           />
         </ul>
@@ -73,12 +73,12 @@ const Writing = (props) => (
 
       <Publication
         src='/images/wired.svg'
-        url='http://www.wsj.com/articles/calculus-is-so-last-century-1457132991'
+        url='http://https://wired.com/preview/story/5d2e3328d757370008b014a0'
         name='Wired Magazine'
       >
         <ul>
           <Article
-            url='http://www.wsj.com/articles/calculus-is-so-last-century-1457132991'
+            url='http://https://wired.com/preview/story/5d2e3328d757370008b014a0'
             title='High-Stakes AI Decisions Need to be Automatically Audited'
           />
         </ul>
