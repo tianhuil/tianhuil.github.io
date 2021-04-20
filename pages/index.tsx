@@ -21,7 +21,7 @@ const Style = styled.div`
   }
 `
 
-const Home = (props) => (
+const Home: React.FC = () => (
   <Layout>
     <Style>
       <div className='row'>
@@ -29,7 +29,7 @@ const Home = (props) => (
           <div className='circle-image'>
             <img
               src='/images/tianhuil.jpg'
-              className='img img-responsive full-wdith'
+              className='img img-responsive full-width'
             />
           </div>
         </div>
