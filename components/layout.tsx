@@ -14,6 +14,8 @@ const NavLink: React.FC<{ href: string }> = (props) => (
 const domainURL = 'https://tianhui.li'
 const imageURL = domainURL + '/images/tianhuil.jpg'
 
+const themeBlue = 'rgb(25, 160, 210)'
+
 const Style = styled.div`
   .navbar {
     border-bottom: 1px solid #dddddd;
@@ -22,7 +24,7 @@ const Style = styled.div`
   }
 
   .navbar-brand {
-    color: rgb(25, 160, 210);
+    color: ${themeBlue};
     font-weight: 200;
     font-size: 46px;
     padding: 0px;
@@ -45,7 +47,7 @@ const Style = styled.div`
   .navbar-nav li a:hover,
   .navbar-nav li a:focus {
     background-color: transparent;
-    color: #404040;
+    color: ${themeBlue};
   }
 `
 
@@ -235,7 +237,7 @@ const Layout: React.FC = ({ children }) => {
       <Global
         styles={css`
           h1 {
-            color: rgb(25, 160, 210);
+            color: ${themeBlue};
             font-weight: 200;
             font-size: 36px;
           }
@@ -247,7 +249,7 @@ const Layout: React.FC = ({ children }) => {
           }
 
           body a {
-            color: rgb(25, 160, 210);
+            color: ${themeBlue};
           }
 
           body p {
