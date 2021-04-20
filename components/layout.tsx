@@ -245,7 +245,7 @@ const Layout: React.FC = ({ children }) => {
           h2 {
             font-weight: 100;
             color: #888888;
-            font-size: 20px;
+            font-size: 24px;
           }
 
           body a {
@@ -256,6 +256,7 @@ const Layout: React.FC = ({ children }) => {
             font-weight: 200;
             color: #888888;
             font-size: 16px;
+            line-height: 30px;
           }
         `}
       />

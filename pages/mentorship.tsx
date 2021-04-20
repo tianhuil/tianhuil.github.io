@@ -23,10 +23,6 @@ const Style = styled.div`
     font-size: 28px;
   }
 
-  h2 {
-    font-size: 24px;
-  }
-
   iframe {
     width: 100%;
     height: 900px;
