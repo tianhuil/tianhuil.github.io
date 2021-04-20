@@ -58,7 +58,9 @@ const Home: React.FC = () => (
             I'm very passionate about{' '}
             <Link href='/professional#boards'>non-profit causes</Link> around
             education and <Link href='/writing'>write regularly</Link> about
-            data science and big data.
+            data science and big data. I'm also offering{' '}
+            <Link href='/mentorship'>one-on-one mentorship</Link> on management
+            and communication.
           </p>
 
           <p>
