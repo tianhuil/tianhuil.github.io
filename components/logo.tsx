@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from '@emotion/styled'
 
 const Style = styled.div`
@@ -23,7 +22,12 @@ const Style = styled.div`
   }
 `
 
-export const Logo = (props) => (
+interface LogoProp {
+  url: string
+  src: string
+}
+
+export const Logo: React.FC<LogoProp> = (props) => (
   <Style>
     <a href={props.url}>
       <div className='logo-frame d-flex align-items-center h-100'>
