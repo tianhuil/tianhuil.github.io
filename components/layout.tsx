@@ -2,6 +2,7 @@ import { css, Global } from '@emotion/react'
 import styled from '@emotion/styled'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 const NavLink: React.FC<{ href: string }> = (props) => (
@@ -32,57 +33,81 @@ const Style = styled.div`
 
   .navbar-nav li a {
     font-size: 18px;
-    color: #aaaaaa;
-    font-weight: 100;
+    color: #808080;
+    font-weight: 200;
   }
 
   .navbar-nav li.active a {
-    color: #dddddd;
+    color: #606060;
+    font-weight: 300;
   }
 
   .navbar-nav li a:hover,
   .navbar-nav li a:focus {
     background-color: transparent;
-    color: #dddddd;
+    color: #404040;
   }
 `
 
-const Header = () => (
-  <Style>
-    <nav className='navbar navbar-expand-sm mb-5'>
-      <div className='container'>
-        <div className='navbar-brand'>
-          <NavLink href='/'>Michael Li</NavLink>
-        </div>
-        <button
-          className='navbar-toggler'
-          type='button'
-          data-toggle='collapse'
-          data-target='#navbarSupportedContent'
-          aria-controls='navbarSupportedContent'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-        >
-          <span className='navbar-toggler-icon'></span>
-        </button>
+const links = [
+  {
+    link: '/',
+    text: 'Home',
+  },
+  {
+    link: '/professional',
+    text: 'Professional',
+  },
+  {
+    link: '/writing',
+    text: 'Writing',
+  },
+  {
+    link: '/mentorship',
+    text: 'Mentorship',
+  },
+]
 
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-          <ul className='navbar-nav ml-auto'>
-            <li className='nav-item'>
-              <NavLink href='/'>Home</NavLink>
-            </li>
-            <li className='nav-item'>
-              <NavLink href='/professional'>Professional</NavLink>
-            </li>
-            <li className='nav-item'>
-              <NavLink href='/writing'> Writing </NavLink>
-            </li>
-          </ul>
+const Header = () => {
+  const router = useRouter()
+  return (
+    <Style>
+      <nav className='navbar navbar-expand-sm mb-5'>
+        <div className='container'>
+          <div className='navbar-brand'>
+            <NavLink href='/'>Michael Li</NavLink>
+          </div>
+          <button
+            className='navbar-toggler'
+            type='button'
+            data-toggle='collapse'
+            data-target='#navbarSupportedContent'
+            aria-controls='navbarSupportedContent'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+          >
+            <span className='navbar-toggler-icon'></span>
+          </button>
+
+          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul className='navbar-nav ml-auto'>
+              {links.map(({ link, text }, key) => (
+                <li
+                  className={`nav-item ${
+                    router.asPath === link ? 'active' : ''
+                  }`}
+                  key={key}
+                >
+                  <NavLink href={link}>{text}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </Style>
-)
+      </nav>
+    </Style>
+  )
+}
 
 const HeadDiv = () => (
   <Head>

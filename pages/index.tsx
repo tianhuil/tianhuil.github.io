@@ -25,7 +25,7 @@ const Home: React.FC = () => (
   <Layout>
     <Style>
       <div className='row'>
-        <div className='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 mb-3'>
+        <div className='col-6 offset-3 col-sm-4 offset-sm-0 mb-3'>
           <div className='circle-image'>
             <img
               src='/images/tianhuil.jpg'
@@ -33,7 +33,7 @@ const Home: React.FC = () => (
             />
           </div>
         </div>
-        <div className='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0 mb-3'>
+        <div className='col-10 offset-1 col-sm-8 offset-sm-0 mb-3'>
           <p>
             <b>
               Hi! I'm Tianhui Li, but I go by "Michael". I'm a data scientist
