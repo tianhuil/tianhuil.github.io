@@ -1,8 +1,17 @@
 {
   "presets": [
-    "next/babel",
-    "@emotion/babel-preset-css-prop",
-    "@babel/preset-typescript"
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": "usage", // alternative mode: "entry"
+          "corejs": 3, // default would be 2
+          "targets": "> 0.25%, not dead"
+        }
+      }
+    ],
+    "@babel/preset-typescript",
+    "@emotion/babel-preset-css-prop"
   ],
-  "plugins": [["emotion"]]
+  "plugins": ["@emotion"]
 }

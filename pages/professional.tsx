@@ -1,14 +1,27 @@
 import React from 'react'
+
 import Layout from '../components/layout'
 import { Logo } from '../components/logo'
 
-const Company = (props) => (
+interface CompanyProp {
+  src: string
+  url: string
+  className?: string
+}
+
+const Company: React.FC<CompanyProp> = (props) => (
   <div className={props.className ? props.className : 'mt-3 col-xs-6 col-sm-4'}>
     <Logo src={props.src} url={props.url} />
   </div>
 )
 
-const Section = (props) => (
+interface Section {
+  id: string
+  title: string
+  subtitle: string
+}
+
+const Section: React.FC<Section> = (props) => (
   <section id={props.id} className='mb-5'>
     <div className='row'>
       <div className='col-xs-12'>
@@ -20,7 +33,7 @@ const Section = (props) => (
   </section>
 )
 
-const Professional = (props) => (
+const Professional: React.FC = () => (
   <Layout>
     {/* Companies */}
     <Section

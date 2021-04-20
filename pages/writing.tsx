@@ -2,7 +2,13 @@ import React from 'react'
 import Layout from '../components/layout'
 import { Logo } from '../components/logo'
 
-const Publication = (props) => (
+interface PublicationProp {
+  src: string
+  url: string
+  name: string
+}
+
+const Publication: React.FC<PublicationProp> = (props) => (
   <div className='row mb-5'>
     <div className='mt-3 col-xs-12 col-sm-5'>
       <Logo src={props.src} url={props.url} />
@@ -20,13 +26,18 @@ const More = (
   </span>
 )
 
-const Article = (props) => (
+interface ArticleProp {
+  url: string
+  title?: string
+}
+
+const Article: React.FC<ArticleProp> = (props) => (
   <li>
-    <a href={props.url}>{props.more ? More : props.title}</a>
+    <a href={props.url}>{props.title ?? More}</a>
   </li>
 )
 
-const Writing = (props) => (
+const Writing: React.FC = () => (
   <Layout>
     <section>
       <Publication
@@ -66,7 +77,6 @@ const Writing = (props) => (
           />
           <Article
             url='https://techcrunch.com/author/michael-li/'
-            more={true}
           />
         </ul>
       </Publication>
@@ -127,7 +137,7 @@ const Writing = (props) => (
             url='https://hbr.org/2016/11/better-questions-to-ask-your-data-scientists'
             title='Better Questions To Ask Your Data Scientists'
           />
-          <Article url='https://hbr.org/search?term=michael+li' more={true} />
+          <Article url='https://hbr.org/search?term=michael+li' />
         </ul>
       </Publication>
 
@@ -164,7 +174,6 @@ const Writing = (props) => (
           />
           <Article
             url='https://www.entrepreneur.com/author/michael-li2'
-            more={true}
           />
         </ul>
       </Publication>
@@ -193,7 +202,6 @@ const Writing = (props) => (
           />
           <Article
             url='https://venturebeat.com/author/michael-li-the-data-incubator/'
-            more={true}
           />
         </ul>
       </Publication>
@@ -218,7 +226,6 @@ const Writing = (props) => (
           />
           <Article
             url='https://dataconomy.com/author/tianhuimichaelli/'
-            more={true}
           />
         </ul>
       </Publication>
@@ -260,7 +267,6 @@ const Writing = (props) => (
           />
           <Article
             url='https://www.oreilly.com/people/76a5b-michael-li'
-            more={true}
           />
         </ul>
       </Publication>

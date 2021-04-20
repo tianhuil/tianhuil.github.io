@@ -1,10 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import { css, Global } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Global, css } from '@emotion/core'
+import Head from 'next/head'
+import Link from 'next/link'
+import React from 'react'
 
-const NavLink = (props) => (
+const NavLink: React.FC<{ href: string }> = (props) => (
   <Link href={props.href}>
     <a className='nav-link'>{props.children}</a>
   </Link>
@@ -69,9 +69,7 @@ const Header = () => (
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav ml-auto'>
             <li className='nav-item'>
-              <NavLink className='navbar-link' href='/'>
-                Home
-              </NavLink>
+              <NavLink href='/'>Home</NavLink>
             </li>
             <li className='nav-item'>
               <NavLink href='/professional'>Professional</NavLink>
@@ -200,44 +198,42 @@ const HeadDiv = () => (
   </Head>
 )
 
-class Layout extends React.Component {
-  render() {
-    return (
-      <div>
-        <HeadDiv />
-        <Header />
-        <section>
-          <div className='container'>{this.props.children}</div>
-        </section>
-        <div></div> {/* footer */}
-        <Global
-          styles={css`
-            h1 {
-              color: rgb(25, 160, 210);
-              font-weight: 200;
-              font-size: 36px;
-            }
+const Layout: React.FC = ({ children }) => {
+  return (
+    <div>
+      <HeadDiv />
+      <Header />
+      <section>
+        <div className='container'>{children}</div>
+      </section>
+      <div></div> {/* footer */}
+      <Global
+        styles={css`
+          h1 {
+            color: rgb(25, 160, 210);
+            font-weight: 200;
+            font-size: 36px;
+          }
 
-            h2 {
-              font-weight: 100;
-              color: #888888;
-              font-size: 20px;
-            }
+          h2 {
+            font-weight: 100;
+            color: #888888;
+            font-size: 20px;
+          }
 
-            body a {
-              color: rgb(25, 160, 210);
-            }
+          body a {
+            color: rgb(25, 160, 210);
+          }
 
-            body p {
-              font-weight: 200;
-              color: #888888;
-              font-size: 16px;
-            }
-          `}
-        />
-      </div>
-    )
-  }
+          body p {
+            font-weight: 200;
+            color: #888888;
+            font-size: 16px;
+          }
+        `}
+      />
+    </div>
+  )
 }
 
 export default Layout
