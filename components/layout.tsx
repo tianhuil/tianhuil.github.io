@@ -64,10 +64,6 @@ const links = [
     link: '/writing',
     text: 'Writing',
   },
-  {
-    link: '/mentorship',
-    text: 'Mentorship',
-  },
 ]
 
 const Header = () => {
