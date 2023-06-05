@@ -6,8 +6,8 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 const NavLink: React.FC<{ href: string }> = (props) => (
-  <Link href={props.href}>
-    <a className='nav-link'>{props.children}</a>
+  <Link href={props.href} className='nav-link'>
+    {props.children}
   </Link>
 )
 
