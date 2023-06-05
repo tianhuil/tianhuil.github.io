@@ -11,7 +11,7 @@ const NavLink: React.FC<{ href: string }> = (props) => (
   </Link>
 )
 
-const domainURL = 'https://tianhui.li'
+const domainURL = 'https://tianhuil.github.io/'
 const imageURL = domainURL + '/images/tianhuil.jpg'
 
 const themeBlue = 'rgb(25, 160, 210)'
