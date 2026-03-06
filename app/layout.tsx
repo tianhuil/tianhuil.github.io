@@ -1,6 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import './globals.css'
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+} from '@/components/ui/menubar'
 
 export const metadata: Metadata = {
   title: 'Michael Li',
@@ -114,16 +119,9 @@ export default function RootLayout({
   )
 }
 
-const links = [
-  { href: '/', text: 'Home' },
-  { href: '/professional', text: 'Professional' },
-  { href: '/writing', text: 'Writing' },
-  { href: '/standup', text: 'Standup' },
-]
-
 function Navbar() {
   return (
-    <nav className="border-b border-border py-1.5">
+    <header className="border-b border-border py-1.5">
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link 
           href="/" 
@@ -131,19 +129,29 @@ function Navbar() {
         >
           Michael Li
         </Link>
-        <ul className="flex space-x-6">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link 
-                href={link.href} 
-                className="text-lg font-extralight text-muted-foreground hover:text-primary transition-colors"
-              >
-                {link.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Menubar className="border-0 shadow-none">
+          <MenubarMenu>
+            <MenubarTrigger asChild>
+              <Link href="/" className="text-lg font-extralight cursor-pointer">Home</Link>
+            </MenubarTrigger>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger asChild>
+              <Link href="/professional" className="text-lg font-extralight cursor-pointer">Professional</Link>
+            </MenubarTrigger>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger asChild>
+              <Link href="/writing" className="text-lg font-extralight cursor-pointer">Writing</Link>
+            </MenubarTrigger>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger asChild>
+              <Link href="/standup" className="text-lg font-extralight cursor-pointer">Standup</Link>
+            </MenubarTrigger>
+          </MenubarMenu>
+        </Menubar>
       </div>
-    </nav>
+    </header>
   )
 }
