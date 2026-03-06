@@ -18,7 +18,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="md:col-span-7 md:col-start-6 mb-4 space-y-4">
-        <p className="text-lg font-semibold text-gray-700">
+        <p className="text-lg font-semibold text-foreground">
           Hi! I&apos;m Tianhui Li, but I go by &quot;Michael&quot;. I&apos;m a data scientist
           and an entrepreneur.
         </p>
