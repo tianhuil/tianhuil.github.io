@@ -129,25 +129,25 @@ function Navbar() {
         >
           Michael Li
         </Link>
-        <Menubar className="border-0 shadow-none">
+        <Menubar className="border-0 shadow-none bg-transparent">
           <MenubarMenu>
             <MenubarTrigger asChild>
-              <Link href="/" className="text-lg font-extralight cursor-pointer">Home</Link>
+              <Link href="/" className="text-lg font-extralight cursor-pointer text-foreground">Home</Link>
             </MenubarTrigger>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger asChild>
-              <Link href="/professional" className="text-lg font-extralight cursor-pointer">Professional</Link>
+              <Link href="/professional" className="text-lg font-extralight cursor-pointer text-foreground">Professional</Link>
             </MenubarTrigger>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger asChild>
-              <Link href="/writing" className="text-lg font-extralight cursor-pointer">Writing</Link>
+              <Link href="/writing" className="text-lg font-extralight cursor-pointer text-foreground">Writing</Link>
             </MenubarTrigger>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger asChild>
-              <Link href="/standup" className="text-lg font-extralight cursor-pointer">Standup</Link>
+              <Link href="/standup" className="text-lg font-extralight cursor-pointer text-foreground">Standup</Link>
             </MenubarTrigger>
           </MenubarMenu>
         </Menubar>
