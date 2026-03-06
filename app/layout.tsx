@@ -145,11 +145,6 @@ function Navbar() {
               <Link href="/writing" className="text-lg font-extralight cursor-pointer text-foreground">Writing</Link>
             </MenubarTrigger>
           </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger asChild>
-              <Link href="/standup" className="text-lg font-extralight cursor-pointer text-foreground">Standup</Link>
-            </MenubarTrigger>
-          </MenubarMenu>
         </Menubar>
       </div>
     </header>
