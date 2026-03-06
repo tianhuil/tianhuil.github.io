@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import './globals.css'
 import {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-} from '@/components/ui/menubar'
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
 
 export const metadata: Metadata = {
   title: 'Michael Li',
@@ -129,23 +131,34 @@ function Navbar() {
         >
           Michael Li
         </Link>
-        <Menubar className="border-0 shadow-none bg-transparent">
-          <MenubarMenu>
-            <MenubarTrigger asChild>
-              <Link href="/" className="text-lg font-extralight cursor-pointer text-foreground">Home</Link>
-            </MenubarTrigger>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger asChild>
-              <Link href="/professional" className="text-lg font-extralight cursor-pointer text-foreground">Professional</Link>
-            </MenubarTrigger>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger asChild>
-              <Link href="/writing" className="text-lg font-extralight cursor-pointer text-foreground">Writing</Link>
-            </MenubarTrigger>
-          </MenubarMenu>
-        </Menubar>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink 
+                href="/" 
+                className={navigationMenuTriggerStyle()}
+              >
+                Home
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink 
+                href="/professional" 
+                className={navigationMenuTriggerStyle()}
+              >
+                Professional
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink 
+                href="/writing" 
+                className={navigationMenuTriggerStyle()}
+              >
+                Writing
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
       </div>
     </header>
   )
