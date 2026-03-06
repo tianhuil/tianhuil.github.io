@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -28,12 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossOrigin="anonymous"
-        />
         <link
           rel="apple-touch-icon"
           sizes="57x57"
@@ -111,53 +106,43 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </head>
-      <body>
+      <body className="min-h-screen">
         <Navbar />
-        <section>
-          <div className="container">{children}</div>
-        </section>
+        <main className="container mx-auto px-4">{children}</main>
       </body>
     </html>
   )
 }
 
+const links = [
+  { href: '/', text: 'Home' },
+  { href: '/professional', text: 'Professional' },
+  { href: '/writing', text: 'Writing' },
+  { href: '/standup', text: 'Standup' },
+]
+
 function Navbar() {
-  const links = [
-    { href: '/', text: 'Home' },
-    { href: '/professional', text: 'Professional' },
-    { href: '/writing', text: 'Writing' },
-    { href: '/standup', text: 'Standup' },
-  ]
-
   return (
-    <nav className="navbar navbar-expand-sm mb-5">
-      <div className="container">
-        <div className="navbar-brand">
-          <a href="/">Michael Li</a>
-        </div>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <nav className="border-b border-gray-200 py-1.5">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        <Link 
+          href="/" 
+          className="text-4xl font-extralight text-primary hover:no-underline"
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
-            {links.map((link) => (
-              <li key={link.href} className="nav-item">
-                <a href={link.href} className="nav-link">
-                  {link.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+          Michael Li
+        </Link>
+        <ul className="flex space-x-6">
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link 
+                href={link.href} 
+                className="text-lg font-extralight text-gray-500 hover:text-primary transition-colors"
+              >
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   )
