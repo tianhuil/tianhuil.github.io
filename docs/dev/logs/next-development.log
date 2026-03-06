@@ -1,2 +1,0 @@
-[00:00:00.600] Server  LOG     ✓ Ready in 387ms
-[09:03:19.589] Server  ERROR   ⨯ Error: ENOENT: no such file or directory, open '/Volumes/Workspace/tianhuil/docs/dev/server/app/page/build-manifest.json'
