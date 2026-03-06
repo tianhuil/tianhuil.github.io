@@ -1,12 +1,5 @@
-[00:00:00.840] Server  LOG     
-[00:00:00.840] Server  LOG       We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
-[00:00:00.840] Server  LOG       The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
-
-[00:00:00.840] Server  LOG       	- include was updated to add 'docs/types/**/*.ts'
-[00:00:00.840] Server  LOG       	- include was updated to add 'docs/dev/types/**/*.ts'
-[00:00:00.840] Server  LOG     
-[00:00:00.936] Server  LOG     ✓ Ready in 646ms
-[00:00:04.856] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:07.112] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:07.857] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:08.785] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:00.602] Server  LOG     ✓ Ready in 380ms
+[00:00:01.859] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:02.003] Browser WARN    Image with src "/images/tianhuil.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:02.562] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

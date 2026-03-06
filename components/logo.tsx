@@ -5,23 +5,11 @@ interface LogoProp {
 
 export function Logo({ url, src }: LogoProp) {
   return (
-    <a href={url}>
-      <div
-        style={{
-          textAlign: 'center',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%',
-        }}
-      >
+    <a href={url} className="block h-full">
+      <div className="h-full flex items-center justify-center">
         <img
           src={src}
-          style={{
-            maxHeight: '100%',
-            maxWidth: '80%',
-            verticalAlign: 'middle',
-          }}
+          className="max-h-20 max-w-[80%] align-middle"
           alt=""
         />
       </div>
