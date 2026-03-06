@@ -19,7 +19,7 @@ function Publication({
         <Logo src={src} url={url} />
       </div>
       <div className="md:col-span-3">
-        <h2 className="text-xl font-light text-gray-500 mt-3 mb-3">{name}</h2>
+        <h2 className="text-xl font-light text-muted-foreground mt-3 mb-3">{name}</h2>
         <ul className="space-y-1">
           {children}
         </ul>

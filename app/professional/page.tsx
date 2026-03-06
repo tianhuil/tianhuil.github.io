@@ -1,6 +1,7 @@
 'use client'
 
 import { Logo } from '@/components/logo'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 
 function Section({
   id,
@@ -14,13 +15,15 @@ function Section({
   children: React.ReactNode
 }) {
   return (
-    <section id={id} className="mb-12">
-      <div className="mb-6">
-        <h1 className="text-3xl font-extralight text-primary">{title}</h1>
-        <h2 className="text-xl font-light text-gray-500 mt-1">{subtitle}</h2>
-      </div>
-      {children}
-    </section>
+    <Card id={id} className="mb-12">
+      <CardHeader>
+        <CardTitle className="text-3xl font-extralight text-primary">{title}</CardTitle>
+        <CardDescription className="text-xl font-light mt-1">{subtitle}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        {children}
+      </CardContent>
+    </Card>
   )
 }
 

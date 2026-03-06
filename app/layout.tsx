@@ -123,7 +123,7 @@ const links = [
 
 function Navbar() {
   return (
-    <nav className="border-b border-gray-200 py-1.5">
+    <nav className="border-b border-border py-1.5">
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link 
           href="/" 
@@ -136,7 +136,7 @@ function Navbar() {
             <li key={link.href}>
               <Link 
                 href={link.href} 
-                className="text-lg font-extralight text-gray-500 hover:text-primary transition-colors"
+                className="text-lg font-extralight text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.text}
               </Link>

@@ -28,7 +28,7 @@ export default function StandupPage() {
           on the <a href="#calendly" className="text-primary hover:underline">calendly link below</a>)
         </p>
         
-        <h2 className="text-xl font-light text-gray-500 mt-4">Why talk to me?</h2>
+        <h2 className="text-xl font-light text-muted-foreground mt-4">Why talk to me?</h2>
         <p>
           I{' '}
           <a href="https://venturebeat.com/2014/04/15/ny-gets-new-bootcamp-for-data-scientists-its-free-but-harder-to-get-into-than-harvard/" className="text-primary hover:underline">
