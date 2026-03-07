@@ -35,20 +35,20 @@ export function Navbar() {
 
   return (
     <header
-      className={`shadow-md mb-8 fixed top-0 left-0 right-0 z-50 transition-transform duration-300 bg-white ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-xl ${
+        isVisible ? 'translate-y-0 bg-background/80' : '-translate-y-full bg-background/95'
+      } border-b border-border`}
     >
       <div className='container px-4 py-4 mx-auto flex items-center justify-between'>
-        <Link href='/' className='text-4xl font-extralight text-primary hover'>
+        <Link href='/' className='text-2xl font-bold gradient-text hover:opacity-80 transition-opacity'>
           Michael Li
         </Link>
         <NavigationMenu>
-          <NavigationMenuList>
+          <NavigationMenuList className="gap-2">
             <NavigationMenuItem>
               <NavigationMenuLink
                 href='/'
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-secondary/50`}
               >
                 Home
               </NavigationMenuLink>
@@ -56,7 +56,7 @@ export function Navbar() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 href='/professional'
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-secondary/50`}
               >
                 Professional
               </NavigationMenuLink>
@@ -64,7 +64,7 @@ export function Navbar() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 href='/writing'
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-secondary/50`}
               >
                 Writing
               </NavigationMenuLink>
