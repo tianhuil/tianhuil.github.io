@@ -26,7 +26,7 @@ function Publication({
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
         <div className="md:col-span-2">
           <a href={url} target="_blank" rel="noopener noreferrer" className="block">
-            <div className="flex items-center justify-center h-20 p-4 rounded-xl bg-secondary/30 border border-border/50 group-hover:border-primary/30 transition-all duration-300">
+            <div className="flex items-center justify-center h-20 p-4 rounded-xl bg-secondary/30 border border-border/50 group-hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300">
               <img
                 src={src}
                 className="max-h-16 max-w-[80%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
@@ -103,7 +103,7 @@ export default function WritingPage() {
       ],
     },
     {
-      src: "/images/hbr.jpg",
+      src: "/images/hbr.png",
       url: "https://hbr.org/search?term=michael+li",
       name: "Harvard Business Review",
       articles: [
@@ -165,7 +165,7 @@ export default function WritingPage() {
       ],
     },
     {
-      src: "/images/oreilly.jpg",
+      src: "/images/oreilly.png",
       url: "https://www.oreilly.com/people/76a5b-michael-li",
       name: "O'Reilly Radar",
       articles: [
