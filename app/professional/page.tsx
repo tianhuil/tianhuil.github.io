@@ -1,25 +1,30 @@
 'use client'
 
-import { Logo } from '@/components/logo'
-
 function Section({
   id,
   title,
   subtitle,
   children,
+  delay = 0,
 }: {
   id: string
   title: string
   subtitle: string
   children: React.ReactNode
+  delay?: number
 }) {
   return (
     <section id={id} className="mb-12">
-      <div className="mb-6">
-        <h1 className="text-3xl font-extralight text-primary">{title}</h1>
-        <h2 className="text-xl font-light text-gray-500 mt-1">{subtitle}</h2>
+      <div className="glass-card p-6 md:p-8 animate-fade-in-up" style={{ animationDelay: `${delay}ms` }}>
+        <div className="mb-6">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="w-1 h-8 rounded-full bg-gradient-to-b from-primary to-accent" />
+            <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
+          </div>
+          <h2 className="text-lg text-muted-foreground ml-4">{subtitle}</h2>
+        </div>
+        {children}
       </div>
-      {children}
     </section>
   )
 }
@@ -34,19 +39,38 @@ function Company({
   className?: string
 }) {
   return (
-    <div className={`mt-3 ${className}`}>
-      <Logo src={src} url={url} />
+    <div className={`${className} group`}>
+      <a href={url} className="block h-full">
+        <div className="h-full flex items-center justify-center p-4 rounded-xl bg-secondary/30 border border-border/50 hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300">
+          <img
+            src={src}
+            className="max-h-16 max-w-[80%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
+            alt=""
+          />
+        </div>
+      </a>
     </div>
   )
 }
 
 export default function ProfessionalPage() {
   return (
-    <>
+    <div className="max-w-6xl mx-auto">
+      {/* Page Header */}
+      <div className="glass-card p-8 mb-8 animate-fade-in-up">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Professional <span className="gradient-text">Journey</span>
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl">
+          A timeline of companies, education, awards, and contributions that have shaped my career.
+        </p>
+      </div>
+
       <Section
         id="companies"
         title="Companies"
-        subtitle="Selected companies that for which I have worked"
+        subtitle="Leading organizations I've had the privilege to work with"
+        delay={100}
       >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <Company src="/images/google.png" url="https://www.google.com" />
@@ -58,7 +82,7 @@ export default function ProfessionalPage() {
         </div>
       </Section>
 
-      <Section id="founded" title="Founded" subtitle="Company I founded">
+      <Section id="founded" title="Founded" subtitle="Building the future of data science education" delay={200}>
         <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
           <Company
             src="/images/tdi.jpg"
@@ -71,7 +95,8 @@ export default function ProfessionalPage() {
       <Section
         id="universities"
         title="Universities"
-        subtitle="Academic Institutions from where I have degrees or held postdocs"
+        subtitle="Academic institutions that shaped my thinking"
+        delay={300}
       >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <Company src="/images/princeton.svg" url="https://www.princeton.edu" />
@@ -83,7 +108,8 @@ export default function ProfessionalPage() {
       <Section
         id="awards"
         title="Awards"
-        subtitle="Selected awards I have been fortunate enough to receive"
+        subtitle="Recognition for contributions and achievements"
+        delay={400}
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Company
@@ -108,7 +134,8 @@ export default function ProfessionalPage() {
       <Section
         id="boards"
         title="Boards"
-        subtitle="Selected boards on which I serve (or have served)"
+        subtitle="Giving back through board service and mentorship"
+        delay={500}
       >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <Company
@@ -141,7 +168,8 @@ export default function ProfessionalPage() {
       <Section
         id="space-agencies"
         title="Space Agencies"
-        subtitle="Space Agencies for which I have worked"
+        subtitle="Contributing to space exploration and research"
+        delay={600}
       >
         <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
           <Company
@@ -151,6 +179,6 @@ export default function ProfessionalPage() {
           />
         </div>
       </Section>
-    </>
+    </div>
   )
 }
