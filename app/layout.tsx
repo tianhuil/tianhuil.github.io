@@ -1,13 +1,6 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
 import './globals.css'
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
+import type { Metadata } from 'next'
+import { Navbar } from './navbar'
 
 export const metadata: Metadata = {
   title: 'Michael Li',
@@ -118,51 +111,8 @@ export default function RootLayout({
       </head>
       <body className='min-h-screen'>
         <Navbar />
-        <main className='container mx-auto px-4'>{children}</main>
+        <main className='container mx-auto px-4 pt-32'>{children}</main>
       </body>
     </html>
-  )
-}
-
-function Navbar() {
-  return (
-    <header className='shadow-md mb-8'>
-      <div className='container px-4 py-4 mx-auto flex items-center justify-between'>
-        <Link
-          href='/'
-          className='text-4xl font-extralight text-primary hover:no-underline'
-        >
-          Michael Li
-        </Link>
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                href='/'
-                className={navigationMenuTriggerStyle()}
-              >
-                Home
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                href='/professional'
-                className={navigationMenuTriggerStyle()}
-              >
-                Professional
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                href='/writing'
-                className={navigationMenuTriggerStyle()}
-              >
-                Writing
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-    </header>
   )
 }
