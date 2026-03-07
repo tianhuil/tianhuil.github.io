@@ -110,6 +110,7 @@ export default function RootLayout({
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       </head>
       <body className='min-h-screen'>
+        <div className="hero-bg" />
         <Navbar />
         <main className='container mx-auto px-4 pt-32'>{children}</main>
       </body>
