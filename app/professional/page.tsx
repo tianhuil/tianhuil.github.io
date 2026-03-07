@@ -113,7 +113,7 @@ export default function ProfessionalPage() {
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Company
-            src="/images/marshall.gif"
+            src="/images/marshall.png"
             url="http://www.marshallscholarship.org/"
           />
           <Company
