@@ -77,7 +77,7 @@ export default function ProfessionalPage() {
           <Company src="/images/foursquare.png" url="https://foursquare.com" />
           <Company src="/images/a16z.png" url="https://a16z.com" />
           <Company src="/images/bloomberg.png" url="https://www.bloomberg.com" />
-          <Company src="/images/deshaw.jpg" url="https://deshaw.com" />
+          <Company src="/images/deshaw.png" url="https://deshaw.com" />
           <Company src="/images/jpmorgan.png" url="https://www.jpmorgan.com" />
         </div>
       </Section>
@@ -85,7 +85,7 @@ export default function ProfessionalPage() {
       <Section id="founded" title="Founded" subtitle="Building the future of data science education" delay={200}>
         <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
           <Company
-            src="/images/tdi.jpg"
+            src="/images/tdi.png"
             url="https://www.thedataincubator.com"
             className="md:col-start-2 md:col-span-4"
           />
@@ -100,7 +100,7 @@ export default function ProfessionalPage() {
       >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <Company src="/images/princeton.svg" url="https://www.princeton.edu" />
-          <Company src="/images/cambridge.jpg" url="https://www.cam.ac.uk" />
+          <Company src="/images/cambridge.png" url="https://www.cam.ac.uk" />
           <Company src="/images/cornell.png" url="https://www.cornell.edu" />
         </div>
       </Section>
@@ -121,7 +121,7 @@ export default function ProfessionalPage() {
             url="https://student.societyforscience.org/regeneron-sts"
           />
           <Company
-            src="/images/hertz.jpg"
+            src="/images/hertz.png"
             url="http://hertzfoundation.org/default.aspx"
           />
           <Company
@@ -139,11 +139,11 @@ export default function ProfessionalPage() {
       >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <Company
-            src="/images/marshall.jpg"
+            src="/images/marshall.png"
             url="https://www.marshallscholars.org/"
           />
           <Company
-            src="/images/any.jpg"
+            src="/images/any.png"
             url="https://www.americaneedsyou.org/"
           />
           <Company
