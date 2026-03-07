@@ -45,7 +45,7 @@ function Company({
           <img
             src={src}
             className="max-h-16 max-w-[80%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
-            alt=""
+            alt={url.split('//')[1].split('/')[0]}
           />
         </div>
       </a>
