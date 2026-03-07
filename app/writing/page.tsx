@@ -24,14 +24,14 @@ function Publication({
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className='grid grid-cols-1 md:grid-cols-5 gap-6 items-start'>
-        <div className='md:col-span-2'>
+        <div className='md:col-span-2 h-full'>
           <a
             href={url}
             target='_blank'
             rel='noopener noreferrer'
-            className='block'
+            className='block  h-full'
           >
-            <div className='flex items-center justify-center h-20 p-4 rounded-xl bg-secondary/30 border border-border/50 group-hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300'>
+            <div className='flex items-center justify-center min-h-20 h-full p-4'>
               <img
                 src={src}
                 className='max-h-16 max-w-[80%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105'
