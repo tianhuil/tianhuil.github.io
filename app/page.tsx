@@ -29,7 +29,7 @@ const languages = [
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mb-8">
         
         <div className="glass-card p-8 md:p-12 mb-8 animate-fade-in-up">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
