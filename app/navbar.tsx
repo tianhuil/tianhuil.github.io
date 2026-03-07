@@ -54,7 +54,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href='/'
-                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-secondary/50`}
+                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-accent/70`}
                 >
                   Home
                 </NavigationMenuLink>
@@ -62,7 +62,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href='/professional'
-                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-secondary/50`}
+                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-accent/70`}
                 >
                   Professional
                 </NavigationMenuLink>
@@ -70,7 +70,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href='/writing'
-                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-secondary/50`}
+                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-accent/50`}
                 >
                   Writing
                 </NavigationMenuLink>
