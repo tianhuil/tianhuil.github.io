@@ -179,7 +179,7 @@ export default function WritingPage() {
   ]
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto mb-8">
       {/* Page Header */}
       <div className="glass-card p-8 mb-8 animate-fade-in-up">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
