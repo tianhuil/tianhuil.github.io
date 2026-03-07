@@ -34,7 +34,7 @@ function Publication({
             <div className='flex items-center justify-center h-20 p-4 rounded-xl bg-secondary/30 border border-border/50 group-hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300'>
               <img
                 src={src}
-                className='max-h-16 max-w-[80%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300'
+                className='max-h-16 max-w-[80%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105'
                 alt={name}
               />
             </div>
