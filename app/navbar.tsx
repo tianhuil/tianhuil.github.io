@@ -40,10 +40,7 @@ export function Navbar() {
       }`}
     >
       <div className='container px-4 py-4 mx-auto flex items-center justify-between'>
-        <Link
-          href='/'
-          className='text-4xl font-extralight text-primary hover:no-underline'
-        >
+        <Link href='/' className='text-4xl font-extralight text-primary hover'>
           Michael Li
         </Link>
         <NavigationMenu>
