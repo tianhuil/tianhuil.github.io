@@ -99,7 +99,7 @@ export default function ProfessionalPage() {
         delay={300}
       >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <Company src="/images/princeton.svg" url="https://www.princeton.edu" />
+          <Company src="/images/princeton.png" url="https://www.princeton.edu" />
           <Company src="/images/cambridge.png" url="https://www.cam.ac.uk" />
           <Company src="/images/cornell.png" url="https://www.cornell.edu" />
         </div>
