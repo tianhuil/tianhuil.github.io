@@ -7,7 +7,7 @@ const education = [
   {
     name: 'Cornell Tech',
     url: 'https://tech.cornell.edu/',
-    detail: 'Postdoc -- Runway Program',
+    detail: 'Postdoc - Runway Fellowship',
   },
   {
     name: 'Princeton',
