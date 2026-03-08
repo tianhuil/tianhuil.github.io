@@ -7,20 +7,22 @@ import rehypePrettyCode from 'rehype-pretty-code'
 const options = {
   mdxOptions: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      [rehypePrettyCode, { theme: 'github-dark' }],
-    ] as never[],
+    rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]] as never[],
   },
 }
 
 export async function generateStaticParams() {
   const posts = getAllPosts()
-  return posts.map(post => ({ slug: post.slug }))
+  return posts.map((post) => ({ slug: post.slug }))
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
-  
+
   try {
     const post = getPostBySlug(slug)
 
@@ -34,10 +36,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p className='text-muted-foreground'>{post.frontmatter.date}</p>
           </header>
           <div className='prose prose-sky max-w-none dark:prose-invert'>
-            <MDXRemote 
-              source={post.content} 
-              options={options}
-            />
+            <MDXRemote source={post.content} options={options} />
           </div>
         </article>
       </div>
