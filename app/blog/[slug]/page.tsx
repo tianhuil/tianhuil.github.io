@@ -1,6 +1,17 @@
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllPosts, getPostBySlug } from '@/lib/mdx'
+import remarkGfm from 'remark-gfm'
+import rehypePrettyCode from 'rehype-pretty-code'
+
+const options = {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      [rehypePrettyCode, { theme: 'github-dark' }],
+    ] as never[],
+  },
+}
 
 export async function generateStaticParams() {
   const posts = getAllPosts()
@@ -23,7 +34,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p className='text-muted-foreground'>{post.frontmatter.date}</p>
           </header>
           <div className='prose prose-sky max-w-none dark:prose-invert'>
-            <MDXRemote source={post.content} />
+            <MDXRemote 
+              source={post.content} 
+              options={options}
+            />
           </div>
         </article>
       </div>
