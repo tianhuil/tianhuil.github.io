@@ -44,7 +44,7 @@ function Company({
   return (
     <div className={`${className} group`}>
       <a href={url} className='block h-full'>
-        <div className='h-full flex items-center justify-center p-4 rounded-xl bg-primary/5 border border-border/50 hover:border-primary/30 hover:bg-primary/20 transition-all duration-300'>
+        <div className='h-full flex items-center justify-center p-4 rounded-xl bg-primary/5 border border-border/50 hover:border-primary/20 transition-all duration-300'>
           <img
             src={src}
             className='max-h-16 max-w-[80%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105'
