@@ -246,6 +246,17 @@
   margin-bottom: 0.75rem;
 }
 
+/* Section accent bar - animates from gray to primary when section is hovered */
+.section-accent {
+  background: var(--muted-foreground);
+  transition: background 0.3s ease;
+}
+
+/* When parent section is hovered, the accent bar lights up */
+section:hover .section-accent {
+  background: var(--primary);
+}
+
 /* Link hover - simple underline */
 .link-glow {
   position: relative;
