@@ -62,10 +62,9 @@ export default function HomePage() {
             <div className='md:col-span-8 space-y-6'>
               <div className='space-y-2'>
                 <div className='flex items-center gap-3 animate-fade-in-up animation-delay-100'>
-                  <span className='tag'>Startup Founder</span>
-                  <span className='tag tag-accent'>AI Engineer</span>
+                  <span className='tag'>AI Startup Founder</span>
+                  <span className='tag tag-accent'>1 Startup Exit</span>
                   <span className='tag'>PhD Princeton</span>
-                  <span className='tag'>Data Scientist</span>
                 </div>
 
                 <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold animate-fade-in-up animation-delay-200'>
@@ -109,17 +108,8 @@ export default function HomePage() {
               Current Role
             </div>
             <p className='text-lg'>
-              Founder of{' '}
-              <a
-                href='https://www.thedataincubator.com'
-                className='link-glow font-semibold text-primary'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                The Data Incubator
-              </a>
-              , a data science training and placement company helping the next
-              generation of data scientists launch their careers.
+              I'm currently working on new technology to make AI more accessible
+              and powerful. Reach out to learn more.
             </p>
           </div>
 
@@ -129,11 +119,21 @@ export default function HomePage() {
               Previous Experience
             </div>
             <div className='flex flex-wrap gap-2'>
+              Foudned, grew, and sold{' '}
+              <a
+                href='https://www.thedataincubator.com'
+                className='link-glow font-semibold text-primary'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                The Data Incubator
+              </a>
+              to Pragmatic. Previously, worked at
               {companies.slice(1).map((company) => (
                 <a
                   key={company.name}
                   href={company.url}
-                  className='link-glow text-muted-foreground hover:text-foreground transition-colors'
+                  className='link-glow hover:text-foreground transition-colors'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
