@@ -16,7 +16,7 @@ function Section({
   return (
     <section id={id} className='mb-12'>
       <div
-        className='glass-card p-6 md:p-8 animate-fade-in-up'
+        className='section-card p-6 md:p-8 animate-fade-in-up'
         style={{ animationDelay: `${delay}ms` }}
       >
         <div className='mb-6'>
@@ -60,7 +60,7 @@ export default function ProfessionalPage() {
   return (
     <div className='max-w-6xl mx-auto mb-8'>
       {/* Page Header */}
-      <div className='glass-card p-8 mb-8 animate-fade-in-up'>
+      <div className='section-card p-8 mb-8 animate-fade-in-up'>
         <h1 className='text-4xl md:text-5xl font-bold mb-4'>
           Professional <span className='gradient-text'>Journey</span>
         </h1>
