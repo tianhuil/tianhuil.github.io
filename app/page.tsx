@@ -22,10 +22,10 @@ const education = [
 ]
 
 const languages = [
-  { name: 'English', flag: '🇺🇸', detail: 'Native' },
-  { name: 'Mandarin', flag: '🇨🇳', detail: '普通话' },
-  { name: 'Cantonese', flag: '🇭🇰', detail: '广州话' },
-  { name: 'French', flag: '🇫🇷', detail: 'Je parle aussi le français' },
+  { name: 'English', flag: '🇺🇸' },
+  { name: '普通话', flag: '🇨🇳' },
+  { name: '广州话', flag: '🇭🇰' },
+  { name: 'français', flag: '🇫🇷' },
 ]
 
 export default function HomePage() {
