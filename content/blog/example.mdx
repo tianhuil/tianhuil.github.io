@@ -1,0 +1,199 @@
+---
+title: 'HTML Elements Test'
+date: '2024-01-15'
+excerpt: 'A comprehensive test of all HTML elements rendered through the blog system.'
+---
+
+# Heading 1
+
+This is a paragraph with **bold text**, *italic text*, and ~~strikethrough text~~. You can also combine them: ***bold and italic***.
+
+## Heading 2
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+### Heading 3
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+#### Heading 4
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+##### Heading 5
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+###### Heading 6
+
+Smallest heading for edge cases.
+
+---
+
+## Text Formatting
+
+Here is **bold text** using double asterisks.
+
+Here is *italic text* using single asterisks.
+
+Here is ~~strikethrough~~ using double tildes.
+
+Here is `inline code` using backticks.
+
+Here is a [link to Google](https://google.com).
+
+---
+
+## Lists
+
+### Unordered List
+
+- First item
+- Second item
+- Third item
+  - Nested item
+  - Another nested item
+- Fourth item
+
+### Ordered List
+
+1. First step
+2. Second step
+3. Third step
+   1. Nested step
+   2. Another nested step
+4. Fourth step
+
+### Task List
+
+- [x] Completed task
+- [ ] Incomplete task
+- [ ] Another incomplete task
+
+---
+
+## Code Blocks
+
+### Inline Code
+
+Use the `console.log()` function to debug.
+
+### Code Block (JavaScript)
+
+```javascript
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+  return `Welcome to the blog`;
+}
+
+greet('World');
+```
+
+### Code Block (Python)
+
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+    return f"Welcome to the blog"
+
+greet("World")
+```
+
+### Code Block (TypeScript)
+
+```typescript
+interface User {
+  name: string;
+  age: number;
+}
+
+function greet(user: User): string {
+  return `Hello, ${user.name}! You are ${user.age} years old.`;
+}
+```
+
+### Code Block (Bash)
+
+```bash
+echo "Hello, World!"
+pnpm install
+npm run build
+```
+
+### Code Block (JSON)
+
+```json
+{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+```
+
+---
+
+## Blockquotes
+
+> This is a blockquote. It can be used to highlight quotes from other sources or emphasize important points.
+>
+> This is the second paragraph of the blockquote.
+
+> Single line blockquote.
+
+---
+
+## Tables
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+| Cell 7   | Cell 8   | Cell 9   |
+
+### Table with Alignment
+
+| Left | Center | Right |
+|:-----|:------:|------:|
+| L    |   C    |     R |
+| LL   |   CC   |    RR |
+
+---
+
+## Horizontal Rule
+
+Above is a horizontal rule.
+
+---
+
+## Images
+
+![Alt text for image](https://via.placeholder.com/800x400)
+
+---
+
+## Emphasis Variants
+
+Here is <strong>strong text</strong> using HTML.
+
+Here is <em>emphasized text</em> using HTML.
+
+Here is <code>inline code</code> using HTML.
+
+---
+
+## Edge Cases
+
+### Very long word
+Supercalifragilisticexpialidocious - this is a very long word that might need special handling.
+
+### URLs and Email
+Visit https://example.com or contact us at hello@example.com
+
+### Footnotes
+Here is a sentence with a footnote[^1].
+
+[^1]: This is the footnote content.
+
+---
+
+That's all the basic HTML elements! The Tailwind Typography plugin handles most of these with beautiful defaults.
