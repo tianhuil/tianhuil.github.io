@@ -21,7 +21,7 @@ function Section({
       >
         <div className='mb-6'>
           <div className='flex items-center gap-3 mb-2'>
-            <span className='w-1 h-8 rounded-full bg-secondary' />
+            <span className='section-accent w-1 h-8 rounded-full' />
             <h1 className='text-3xl md:text-4xl font-bold'>{title}</h1>
           </div>
           <h2 className='text-lg text-muted-foreground ml-4'>{subtitle}</h2>
