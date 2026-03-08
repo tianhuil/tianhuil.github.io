@@ -141,7 +141,9 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .section-card:hover {
@@ -233,23 +235,11 @@
   transition: all 0.2s ease;
 }
 
-.tag:hover {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  border-color: var(--primary);
-}
-
 .tag-accent {
   background: var(--secondary);
   color: var(--secondary-foreground);
   border-color: var(--secondary);
 }
-
-.tag-accent:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-
 /* Section headers */
 .section-title {
   font-size: 0.75rem;
