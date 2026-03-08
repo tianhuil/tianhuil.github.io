@@ -75,6 +75,14 @@ export function Navbar() {
                   Writing
                 </NavigationMenuLink>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href='/blog'
+                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-accent/50`}
+                >
+                  Blog
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
