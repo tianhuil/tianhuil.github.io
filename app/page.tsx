@@ -26,6 +26,8 @@ const languages = [
   { name: '普通话', flag: '🇨🇳' },
   { name: '广州话', flag: '🇭🇰' },
   { name: 'français', flag: '🇫🇷' },
+  { name: 'Python', flag: '🐍' },
+  { name: 'TypeScript', flag: '🏗️' },
 ]
 
 export default function HomePage() {
@@ -172,7 +174,7 @@ export default function HomePage() {
               {languages.map((lang) => (
                 <div
                   key={lang.name}
-                  className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary/50 text-sm'
+                  className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary/20 text-sm'
                 >
                   <span>{lang.flag}</span>
                   <span className='text-foreground'>{lang.name}</span>
