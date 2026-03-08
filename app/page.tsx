@@ -65,7 +65,7 @@ export default function HomePage() {
                   <span className='tag'>Startup Founder</span>
                   <span className='tag tag-accent'>AI Engineer</span>
                   <span className='tag'>PhD Princeton</span>
-                  <span className='tag tag-accent'>Data Scientist</span>
+                  <span className='tag'>Data Scientist</span>
                 </div>
 
                 <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold animate-fade-in-up animation-delay-200'>
