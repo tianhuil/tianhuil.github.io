@@ -63,8 +63,9 @@ export default function HomePage() {
               <div className='space-y-2'>
                 <div className='flex items-center gap-3 animate-fade-in-up animation-delay-100'>
                   <span className='tag'>Startup Founder</span>
-                  <span className='tag tag-accent'>Data Scientist</span>
+                  <span className='tag tag-accent'>AI Engineer</span>
                   <span className='tag'>PhD Princeton</span>
+                  <span className='tag tag-accent'>Data Scientist</span>
                 </div>
 
                 <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold animate-fade-in-up animation-delay-200'>
@@ -72,8 +73,8 @@ export default function HomePage() {
                 </h1>
 
                 <p className='text-xl md:text-2xl text-muted-foreground max-w-2xl animate-fade-in-up animation-delay-300'>
-                  Data scientist, entrepreneur, and lifelong learner building
-                  the future of data science education.
+                  AI engineer, startup founder, and lifelong learner building
+                  the future of artificial intelligence.
                 </p>
               </div>
 
