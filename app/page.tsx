@@ -5,6 +5,11 @@ import Image from 'next/image'
 
 const education = [
   {
+    name: 'Cornell Tech',
+    url: 'https://tech.cornell.edu/',
+    detail: 'Postdoc -- Runway Program',
+  },
+  {
     name: 'Princeton',
     url: 'https://www.princeton.edu/',
     detail: 'PhD - Hertz Fellow, NSF Fellow',
