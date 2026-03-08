@@ -128,9 +128,23 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease;
 }
 
 .glass-card:hover {
+  border-color: var(--primary);
+}
+
+/* Section card - border animates when parent section is hovered */
+.section-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover > .section-card {
   border-color: var(--primary);
 }
 
