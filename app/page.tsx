@@ -128,7 +128,7 @@ export default function HomePage() {
               >
                 The Data Incubator
               </a>
-              to Pragmatic. Previously, worked at
+              to Pragmatic Institute. Previously, worked at
               {companies.slice(1).map((company) => (
                 <a
                   key={company.name}
@@ -228,7 +228,7 @@ export default function HomePage() {
               <a href='/writing' className='link-glow text-foreground'>
                 writing
               </a>{' '}
-              about data science and big data.
+              about AI and data science.
             </p>
           </div>
         </div>
