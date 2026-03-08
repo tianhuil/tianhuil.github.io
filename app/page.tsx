@@ -3,21 +3,6 @@
 import { SocialIcon } from 'react-social-icons'
 import Image from 'next/image'
 
-const companies = [
-  {
-    name: 'The Data Incubator',
-    url: 'https://www.thedataincubator.com',
-    founder: true,
-  },
-  { name: 'Foursquare', url: 'https://foursquare.com' },
-  { name: 'Google', url: 'https://www.google.com' },
-  { name: 'Andreessen Horowitz', url: 'https://a16z.com' },
-  { name: 'J.P. Morgan', url: 'https://www.jpmorgan.com/' },
-  { name: 'D.E. Shaw', url: 'https://www.deshaw.com/' },
-  { name: 'Bloomberg', url: 'https://www.bloomberg.com/' },
-  { name: 'NASA', url: 'https://www.nasa.gov' },
-]
-
 const education = [
   {
     name: 'Princeton',
@@ -118,7 +103,7 @@ export default function HomePage() {
               <span className='w-2 h-2 rounded-full bg-accent' />
               Previous Experience
             </div>
-            <div className='flex flex-wrap gap-2'>
+            <p>
               Foudned, grew, and sold{' '}
               <a
                 href='https://www.thedataincubator.com'
@@ -127,20 +112,10 @@ export default function HomePage() {
                 rel='noopener noreferrer'
               >
                 The Data Incubator
-              </a>
-              to Pragmatic Institute. Previously, worked at
-              {companies.slice(1).map((company) => (
-                <a
-                  key={company.name}
-                  href={company.url}
-                  className='link-glow hover:text-foreground transition-colors'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {company.name}
-                </a>
-              ))}
-            </div>
+              </a>{' '}
+              to Pragmatic Institute. Previously, worked at Foursquare, Google,
+              Andreessen Horowitz, J.P. Morgan, D.E. Shaw, Bloomberg, and NASA.
+            </p>
           </div>
         </div>
 
