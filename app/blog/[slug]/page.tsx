@@ -28,7 +28,7 @@ export default async function BlogPostPage({
 
     return (
       <div className='max-w-4xl mx-auto mb-8'>
-        <article className='glass-card p-8 animate-fade-in-up'>
+        <article>
           <header className='mb-8'>
             <h1 className='text-4xl md:text-5xl font-bold mb-4'>
               {post.frontmatter.title}
