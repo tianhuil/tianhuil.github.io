@@ -20,7 +20,7 @@ export interface BlogPost {
   content: string
 }
 
-export function getAllPosts() {
+export function getAllPosts(includeUnlisted = false) {
   const files = fs.readdirSync(contentDirectory)
   return files
     .filter((file) => file.endsWith('.mdx') || file.endsWith('.md'))
@@ -32,7 +32,7 @@ export function getAllPosts() {
       const frontmatter = blogPostFrontmatterSchema.parse(data)
       return { slug, frontmatter }
     })
-    .filter((post) => !post.frontmatter.unlisted)
+    .filter((post) => includeUnlisted || !post.frontmatter.unlisted)
     .sort((a, b) => (a.frontmatter.date > b.frontmatter.date ? -1 : 1))
 }
 
