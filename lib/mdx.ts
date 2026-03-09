@@ -8,6 +8,7 @@ export interface BlogPostFrontmatter {
   title: string
   date: string
   excerpt?: string
+  unlisted?: boolean
 }
 
 export interface BlogPost {
@@ -28,6 +29,7 @@ export function getAllPosts() {
       const frontmatter = data as BlogPostFrontmatter
       return { slug, frontmatter }
     })
+    .filter(post => !post.frontmatter.unlisted)
     .sort((a, b) => (a.frontmatter.date > b.frontmatter.date ? -1 : 1))
 }
 
