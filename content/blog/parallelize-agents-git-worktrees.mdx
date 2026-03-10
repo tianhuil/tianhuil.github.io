@@ -1,0 +1,64 @@
+---
+title: 'Parallelize Coding Agents with Git Worktrees'
+date: '2026-03-03'
+excerpt: 'How we manage .'
+---
+
+One of the biggest inefficiencies in AI-assisted coding is waiting. Coding agents are getting smarter, but not necessarily getting faster. Waiting for an agent to finish use to be a huge time suck.
+
+I've been using git worktrees to run multiple, parallel LLMs on separate work streams. Here is a simple workflow that gets me 2-3X the productivity.
+
+## Git Worktrees to the Rescue
+
+Git worktrees let you check out multiple branches of the same repo simultaneously, _each in its own directory_. No `git stash` needed: just separate, fully-functional copies of your repo that stay in sync automatically.
+
+When you commit on a `feature` worktree, your main worktree immediately sees it as an updated commit on the `feature` branch — no `git push` or `git pull` needed. It's like a `git` remote that's always in sync.
+
+I use [wtp](https://github.com/satococoa/wtp) to manage this, which adds a small but useful layer on top of raw `git worktree` commands: automated setup (copying `.env.local`, running `bun install`, etc.) and ergonomic `add`, `cd`, and `remove` shortcuts.
+
+I keep all worktrees under `.wtp/*` in the repo root, `.gitignored`, so everything stays contained.
+
+## The Workflow
+
+**1. Open a new terminal and create a worktree:**
+
+```bash
+wtp add -b new-feature
+wtp cd new-feature
+```
+
+**2. Launch an agent and walk away:**
+
+```bash
+opencode
+# In the session: "build feature ..."
+```
+
+Here I'm using [opencode](https://opencode.ai/) but you could also use Claude Code, Codex, Gemini cli or any other cli AI agents. Then you just switch away to the next task in a clean worktree directory.
+
+## Management and Iteration
+
+In practice, I keep several tabs open, one per worktree. I usually use terminal tabs in VSCode. I like how the directory of open terminals labels them after the worktree, so it's easy to orient yourself across several parallel sessions. However, you could use [iTerm](https://iterm2.com/), [tmux](https://github.com/tmux/tmux/wiki) or your favorite tab manager.
+
+VS Code shows diffs per worktree, so reviewing and committing in the GUI are native experiences. You can send follow-up instructions to the open `opencode` session if the output needs adjustment.
+
+**4. Merge back to main:**
+
+Once you are happy with the feature branch (or should I say feature worktree), merging is easy.
+
+I usually save one terminal open that is on the main worktree (which contains the branch `main`). Just use regular `git merge` commands with the `new-feature` branch to merge it in.
+
+I also have a [git agent](https://github.com/tianhuil/dotfiles/blob/main/home/.opencode/agents/git.md) specifically for handling merges when things get complicated.
+
+**5. Clean up:**
+
+```bash
+wtp remove new-feature
+# Close the terminal
+```
+
+## Why This Works
+
+The isolation is the point. Each worktree is a separate branch _and_ a separate directory — agents can't conflict at the filesystem level. Meanwhile, git keeps everything in sync, so merging back is just a normal branch merge, not some complicated reconciliation exercise.
+
+The result: instead of waiting on one agent at a time, I'm supervising two or three in parallel, reviewing completed work while new tasks run. The throughput difference is significant.
