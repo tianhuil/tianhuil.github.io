@@ -5,6 +5,9 @@ import { Navbar } from './navbar'
 export const metadata: Metadata = {
   title: 'Michael Li',
   description: 'Personal Homepage for Tianhui Michael Li',
+  alternates: {
+    canonical: 'https://tianhuil.github.io',
+  },
   openGraph: {
     title: 'Michael Li',
     type: 'profile',
