@@ -1,4 +1,11 @@
-'use client'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Professional Journey',
+  alternates: {
+    canonical: 'https://tianhuil.github.io/professional',
+  },
+}
 
 function Section({
   id,
