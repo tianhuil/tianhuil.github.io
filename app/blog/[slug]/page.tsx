@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllPosts, getPostBySlug } from '@/lib/mdx'
@@ -34,6 +35,22 @@ const components = {
       </code>
     )
   },
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
+
+  return {
+    title: post.frontmatter.title,
+    alternates: {
+      canonical: `https://tianhuil.github.io/blog/${slug}`,
+    },
+  }
 }
 
 export async function generateStaticParams() {

@@ -1,4 +1,11 @@
-'use client'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Published Writing',
+  alternates: {
+    canonical: 'https://tianhuil.github.io/writing',
+  },
+}
 
 interface Article {
   url: string

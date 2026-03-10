@@ -1,5 +1,13 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/mdx'
+
+export const metadata: Metadata = {
+  title: 'Blog Posts',
+  alternates: {
+    canonical: 'https://tianhuil.github.io/blog',
+  },
+}
 
 export default function BlogPage() {
   const posts = getAllPosts()
