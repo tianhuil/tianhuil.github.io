@@ -6,13 +6,13 @@ excerpt: 'How I get 2-3X the productivity from parallel coding agents.'
 
 One of the biggest inefficiencies in AI-assisted coding is waiting. Coding agents are getting smarter, but not necessarily getting faster. Waiting for an agent to finish use to be a huge time suck.
 
-I've been using git worktrees to run multiple, parallel LLMs on separate work streams. Here is a simple workflow that gets me 2-3X the productivity.
+I've been using git worktrees to run multiple, parallel LLMs on separate work streams. Here is a simple workflow that gets me **2-3X the productivity**.
 
 ## Git Worktrees to the Rescue
 
 Git worktrees let you check out multiple branches of the same repo simultaneously, _each in its own directory_. No `git stash` needed: just separate, fully-functional copies of your repo that stay in sync automatically.
 
-When you commit on a `feature` worktree, your main worktree immediately sees it as an updated commit on the `feature` branch — no `git push` or `git pull` needed. It's like a `git` remote that's always in sync.
+When you commit on a `new-feature` worktree, your main worktree immediately sees it as an updated commit on the `new-feature` branch — no `git push` or `git pull` needed. It's like a `git` remote that's always in sync.
 
 I use [wtp](https://github.com/satococoa/wtp) to manage this, which adds a small but useful layer on top of raw `git worktree` commands: automated setup (copying `.env.local`, running `bun install`, etc.) and ergonomic `add`, `cd`, and `remove` shortcuts.
 
@@ -38,7 +38,7 @@ Here I'm using [opencode](https://opencode.ai/) but you could also use Claude Co
 
 ## Management and Iteration
 
-In practice, I keep several tabs open, one per worktree. I usually use terminal tabs in VSCode. I like how the directory of open terminals labels them after the worktree, so it's easy to orient yourself across several parallel sessions. However, you could use [iTerm](https://iterm2.com/), [tmux](https://github.com/tmux/tmux/wiki) or your favorite tab manager.
+In practice, I keep several tabs open, one per worktree. I usually use terminal tabs in VSCode and like how the directory of open terminals is labeled by the worktree, so it's easy to orient yourself across several parallel sessions. However, you could use [iTerm](https://iterm2.com/), [tmux](https://github.com/tmux/tmux/wiki) or your favorite tab manager.
 
 VS Code shows diffs per worktree, so reviewing and committing in the GUI are native experiences. You can send follow-up instructions to the open `opencode` session if the output needs adjustment.
 
