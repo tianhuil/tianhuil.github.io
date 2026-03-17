@@ -4,7 +4,7 @@ date: '2026-03-03'
 excerpt: 'How I get 2-3X the productivity from parallel coding agents.'
 ---
 
-One of the biggest inefficiencies in AI-assisted coding is waiting. Coding agents are getting smarter, but not necessarily getting faster. Waiting for an agent to finish use to be a huge time suck.
+One of the biggest inefficiencies in AI-assisted coding is waiting. Coding agents are getting smarter, but not necessarily getting faster. Waiting for an agent to finish used to be a huge time suck.
 
 I've been using git worktrees to run multiple, parallel LLMs on separate work streams. Here is a simple workflow that gets me **2-3X the productivity**.
 
@@ -12,7 +12,7 @@ I've been using git worktrees to run multiple, parallel LLMs on separate work st
 
 Git worktrees let you check out multiple branches of the same repo simultaneously, _each in its own directory_. No `git stash` needed: just separate, fully-functional copies of your repo that stay in sync automatically.
 
-When you commit on a `new-feature` worktree, your main worktree immediately sees it as an updated commit on the `new-feature` branch — no `git push` or `git pull` needed. It's like a `git` remote that's always in sync.
+When you commit to a `new-feature` worktree, your main worktree immediately sees it as an updated commit on the `new-feature` branch — no `git push` or `git pull` needed. It's like a `git` remote that's always in sync.
 
 I use [wtp](https://github.com/satococoa/wtp) to manage this, which adds a small but useful layer on top of raw `git worktree` commands: automated setup (copying `.env.local`, running `bun install`, etc.) and ergonomic `add`, `cd`, and `remove` shortcuts.
 
@@ -34,11 +34,11 @@ opencode
 # In the session: "build feature ..."
 ```
 
-Here I'm using [opencode](https://opencode.ai/) but you could also use Claude Code, Codex, Gemini cli or any other cli AI agents. Then you just switch away to the next task in a clean worktree directory.
+Here I'm using [opencode](https://opencode.ai/), but you could also use Claude Code, Codex, Gemini CLI or any other CLI AI agents. Then you just switch away to the next task in a clean worktree directory.
 
 ## Management and Iteration
 
-In practice, I keep several tabs open, one per worktree. I usually use terminal tabs in VSCode and like how the directory of open terminals is labeled by the worktree, so it's easy to orient yourself across several parallel sessions. However, you could use [iTerm](https://iterm2.com/), [tmux](https://github.com/tmux/tmux/wiki) or your favorite tab manager.
+In practice, I keep several tabs open, one per worktree. I usually use terminal tabs in VSCode, and like how the directory of open terminals is labeled by the worktree, so it's easy to orient yourself across several parallel sessions. However, you could use [iTerm](https://iterm2.com/), [tmux](https://github.com/tmux/tmux/wiki), or your favorite tab manager.
 
 VS Code shows diffs per worktree, so reviewing and committing in the GUI are native experiences. You can send follow-up instructions to the open `opencode` session if the output needs adjustment.
 
@@ -46,7 +46,7 @@ VS Code shows diffs per worktree, so reviewing and committing in the GUI are nat
 
 Once you are happy with the feature branch (or should I say feature worktree), merging is easy.
 
-I usually save one terminal open that is on the main worktree (which contains the branch `main`). Just use regular `git merge` commands with the `new-feature` branch to merge it in.
+I usually keep one terminal open on the main worktree (which contains the branch `main`). Just use regular `git merge` commands with the `new-feature` branch to merge it in.
 
 I also have a [git agent](https://github.com/tianhuil/dotfiles/blob/main/home/.opencode/agents/git.md) specifically for handling merges when things get complicated.
 
