@@ -10,6 +10,11 @@
     "start": "next start",
     "clean": "rm -rf .next .turbo tsconfig.tsbuildinfo"
   },
+  "pnpm": {
+    "overrides": {
+      "picomatch": ">=2.3.2"
+    }
+  },
   "author": "Tianhui Michael Li",
   "license": "ISC",
   "devDependencies": {
