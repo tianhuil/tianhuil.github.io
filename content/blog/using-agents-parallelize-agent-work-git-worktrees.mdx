@@ -1,0 +1,80 @@
+---
+title: 'Using Agents to Parallelize Agent Work on Git Worktrees'
+date: '2026-04-30'
+excerpt: 'Opencode commands turn my coding sessions into one-liners. 3-4X faster.'
+---
+
+In my [last post](/blog/parallelize-agents-git-worktrees), I described how git worktrees let you run multiple coding agents in parallel. The idea was sound, but the workflow still had friction: creating worktrees, running setup, writing commit messages, pushing PRs, merging back, cleaning up. Each of those steps required me to stay in the loop or (more likely) context switch back to sheppard a change along.
+
+Since then I've automated almost all of that away. My coding session logs now look like this:
+
+```
+> /build-worktree implement @feature-spec.md
+> [review code and make some minor edits]
+> /merge-worktree
+```
+
+That's it. Two slash commands. I estimate this makes me **3-4X faster** compared to the non-worktree agent flow, because I'm no longer the bottleneck for all the operational overhead.
+
+## The Tools
+
+### [Worktrunk](https://worktrunk.dev/)
+
+I've switched from [wtp](https://github.com/satococoa/wtp) to [Worktrunk](https://github.com/max-sixty/worktrunk). Worktrunk (`wt`) is a git worktree manager built specifically for parallel AI agent workflows. Three commands cover 90% of what I need:
+
+- `wt switch` -- create and switch between worktrees by branch name (no path juggling)
+- `wt list` -- see all worktrees with branch status, diff stats, and CI state at a glance
+- `wt merge` -- squash, rebase, fast-forward merge, and clean up in one shot
+
+The killer feature for my use case is `wt merge`. It handles committing uncommitted changes, squashing, rebasing onto the target branch, fast-forward merging, and removing the worktree -- all in a single command. Where my old workflow required five separate git commands and a mental checklist, `wt merge` is one line.
+
+Worktrunk also supports hooks (run scripts on create, pre-merge, post-merge), LLM-generated commit messages, `wt list --full` with CI status per branch, and configurable path templates so worktree directories follow a consistent convention.
+
+Install it with `brew install worktrunk`.
+
+### [OpenCode](https://opencode.ai/)
+
+[OpenCode](https://opencode.ai/) is an open-source CLI coding agent. I use it over alternatives because it supports custom slash commands -- markdown files that define multi-step workflows. This is the glue that turns "build a feature in a worktree" from a multi-step process into a single command.
+
+OpenCode also supports custom agents, MCP tools, and a skill system for extending its capabilities. It runs in your terminal, works with any git repo, and keeps all context local.
+
+## The Slash Commands
+
+I wrote two custom OpenCode commands that handle the full lifecycle of a worktree-based task. Both are just markdown files in `~/.config/opencode/commands/`.
+
+### `/build-worktree`
+
+Given a task description (or a file reference), this command:
+
+1. **Infers a branch name** from the task -- `feat/`, `fix/`, `chore/`, etc.
+2. **Creates a worktree** using `wt switch -c $BRANCH_NAME --base $BASE_BRANCH --no-cd`
+3. **Implements the feature** -- reads the codebase, writes code, follows existing conventions
+4. **Validates locally** -- discovers and runs lint, typecheck, and test commands
+5. **Pushes a PR** -- creates the branch, pushes, and opens a pull request with `gh`
+6. **Monitors CI** -- polls until CI passes, and if it fails, automatically fixes issues and retries (up to 5 times)
+
+The entire pipeline runs autonomously. I can kick off a `/build-worktree` and switch to another task while it works.
+
+### `/merge-worktree`
+
+Once I'm happy with the result, this command:
+
+1. **Finds the worktree path** from the branch name
+2. **Runs `wt merge`** to squash, rebase, fast-forward merge, and clean up
+3. **Handles conflicts** -- if rebase fails, it launches a sub-agent to resolve conflicts automatically
+
+One command, no fiddling.
+
+## The Result
+
+My workflow went from managing worktrees manually to a two-command loop. The efficiency gains come from eliminating all the small decisions and typing that used to interrupt my flow:
+
+- No more typing branch names three times
+- No more remembering which validation commands to run
+- No more writing commit messages
+- No more manually pushing and creating PRs
+- No more multi-step merge and cleanup rituals
+
+The agent handles all of it. I review the code, make edits if needed, and merge. That's my job now.
+
+The full commands are [open-source](https://github.com/tianhuil/dotfiles/tree/main/home/.config/opencode/commands) if you want to try them. You'll need [OpenCode](https://opencode.ai/) and [Worktrunk](https://worktrunk.dev/) installed.
