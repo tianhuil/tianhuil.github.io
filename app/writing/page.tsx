@@ -99,7 +99,7 @@ export default function WritingPage() {
     },
     {
       src: '/images/techcrunch.png',
-      url: 'https://techcrunch.com/contributor/michael-li/',
+      url: 'https://techcrunch.com/author/michael-li/',
       name: 'TechCrunch',
       articles: [
         {
