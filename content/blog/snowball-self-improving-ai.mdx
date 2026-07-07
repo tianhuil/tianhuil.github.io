@@ -1,0 +1,29 @@
+---
+title: 'Snowball: Self-Improving AI'
+date: '2026-07-02'
+excerpt: 'AI automates a lot, but it quickly devolves into tedious context engineering.  Snowball automates the context management engineering.'
+---
+
+I use AI in just about [every](managing-prompts-git-repo) [aspect](parallelize-agents-git-worktrees) of my [work](slash-commands-ate-my-workflow).
+
+But as anyone who has used AI for a while knows, the AI is only as valuable as the context you provide. And so using AI effectively quickly devolves into tedious context engineering. You have to constantly feed the AI context about your codebase, your business, your goals, and your constraints for it to be effective. And that can get pretty tedious.
+
+Fortunately, much of the context engineering can be automated. I call this snowballing, and I just run it from the `/snowball` command. It tells the AI to read its own session logs and automatically generate improvements in skills and `CLAUDE.md` / `AGENTS.md` files to improve the system. I now use it after most sessions to automatically close the context gap for my agents, save on token costs, and reduce hallucinations. Here are
+
+## Close the Context Gap
+
+The AI Agents default to making reasonable security-versus-complexity trade-offs, often not implementing the fully secure solution to save time and complexity. For most engineering projects, this is fine. For one product, a major customer was an enterprise corporate client in the medical sector with very high security standards. The AI kept on coming up with solutions that were not secure enough for this client. I kept on manually reviewing the code and asking it to upgrade the security specs, but never really caught on to the pattern. After running `/snowball`, the agent scanned my logs, flagged this as an issue, and proposed updates to my `AGENTS.md` file to include this new context for future sessions. This closed the context gap (the AI didn't know about the stringent requirements) and implemented higher security standards by default, without requiring manual review and correction of the AI's work going forward.
+
+## Saving Token Costs
+
+I have leaned into using AI to query databases and analyze data to the point where I rarely write SQL, use the native viewer, or write analytics code. A while back, I upgraded how I handled authentication for the production database to make it more secure, but I neglected to update the instructions. The AI is smart enough to figure it out, so the issue was not apparent. But would spend ~6 tool calls and a few minutes relearning this every session, and I noticed my queries slowed down. This was caught in a `/snowball` run, which correlated this tool-call pattern across sessions and updated the underlying database skill to include the new authentication method. This saved me a lot of time and token costs in future sessions.
+
+## Reducing AI Hallucinations
+
+I use fully automated, agentic coding loops in which the AI is expected to run tests before committing code. The standing instructions to `AGENTS.md` were "Generally run tests before committing code unless only non-code files are changed." This was an optimization, as the tests could not fail unless code changes were made. However, the agent often wrote code that didn't pass testing. In a `/snowball` run, the AI admitted it had not followed the instructions and suggested I write more emphatically. In particular, it suggested I use "always ... unless" instead of "generally" and to make it all caps and in bold. These changes to `AGENTS.md` worked, making my AI system more robust and reducing hallucinations in future sessions.
+
+This is a documented feature of AIs. Research shows that LLMs have learned to better comply with [ALL CAPS TEXT](https://kth.diva-portal.org/smash/record.jsf?pid=diva2%3A1954037&dswid=3010). The paper is comically written in all caps.
+
+## Results
+
+The benefits of `/snowball` have really snowballed (pun intended). While they started out small, I've found that the cumulative impact of running `/snowball` after every session has really added up. Instead of making the same mistake over and over again, the AI is now learning from its mistakes and improving. This means closing the context gap, saving on token costs, and reducing hallucinations. How are you using AI to improve your AI? Reach out on [LinkedIn](linkedin.com/in/tianhuili) and I'll share my `/snowball` command with you.
