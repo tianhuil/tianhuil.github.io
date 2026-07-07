@@ -126,11 +126,11 @@ export default function WritingPage() {
     },
     {
       src: '/images/wired.svg',
-      url: 'https://wired.com/preview/story/5d2e3328d757370008b014a0',
+      url: 'https://www.wired.com/preview/story/5d2e3328d757370008b014a0',
       name: 'Wired Magazine',
       articles: [
         {
-          url: 'https://wired.com/preview/story/5d2e3328d757370008b014a0',
+          url: 'https://www.wired.com/preview/story/5d2e3328d757370008b014a0',
           title: 'High-Stakes AI Decisions Need to be Automatically Audited',
         },
       ],
@@ -285,27 +285,27 @@ export default function WritingPage() {
     },
     {
       src: '/images/oreilly.png',
-      url: 'https://www.oreilly.com/people/76a5b-michael-li',
+      url: 'https://www.oreilly.com/people/michael-li/',
       name: "O'Reilly Radar",
       articles: [
         {
-          url: 'https://www.oreilly.com/ideas/leveraging-analytics-1-0-for-the-analytics-2-0-revolution',
+          url: 'https://www.oreilly.com/content/leveraging-analytics-1-0-for-the-analytics-2-0-revolution/',
           title: 'Leveraging Analytics 1.0 For The Analytics 2.0 Revolution',
         },
         {
-          url: 'https://www.oreilly.com/ideas/spark-comparison-aws-vs-gcp',
+          url: 'https://www.oreilly.com/content/spark-comparison-aws-vs-gcp/',
           title: 'Spark Comparison: AWS vs. GCP',
         },
         {
-          url: 'https://www.oreilly.com/ideas/three-best-practices-for-building-successful-data-pipelines',
+          url: 'https://www.oreilly.com/content/three-best-practices-for-building-successful-data-pipelines/',
           title: 'Three Best Practices For Building Successful Data Pipelines',
         },
         {
-          url: 'https://www.oreilly.com/ideas/5-secrets-for-writing-the-perfect-data-scientist-resume',
+          url: 'https://www.oreilly.com/content/5-secrets-for-writing-the-perfect-data-scientist-resume/',
           title: '5 Secrets For Writing The Perfect Data Scientist Resume',
         },
         {
-          url: 'https://www.oreilly.com/people/76a5b-michael-li',
+          url: 'https://www.oreilly.com/people/michael-li/',
           title: 'More articles...',
         },
       ],
