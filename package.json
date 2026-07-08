@@ -3,18 +3,11 @@
   "version": "1.0.0",
   "description": "Personal Website for Michael Li",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@11.10.0",
   "overrides": {
     "picomatch": ">=2.3.2",
     "hono": ">=4.12.25",
     "@babel/core": ">=7.29.6"
-  },
-  "pnpm": {
-    "overrides": {
-      "picomatch": ">=2.3.2",
-      "hono": ">=4.12.25",
-      "@babel/core": ">=7.29.6"
-    }
   },
   "scripts": {
     "dev": "next dev",
