@@ -12,7 +12,7 @@ Now for the MCPs. During the initial connection handshake, the AI agent requests
 
 I discovered this when I realized MCP servers were collectively eating about 12% of Claude Sonnet 4.5's context. The tools were all useful, and I didn't want to get rid of them. And it gets worse. Coding tools are relatively lean. As I discovered, some MCP servers will eat up over 16% or that same context window.
 
-[INSERT]
+![MCP tools consuming context window](/blog/mcp-token-cost.png)
 
 Of course, almost none of your AI sessions require all these tools to begin with. Any given session will use only a small subset of the available tools. So how do we solve this? We could wait for better MCP implementations, but there is a much simpler solution.
 
