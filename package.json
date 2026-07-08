@@ -4,14 +4,6 @@
   "description": "Personal Website for Michael Li",
   "private": true,
   "packageManager": "pnpm@11.10.0",
-  "overrides": {
-    "picomatch": ">=2.3.2",
-    "hono": ">=4.12.25",
-    "@babel/core": ">=7.29.6",
-    "js-yaml": ">=3.15.0",
-    "@hono/node-server": ">=1.19.9",
-    "yaml": ">=2.8.2"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
