@@ -8,11 +8,13 @@ AIs are much more useful when they have tools, and MCPs have captured a lot of t
 
 The problem becomes that we want to use all those MCPs and how they interact with the LLM's context window. Think of an LLM's context window as short-term working memory, or the maximum number of words it can "hold in mind" at any single moment. When you chat with an AI, this window must contain everything: the system instructions, the tool definitions, the history of your instructions, and the agent responses. If information isn't inside this window, the model simply doesn't know it exists. This is the real constraint on your session length with the AI.
 
-Now for the MCPs. During the initial connection handshake, the AI agent requests a complete manifest of every capability the MCP server supports and then injects the entire catalog of JSON schemas—names, verbose descriptions, and argument types—directly into the LLM's context window. If you connect just a handful of versatile servers for databases, file systems, and APIs, you can easily burn 10-20% of your context window before you even ask a question. If billed at API costs, that's at least a $0.03-$0.06 cent tax per query. This is the context bloat problem: the more tools you connect, the less room there is for your actual instructions and the agent's responses.
+Now for the MCPs. During the initial connection handshake, the AI agent requests a complete manifest of every capability the MCP server supports and then injects the entire catalog of JSON schemas—names, verbose descriptions, and argument types—directly into the LLM's context window. If you connect just a handful of versatile servers for databases, file systems, and APIs, you can easily burn 10-20% of your context window before you even ask a question. This is the context bloat problem: the more tools you connect, the less room there is for your actual instructions and the agent's responses.
 
-I discovered this when I realized MCP servers were collectively eating about 12% of Claude Sonnet 4.5's context. The tools were all useful, and I didn't want to get rid of them. And it gets worse. Coding tools are relatively lean. As I discovered, some MCP servers will eat up over 16% or that same context window.
+I discovered this when I realized MCP servers were collectively eating about 12% of Claude Sonnet 4.5's context. The tools were all useful, and I didn't want to get rid of them. As I discovered, some MCP servers will eat up over 16% of that same context window.
 
 ![MCP tools consuming context window](/blog/mcp-token-cost.png)
+
+> And context bloat costs you money. If billed at API costs, the 10-20% of your context window is at least a $0.03-$0.06 cent tax per query. That's $9-$18 per month for the average user running 10 queries a day or 300 queries per month.
 
 Of course, almost none of your AI sessions require all these tools to begin with. Any given session will use only a small subset of the available tools. So how do we solve this? We could wait for better MCP implementations, but there is a much simpler solution.
 
