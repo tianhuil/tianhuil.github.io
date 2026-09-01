@@ -16,10 +16,15 @@ const options = {
 const components = {
   code(props: React.HTMLAttributes<HTMLElement>) {
     const { children, className, ...rest } = props
-    const isInline = !className && !('data-language' in props)
+    // Fenced blocks without a language do not receive a class or data attribute.
+    // The newline check keeps them from taking the inline-code path.
+    const isInline =
+      !className &&
+      !('data-language' in props) &&
+      !String(children).includes('\n')
 
     if (isInline) {
-      const text = String(children).replace(/^`(.*)`$/, '$1')
+      const text = String(children).replace(/^`+|`+$/g, '')
       return (
         <code
           className='bg-zinc-800 text-white px-1.5 py-0.5 rounded text-sm font-mono'
