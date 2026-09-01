@@ -45,12 +45,12 @@ export function Navbar() {
         <div className='max-w-6xl mx-auto flex items-center justify-between'>
           <Link
             href='/'
-            className='text-2xl font-bold gradient-text hover:opacity-80 transition-opacity'
+            className='site-brand text-2xl font-bold gradient-text hover:opacity-80 transition-opacity'
           >
             Michael Li
           </Link>
           <NavigationMenu>
-            <NavigationMenuList className='gap-2'>
+            <NavigationMenuList className='site-nav gap-2'>
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href='/'
