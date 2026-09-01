@@ -31,36 +31,32 @@ export default function BlogPage() {
   }
 
   return (
-    <div className='max-w-6xl mx-auto mb-8'>
-      <div className='glass-card p-8 mb-8 animate-fade-in-up'>
-        <h1 className='text-4xl md:text-5xl font-bold mb-4'>
-          Blog <span className='gradient-text'>Posts</span>
-        </h1>
-        <p className='text-xl text-muted-foreground max-w-2xl'>
-          Thoughts on data science, technology, and more.
-        </p>
-      </div>
+    <div className='blog-index mx-auto mb-16'>
+      <header className='blog-index-header animate-fade-in-up'>
+        <p className='eyebrow'>Field notes ·  {String(posts.length).padStart(2, '0')} entries</p>
+        <h1>Writing about <span className='gradient-text'>building</span>.</h1>
+        <p className='blog-lede'>Practical notes on AI, data, and the tools that make ambitious work feel lighter.</p>
+      </header>
 
-      <div className='grid gap-6'>
+      <div className='post-list'>
         {posts.map((post, idx) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className='glass-card p-6 block animate-fade-in-up hover:border-primary transition-colors'
+            className='post-preview animate-fade-in-up'
             style={{ animationDelay: `${100 + idx * 50}ms` }}
           >
-            <div className='flex items-start justify-between gap-4 mb-3'>
-              <h2 className='text-xl font-semibold'>{post.frontmatter.title}</h2>
-              <span className='text-sm text-muted-foreground whitespace-nowrap'>
-                {post.frontmatter.date}
-              </span>
+            <span className='post-number'>{String(idx + 1).padStart(2, '0')}</span>
+            <div className='post-preview-copy'>
+              <div className='post-meta'>
+                <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
+                <span aria-hidden='true'>·</span>
+                <span>Essay</span>
+              </div>
+              <h2>{post.frontmatter.title}</h2>
+              {post.frontmatter.excerpt && <p>{post.frontmatter.excerpt}</p>}
             </div>
-            {post.frontmatter.excerpt && (
-              <p className='text-muted-foreground line-clamp-2'>{post.frontmatter.excerpt}</p>
-            )}
-            <span className='inline-block mt-4 text-sm text-primary font-medium'>
-              Read more →
-            </span>
+            <span className='post-arrow' aria-hidden='true'>↗</span>
           </Link>
         ))}
       </div>
