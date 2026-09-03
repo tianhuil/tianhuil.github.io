@@ -1,10 +1,10 @@
 ---
 title: 'Stop using MCP, use CLI instead'
 date: '2026-07-08'
-excerpt: '...'
+excerpt: 'MCPs are powerful, but their context bloat makes AI agents less efficient. Here’s why CLIs are a better interface for tool use.'
 ---
 
-AIs are much more useful when they have tools, and MCPs have captured a lot of the hype around tool use. The magic of an MCP is that it allows a 3rd party to develop a tool that can be plugged into any first-party model. So you can use Microsoft MCPs for Claude or Salesforce on Gemini.
+AIs are much more useful when they have tools, and MCPs (Model Context Protocol) have captured a lot of the hype around tool use. The magic of an MCP is that it allows a 3rd party to develop a tool that can be plugged into any first-party model. So you can use Microsoft MCPs for Claude or Salesforce on Gemini.
 
 The problem becomes that we want to use all those MCPs and how they interact with the LLM's context window. Think of an LLM's context window as short-term working memory, or the maximum number of words it can "hold in mind" at any single moment. When you chat with an AI, this window must contain everything: the system instructions, the tool definitions, the history of your instructions, and the agent responses. If information isn't inside this window, the model simply doesn't know it exists. This is the real constraint on your session length with the AI.
 
