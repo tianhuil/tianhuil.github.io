@@ -1,0 +1,65 @@
+---
+title: 'GPT-5.6: Spend Your Effort Before You Move Up a Tier'
+date: '2026-08-19'
+excerpt: 'A quick look at the cost, intelligence, and latency tradeoffs between GPT-5.6 capability tiers and reasoning effort.'
+---
+
+GPT-5.6 was recently released and has gained widespread interest.    It comes with three "capability tiers": Sol, Terra, and Luna with each tier offer reasoning-effort setting: `non-reasoning` , `low`, `medium`, `high`, `xhigh`, or `max`.
+
+That gives us a fairly large menu of models and naturally begs the question: should you increase reasoning effort, or move up to a more capable tier? I looked at an Artificial Analysis snapshot to compare the options.
+
+## Basic comparison
+
+As expected, cost and performance move together. More reasoning effort and higher capability tier produce better performance at the expense of more tokens.
+
+![GPT-5.6 effort ladders](/blog/gpt-5-6-effort-ladders.png)
+
+The important detail is that the two levers are not equally powerful. On the intelligence index, moving `gpt-5.6-luna` from `medium` reasoning effort to `max` reasoning effort adds 13 points. Moving from `gpt-5.6-luna` at `max` reasoning effort to `gpt-5.6-terra` at `max` reasoning effort adds only 5 points.
+
+## Cost versus intelligence
+
+The tradeoff is less clear when cost enters the picture.  The below shows us that, generally speaking, improved intelligence costs us more in terms of token usage.  Note that the cost axis is in terms of dollars -- this takes into account that a model may use different numbers of tokens on a given benchmark task and that those tokens may cost different amounts.
+
+![GPT-5.6 cost versus intelligence](/blog/gpt-5-6-cost-intelligence.png)
+
+Intuitively, we can tell that Terra is expensive for its performance. In several settings, it performs worse than Sol while costing only a little less. It lacks a clear niche:
+
+- Luna is a cheap, capable everyday model.
+- Sol is the high-end model when accuracy matters most.
+- Terra sits awkwardly between them.
+
+This becomes clearer with a **Pareto frontier**. A model is on the cost-intelligence Pareto frontier when no other model is both cheaper and more intelligent. In other words, each frontier option represents a point where you cannot improve one dimension without giving up something in the other.
+
+![GPT-5.6 cost versus intelligence Pareto frontier](/blog/gpt-5-6-cost-intelligence-pareto.png)
+
+Terra never reaches this frontier. There is always a cheaper, more intelligent alternative. For example, `gpt-5.6-luna` with `max` reasoning effort is both smarter and cheaper than `gpt-5.6-terra` with `medium` reasoning effort. Likewise, `gpt-5.6-sol` with `medium` reasoning effort is both cheaper and smarter than `gpt-5.6-terra` with `xhigh` reasoning effort.
+
+It also does not make sense to move to Sol before `medium` reasoning effort. Until then, there is always a Luna configuration that is both cheaper and more intelligent. This is the recommendation I have been following:
+
+1. Start with `gpt-5.6-luna` at the lowest effort that works.
+2. Increase Luna's reasoning effort as the task gets harder.
+3. Switch to `gpt-5.6-sol` at `medium` reasoning effort when Luna is no longer enough.
+4. Skip Terra unless a particular workload gives you a reason not captured by this snapshot.
+
+In fact, I've usually settled at `medium` reasoning effort as my workhorse (it's a replacement for deepseek v4 that's probably equally performant and cheaper, but that's an article for another day).
+
+## Time versus intelligence
+
+Cost is not the only constraint. We can also compare response time with intelligence.
+
+![GPT-5.6 time versus intelligence](/blog/gpt-5-6-time-intelligence.png)
+
+The time-intelligence Pareto frontier looks similar, but some of the details have shifted.
+
+![GPT-5.6 time versus intelligence Pareto frontier](/blog/gpt-5-6-time-intelligence-pareto.png)
+
+Terra starts to play a role here: you might choose `gpt-5.6-terra` at `low` reasoning effort over `gpt-5.6-luna` at `medium` reasoning effort because it takes about the same time and is more intelligent. It is not cheaper, but it is faster than the Luna settings that reach comparable accuracy.
+
+Similarly, Sol starts to become useful at lower reasoning effort.  Using `gpt-5.6-sol` at `low` reasoning effort is useful when you need Sol-level accuracy quickly. Nothing else reaches that level of accuracy in as little time, even though other options cost less.
+
+Time is usually less of a constraint than cost, so I generally optimize for cost. Sometimes, though, speed matters more. When I am well under quota for the week and my subscription is about to restart, I am not very token-sensitive. In those cases, I will switch to `gpt-5.6-terra` at `low` reasoning effort instead for faster performance.
+
+## The simple rule
+
+For most work, stay on Luna and increase effort before changing tiers. Luna gives you the best range of inexpensive options, while Sol provides a clear upgrade path for difficult tasks. Terra can be reasonable when latency matters, but it is not the best choice if cost and intelligence are the main concerns.
+
