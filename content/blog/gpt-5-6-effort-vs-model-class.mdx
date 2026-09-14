@@ -4,9 +4,11 @@ date: '2026-08-19'
 excerpt: 'A quick look at the cost, intelligence, and latency tradeoffs between GPT-5.6 capability tiers and reasoning effort.'
 ---
 
-GPT-5.6 was recently released and has gained widespread interest.    It comes with three "capability tiers": Sol, Terra, and Luna with each tier offer reasoning-effort setting: `non-reasoning` , `low`, `medium`, `high`, `xhigh`, or `max`.
+GPT-5.6 was recently released with three capability tiers: Sol, Terra, and Luna. Each tier supports six reasoning-effort settings: `non-reasoning`, `low`, `medium`, `high`, `xhigh`, and `max`.
 
-That gives us a fairly large menu of models and naturally begs the question: should you increase reasoning effort, or move up to a more capable tier? I looked at an Artificial Analysis snapshot to compare the options.
+To compare these 18 configurations, I used an [Artificial Analysis](https://artificialanalysis.ai/) snapshot. Its Intelligence Index v4.3 incorporates 10 evaluations across four categories—Agents (30%), Coding (20%), Scientific Reasoning (20%), and General (30%). The suite includes 91 AA-Briefcase tasks across four scenarios, 100 AA-LCR v1.1 questions, 70 CritPt tasks, and 2,158 text-only Humanity's Last Exam questions. Artificial Analysis estimates a 95% confidence interval for the aggregate index of less than ±1%, though individual evaluations may have wider intervals. Its cost-per-task metric uses input, cache hit, cache write, reasoning, and answer token prices, divided by task count and weighted by benchmark weight. Its Time per Intelligence Index Task metric is weighted output tokens per task divided by output speed and excludes time to first token and overhead.
+
+That gives us a fairly large menu of models and naturally begs the question: should you increase reasoning effort, or move up to a more capable tier?
 
 ## Basic comparison
 
