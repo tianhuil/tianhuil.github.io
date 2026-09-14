@@ -4,11 +4,11 @@ date: '2026-08-19'
 excerpt: 'A quick look at the cost, intelligence, and latency tradeoffs between GPT-5.6 capability tiers and reasoning effort.'
 ---
 
-GPT-5.6 was recently released with three capability tiers: Sol, Terra, and Luna. Each tier supports six reasoning-effort settings: `non-reasoning`, `low`, `medium`, `high`, `xhigh`, and `max`.
+GPT-5.6 was recently released with three capability tiers: Sol, Terra, and Luna. Each tier supports six reasoning-effort settings: `non-reasoning`, `low`, `medium`, `high`, `xhigh`, and `max`.  That gives us a fairly large menu of models and naturally begs the question: should you increase reasoning effort, or move up to a more capable tier?
 
-To compare these 18 configurations, I used an [Artificial Analysis](https://artificialanalysis.ai/) snapshot. Its Intelligence Index v4.3 incorporates 10 evaluations across four categories—Agents (30%), Coding (20%), Scientific Reasoning (20%), and General (30%). The suite includes 91 AA-Briefcase tasks across four scenarios, 100 AA-LCR v1.1 questions, 70 CritPt tasks, and 2,158 text-only Humanity's Last Exam questions. Artificial Analysis estimates a 95% confidence interval for the aggregate index of less than ±1%, though individual evaluations may have wider intervals. Its cost-per-task metric uses input, cache hit, cache write, reasoning, and answer token prices, divided by task count and weighted by benchmark weight. Its Time per Intelligence Index Task metric is weighted output tokens per task divided by output speed and excludes time to first token and overhead.
+To compare these 18 configurations, I used an [Artificial Analysis](https://artificialanalysis.ai/) snapshot. Its Intelligence Index v4.3 incorporates 10 evaluations across four categories—Agents (30%), Coding (20%), Scientific Reasoning (20%), and General (30%). The suite includes 91 AA-Briefcase tasks across four scenarios, 100 AA-LCR v1.1 questions, 70 CritPt tasks, and 2,158 text-only Humanity's Last Exam questions, among others. Artificial Analysis estimates a 95% confidence interval for the aggregate index of less than ±1%, though individual evaluations may have wider intervals
 
-That gives us a fairly large menu of models and naturally begs the question: should you increase reasoning effort, or move up to a more capable tier?
+
 
 ## Basic comparison
 
@@ -20,7 +20,13 @@ The important detail is that the two levers are not equally powerful. On the int
 
 ## Cost versus intelligence
 
-The tradeoff is less clear when cost enters the picture.  The below shows us that, generally speaking, improved intelligence costs us more in terms of token usage.  Note that the cost axis is in terms of dollars -- this takes into account that a model may use different numbers of tokens on a given benchmark task and that those tokens may cost different amounts.
+The tradeoff is less clear when cost enters the picture.  The below shows us that, generally speaking, improved intelligence costs us more in terms of token usage.  Note that the cost axis is in terms of dollars.  This is the right metric because it is the most realistic, taking into account that:
+
+- different models may use different numbers of tokens on a given benchmark task, not just the published token cost for the model;
+- different models may use different amounts of reasoning tokens, which costs tokens, even if they don't always show up in the final result;
+- model outputs and inputs can be cached, which can have lower cost on read than new input.
+
+These effects are hard to predict so utilizing dollars encapsulates all this complexity into a single metric.
 
 ![GPT-5.6 cost versus intelligence](/blog/gpt-5-6-cost-intelligence.png)
 
