@@ -23,6 +23,9 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - run: pnpm run check:frontmatter
+      - run: pnpm test
       - run: pnpm run build
 
       - uses: actions/upload-pages-artifact@v3
