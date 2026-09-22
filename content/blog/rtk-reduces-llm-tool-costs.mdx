@@ -3,7 +3,6 @@ title: 'RTK saves tokens where agent tasks are largest'
 date: '2026-09-01'
 excerpt: 'A 600-task paired comparison shows how RTK changes tool output, message count, and the cost of running an LLM agent.'
 ---
-
 ## How tool calls work
 
 For agents to do work, they must interact with the computer (e.g. read a file, run a command line tool, or research documentation online). To do this, the agent executes the tool, adds the result to the conversation as input. The loop looks like this:
@@ -42,9 +41,9 @@ That distinction matters. A compressed result can save thousands of input tokens
 
 ## A 600-task comparison
 
-To measure that tradeoff, we ran the same 600 benchmark tasks twice: once with RTK and once without it. Both arms used the [Pi](https://github.com/badlogic/pi-mono) harness and `gpt-5.6-luna` with `medium` reasoning effort. We used a paired analysis, comparing the RTK and control runs for each task rather than comparing two unrelated averages. The transcript analysis has 597 valid pairs because three tasks were invalid in both arms.
+To measure that tradeoff, we ran the same 600 benchmark tasks twice: once with RTK and once without it. Both arms used the [Pi](https://github.com/badlogic/pi-mono) harness and `gpt-5.6-luna` with `medium` reasoning effort. We used a paired analysis, comparing the RTK and control runs for each task rather than comparing  unrelated averages from different tasks.
 
-Overall, RTK reduced token cost by about **4%**. The aggregate result is useful, but the breakdown explains where it comes from.
+Overall, RTK reduced token cost by about **4%** (which is statistically significant). The aggregate result is useful, but the breakdown explains where it comes from.
 
 ## The savings are in tool results
 
