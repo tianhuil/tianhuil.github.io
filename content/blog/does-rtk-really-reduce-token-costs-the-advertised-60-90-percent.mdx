@@ -1,5 +1,5 @@
 ---
-title: 'Does RTK reduce LLM tool costs?'
+title: 'Does RTK really reduce token costs the advertised 60-90% percent?'
 date: '2026-09-01'
 excerpt: 'A 600-task paired comparison shows how RTK changes tool output, message count, and the cost of running an LLM agent.'
 ---
@@ -16,7 +16,7 @@ Every new result becomes part of the model's context as input. A verbose tool ou
 
 ## What RTK does
 
-[RTK](https://github.com/rtk-ai/rtk) (Rust Token Killer) is a command-line proxy for agent shell commands. It recognizes common commands such as `git`, `grep`, test runners, Docker commands, and file listings, then replaces repetitive or low-value output with a compact summary before the result reaches the model. 
+[RTK](https://github.com/rtk-ai/rtk) (Rust Token Killer) is a command-line proxy for agent shell commands that advertises a 60-90% decrease in token costs. To do this, it recognizes common commands such as `git`, `grep`, test runners, Docker commands, and file listings, then replaces repetitive or low-value output with a compact summary before the result reaches the model. 
 
 Consider a test command that prints 500 lines. Most of those lines may be passing tests, repeated compiler warnings, or boilerplate paths. Without RTK, the model receives all 500 lines:
 
