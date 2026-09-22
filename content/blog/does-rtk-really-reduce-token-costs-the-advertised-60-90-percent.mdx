@@ -87,8 +87,20 @@ We can combine these effects with a waterfall analysis. Start with the control c
 
 This is an accounting decomposition, not a claim that every task gets cheaper. The paired tasks vary substantially, and the average is influenced by the long tail. It tells us why the aggregate moves: RTK's messages are cheaper on average, and that effect is larger than the cost of the extra messages.
 
+## RTK only reaches only **2.8%** of messages
+
+There is another reason the end-to-end effect is modest: RTK does not process most of the messages in an agent session.
+
+The RTK claims are usually stated as a reduction in the output of a command that RTK supports, a subset of bash output. A tool-using LLM session contains much more than those outputs: user instructions, assistant messages, reasoning, native tool results that don't use bash, and Bash output from commands that RTK does not transform.
+
+When you boil that all down, RTK only affected **2.8%** of all observed messages. Even among Bash outputs, RTK only affected about **9.7%** messages.
+
+![MECE message categories with RTK assigned to output](/blog/rtk-message-mece.png)
+
+Note that the above are message counts, not token counts. In general, bash output tends to be a lengthier output so this may understate the impact of RTK. However, tool outputs are LLM inputs whose tokens are billed at less than LLM output tokens, making potential RTK savings smaller. A 60–90% reduction applied to 2.8% of observed messages cannot produce a 60–90% reduction in the whole LLM interaction. That limited reach helps explain why a large reduction in a particular tool result becomes a much smaller overall reduction in token cost. RTK is targeting a valuable part of the context, but it is targeting a minority of the messages.
+
 ## Conclusion
 
-RTK is not a general-purpose token discount applied uniformly to every agent run. Its benefit appears where it should: in large, noisy tool results. For the biggest tasks in this benchmark, it removes roughly a fifth of the tool-result characters and is associated with fewer messages as well. For smaller tasks, the model sometimes makes extra calls, perhaps to recover extra detail, reducing or reversing the benefit.
+RTK is not a general-purpose token discount applied uniformly to every agent run. Its benefit appears where it should: in large, noisy tool results. For the biggest tasks in this benchmark, it removes roughly a fifth of the tool-result characters and is associated with fewer messages as well. For smaller tasks, the model sometimes makes extra calls, perhaps to recover extra detail, reducing or reversing the benefit. And regardless of task size, RTK only targets a small percentage of messages in the LLM conversation.
 
 In this 600-task comparison, the net effect was modest but positive: a statistically significant **4% lower token cost**, with the savings driven almost entirely by the largest and most complex tasks.
