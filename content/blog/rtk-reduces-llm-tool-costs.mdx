@@ -1,0 +1,95 @@
+---
+title: 'RTK saves tokens where agent tasks are largest'
+date: '2026-09-01'
+excerpt: 'A 600-task paired comparison shows how RTK changes tool output, message count, and the cost of running an LLM agent.'
+---
+
+## How tool calls work
+
+For agents to do work, they must interact with the computer (e.g. read a file, run a command line tool, or research documentation online). To do this, the agent executes the tool, adds the result to the conversation as input. The loop looks like this:
+
+1. The model emits a tool call, such as `bash("git status")`.
+2. The agent runs the command.
+3. The agent sends the command's output back as a tool result.
+4. The model reads that result as input and either calls another tool or answers.
+
+Every new result becomes part of the model's context as input. A verbose tool output therefore a double cost: it consumes both tokens and model context. Large results also make it harder for the model to find the useful signal and increases token fees.
+
+## What RTK does
+
+[RTK](https://github.com/rtk-ai/rtk) (Rust Token Killer) is a command-line proxy for agent shell commands. It recognizes common commands such as `git`, `grep`, test runners, Docker commands, and file listings, then replaces repetitive or low-value output with a compact summary before the result reaches the model. 
+
+Consider a test command that prints 500 lines. Most of those lines may be passing tests, repeated compiler warnings, or boilerplate paths. Without RTK, the model receives all 500 lines:
+
+```text
+$ npm test
+PASS src/auth.test.ts ...
+PASS src/cart.test.ts ...
+... hundreds of similar lines ...
+Test Suites: 42 passed, 42 total
+```
+
+With RTK, the model might receive a summary of the useful facts instead:
+
+```text
+$ npm test
+42 suites passed · 386 tests passed · 0 failed
+```
+
+The model can now decide whether it needs more detail. If it does, it can ask for the original output or rerun a narrower command. RTK has not made the model's reasoning cheaper; it has made the evidence supplied to that reasoning smaller and more efficient.
+
+That distinction matters. A compressed result can save thousands of input tokens in one request, but it can also hide information the model needs, as we will see.  But while it sounds good in practice, we want to measure the improvement in practice.
+
+## A 600-task comparison
+
+To measure that tradeoff, we ran the same 600 benchmark tasks twice: once with RTK and once without it. Both arms used the [Pi](https://github.com/badlogic/pi-mono) harness and `gpt-5.6-luna` with `medium` reasoning effort. We used a paired analysis, comparing the RTK and control runs for each task rather than comparing two unrelated averages. The transcript analysis has 597 valid pairs because three tasks were invalid in both arms.
+
+Overall, RTK reduced token cost by about **4%**. The aggregate result is useful, but the breakdown explains where it comes from.
+
+## The savings are in tool results
+
+The clearest effect is in tool-result content. Across the paired tasks, RTK reduced tool-result output by about **5,000 characters per task**. Using the rough rule of four characters per token, that is approximately **1,250 tokens** per task.
+
+![RTK's effect on transcript character sources](/blog/rtk-source-mix-absolute.png)
+
+This is exactly the part of the interaction RTK is designed to change with user messages, assistant prose, and reasoning not materially changed.
+
+But the average hides the most important part of the result: the savings are concentrated in the biggest tasks. We sorted tasks into six equal-sized bins based on the number of tool-result characters in the control run. B1 has the fewest; B6 has the most.
+
+![RTK tool-result effect by task size](/blog/rtk-tool-results-by-size.png)
+
+In B1 through B5, RTK and the control arm have roughly similar tool-result volume. In B6, the tasks with the largest and most complex tool results, RTK saves about **36,000 characters**, or roughly **20%**. That is around **9,000 tokens** using the same approximation. Nearly all of the aggregate tool-output savings come from this final bin.
+
+This is a useful practical rule: output compression matters most when an agent is already dealing with a large amount of terminal evidence. On a small task, there may not be enough repetitive output for RTK to matter.  Looking at these tasks, it's clear that the largest outputs are ones where the AI bit off more than it could chew: huge file outputs where it only needed a little of the data.
+
+## More messages complicate the picture
+
+RTK does not simply make every task shorter. On average, the RTK runs contain **0.8 more LLM messages per task**, about **12% more** than the paired control run. A message may contain a tool call, reasoning, or ordinary output; the increase is not concentrated in just one message type.
+
+Again, the task-size breakdown is more informative than the average. We sorted tasks into six equal-sized bins based on the number of control messages.
+
+![RTK message-count effect by task size](/blog/rtk-message-count-by-size.png)
+
+RTK adds messages in B1 through B5. The largest increase is in B4: about **2.5 extra messages**, or **14%**. But in B6, RTK produces **3.1 fewer messages**, a **6.2% reduction**.
+
+The largest tasks are therefore different in both ways that matter: RTK removes a large amount of tool-result content and helps the model finish with fewer turns. Smaller and medium-sized tasks can pay a message-count penalty, which partly offsets the benefit of smaller individual results.
+
+Why might a smaller tool result produce more messages? The model may receive less detail than it would have received from the raw command.  The models are likely trained on traditional tool output, so the condensed RTK output may confused the model requiring subsequent queries.
+
+## The cost waterfall
+
+We can combine these effects with a waterfall analysis. Start with the control cost, then change one factor at a time:
+
+- the extra message volume increases cost by about **5%**;
+- the lower cost per message decreases cost by about **9%**;
+- the combined result is about **4% lower cost**.
+
+![RTK cost waterfall](/blog/rtk-cost-waterfall.png)
+
+This is an accounting decomposition, not a claim that every task gets cheaper. The paired tasks vary substantially, and the average is influenced by the long tail. It tells us why the aggregate moves: RTK's messages are cheaper on average, and that effect is larger than the cost of the extra messages.
+
+## Conclusion
+
+RTK is not a general-purpose token discount applied uniformly to every agent run. Its benefit appears where it should: in large, noisy tool results. For the biggest tasks in this benchmark, it removes roughly a fifth of the tool-result characters and is associated with fewer messages as well. For smaller tasks, the model sometimes makes extra calls, perhaps to recover extra detail, reducing or reversing the benefit.
+
+In this 600-task comparison, the net effect was modest but positive: a statistically significant **4% lower token cost**, with the savings driven almost entirely by the largest and most complex tasks.
