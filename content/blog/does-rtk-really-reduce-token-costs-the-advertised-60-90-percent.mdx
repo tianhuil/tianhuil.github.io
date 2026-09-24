@@ -99,6 +99,14 @@ When you boil that all down, RTK only affected **2.8%** of all observed message
 
 Note that the above are message counts, not token counts. In general, bash output tends to be a lengthier output so this may understate the impact of RTK. However, tool outputs are LLM inputs whose tokens are billed at less than LLM output tokens, making potential RTK savings smaller. A 60–90% reduction applied to 2.8% of observed messages cannot produce a 60–90% reduction in the whole LLM interaction. That limited reach helps explain why a large reduction in a particular tool result becomes a much smaller overall reduction in token cost. RTK is targeting a valuable part of the context, but it is targeting a minority of the messages.
 
+## Comparison with JetBrains' Claude Code benchmark
+
+JetBrains [recently published](https://blog.jetbrains.com/ai/2026/07/rtk-claude-code-token-savings/) a similar result in a different setup on a smaller benchmark. Their paired SkillsBench evaluation used Claude Code 2.1.201 with Claude Sonnet 5: RTK increased median billed cost by **7.6%** (compared to our 4% cost reduction) at low reasoning effort and had **no measurable effect** at high effort. Their task quality was unchanged.
+
+Beyond the headline numbers, the studies broadly agree. The studies agree on the mechanism, even where their end-to-end results differ. RTK compresses only a small part of an agent transcript. JetBrains estimated that eligible output represented about **3% of input tokens**; our message-count analysis found RTK affected **2.8% of all messages**. Both studies also found that compressed output can lead to extra turns or rereads. JetBrains measured **13.8% more turns** at low effort, while our smaller and medium-sized tasks incurred more messages, but our largest tasks used fewer.
+
+While the results agree broadly, the small differences are likely due to the different models (Claude Sonnet 5 vs. GPT Luna), harness (Claude Code vs. Pi), and benchmark tasks (their 86 vs. our 600). The harness difference is subtle: Claude Code comes with a number of built-in tools (e.g., Grep, WebFetch) where vanilla Pi would use native bash commands (e.g., `grep` and `fetch`).  This gives RTK more scope to improve performance in Pi than Claude Code.  So while both analyses show that its impact is small, RTK may make sense for Pi but not for Claude Code.
+
 ## Conclusion
 
 RTK is not a general-purpose token discount applied uniformly to every agent run. Its benefit appears where it should: in large, noisy tool results. For the biggest tasks in this benchmark, it removes roughly a fifth of the tool-result characters and is associated with fewer messages as well. For smaller tasks, the model sometimes makes extra calls, perhaps to recover extra detail, reducing or reversing the benefit. And regardless of task size, RTK only targets a small percentage of messages in the LLM conversation.
