@@ -1,0 +1,89 @@
+---
+title: "Does your agent need Context7?"
+date: '2026-09-25'
+excerpt: 'A 600-task paired comparison shows how Context7 influences agent behavior, cost and time.'
+---
+## What is Context7?
+
+Before AI, we relied on documentation and StackOverflow to learn how a coding library works.
+
+[Context7](https://github.com/upstash/context7) (sometimes abbreviated as `ctx7`) is a free service that does the same thing for your agent. It is a documentation service with tools the agent can call: one resolves a library name to a Context7 ID, and another fetches documentation snippets and code examples for that library. The pitch is that a model's built-in knowledge is frozen at its training cutoff. The Context7 README lists three problems it wants to fix: code examples "based on year-old training data", "hallucinated APIs that don't even exist", and "generic answers for old package versions". Fetching the current docs is meant to ground the agent in what the library actually does today.
+
+## Benchmark
+
+We ran 600 software engineering tasks with [Pi](https://github.com/badlogic/pi-mono) powered by `gpt-5.6-luna` with medium reasoning. Each of these tasks were run in three arms:
+
+- **baseline:** Context7 not installed.
+- **ctx7-installed:** Context7 installed through its [Pi extension](https://www.npmjs.com/package/@upstash/context7-pi) (version 0.1.2). This is closest to what the average user would do.
+- **ctx7-forced:** Same as ctx7-installed, but with "Always use Context7 to verify code that you write" appended to the system prompt.
+
+Every arm ran the same task IDs, so we compare each task against itself across arms rather than comparing unrelated averages.
+
+The benchmark is mostly Python, with a mix of other languages:
+
+![Task pool by programming language](/blog/04-task-languages-plot-01.png)
+
+General internet access was blocked in every arm. The baseline could only reach the model API, so it had to rely entirely on the model's own knowledge. The two Context7 arms could also reach Context7.
+
+## Context7 usage
+
+The most striking result is how rarely the agent used Context7 on its own. With the extension installed, it called Context7 on **0.7%** of tasks. The one-line prompt change raised that to **94%**.
+
+![Context7 call rate by arm](/blog/01-pass-rate-and-call-rate-plot-02.png)
+
+This is not because the extension is shy. Installing it adds two tool definitions and a skill whose description tells the model to "Always use" Context7 for API syntax and to use it "even when you think you know the answer". The agent read that on every task and still skipped the tool more than 99% of the time. It apparently decided the documentation wasn't worth fetching.
+
+When we did force it, the results support that decision:
+
+![ctx7-forced compared to the baseline](/blog/12-arm-vs-baseline-plot-01.png)
+
+Forcing Context7 did not change the pass rate: **−0.7 percentage points** against the baseline, (well within noise with p=0.73). It did make the typical task **20% more expensive**, **23% slower** in agent time, and **37% more tokens**. Cost and token counts come from OpenRouter's billing records, so they include the subagents the agent sometimes starts.
+
+The extra cost comes from the calls themselves. In 84% of tasks the forced agent made exactly two, one to resolve the library and one to fetch docs, and the results are added to the context for every later turn. It also read a few more files.
+
+In the ctx7-installed arm, Context7 was installed but almost never called, and the results match that:
+
+![ctx7-installed compared to the baseline](/blog/12-arm-vs-baseline-plot-02.png)
+
+Pass rate, cost, agent time and tokens are all indistinguishable from the baseline.
+
+So why doesn't Context7 help? A few mechanisms are responsible.
+
+### Mechanism 1: The agent rarely adds new dependencies
+
+Many developers reach for a library whenever they can. The agent does not. Some tasks force the use of external libraries, for example fixing a bug in a codebase that already uses NumPy heavily. But when the agent has a choice, it mostly works with the standard library and whatever the project already depends on.
+
+We scanned the code the baseline agent wrote for imports of external libraries and classified where each library came from:
+
+![Provenance of external-library use by language](/blog/06-dependency-use-plot-06.png)
+
+In **81%** of tasks, the agent's code didn't visibly use any external library. In another 13%, it used a library the project already depended on. It introduced a new library in only **3.4%** of tasks, and in **94%** of those cases the task instructions named the library.
+
+That limits what Context7 can do. Fewer external libraries means less documentation to fetch. And the libraries the agent did bring in were well known. The ones it introduced were led by NumPy and pandas, followed by PyTorch, SciPy, OpenCV and Pydantic:
+
+![Leading libraries split by provenance](/blog/06-dependency-use-plot-07.png)
+
+A current model is very unlikely to need documentation to use NumPy or pandas correctly. There is a lot of training data for them, and their core APIs change slowly.
+
+### Mechanism 2: Models are more reliable than ever
+
+Context7 addresses models that hallucinate how a dependency works by grounding them in the docs. Recent models are simply more capable than the models of a year or two ago.
+
+The table below shows the evolution of OpenAI models of comparable cost on the [Artificial Analysis](https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index?models=gpt-5-6-luna-medium%2Cgpt-6-luna-medium%2Cgpt-5-4-mini-medium%2Cgpt-4-1-mini%2Co4-mini) Intelligence Index (v4.3.2).
+
+
+| Model                                  | Release date | Intelligence Index |
+| -------------------------------------- | ------------ | ------------------ |
+| GPT-4.1 mini                           | Apr 2025     | 10                 |
+| o4-mini (high)                         | Apr 2025     | 17                 |
+| GPT-5.4 mini (medium)                  | Mar 2026     | 20                 |
+| GPT-5.6 Luna (medium, this experiment) | Jul 2026     | 25                 |
+| GPT-6 Luna (medium)                    | Sep 2026     | 29                 |
+
+In about a year and a half, the score of this price tier more than doubled. The direct evidence is in our results: giving GPT-6 Luna documentation didn't change the pass rate meaningfully. The forced arm's pass rate was within one percentage point of both ctx7-installed and the baseline, well within noise.
+
+## Conclusion
+
+For this set of software engineering tasks, the agent didn't need Context7. With Context7 merely installed, it almost never called it, and results matched the baseline. When we forced it to use Context7, it passed about the same number of tasks while costing about 20% more and running about 20% longer. Most of its lookups were about the programming language itself or the repository it was already editing, not a third-party library.
+
+The agent rarely introduces new libraries, and the ones it does introduce are popular enough that it likely already knows them well. Context7 may still be useful if your work depends on less popular, fast-moving, or private libraries, where the model's training data is thin. This benchmark didn't have enough of those tasks to test that. If you do use it, let the agent decide when to call it: forcing the call on every task made it slower and more expensive without making it more accurate.
