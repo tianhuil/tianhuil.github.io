@@ -3,37 +3,37 @@ title: "How I use OpenAI's GPT-6, based on benchmark tradeoffs"
 date: '2026-09-26'
 excerpt: 'GPT-6 results suggest increasing reasoning effort pays off—but cost and latency rise sharply, and the best model family depends on your budget.'
 ---
-This is a follow-up to [my earlier GPT-5.6 comparison](/blog/how-i-use-openai-gpt-5-6-based-on-175000-tests). GPT-6 has three model families in this snapshot: Luna, Sol, and Astra. Each family supports multiple reasoning-effort settings: `non-reasoning`, `low`, `medium`, `high`, `xhigh`, and `max`. That raises the practical question: should you increase effort, or move up to a more capable family?
+This is a follow-up to [my earlier GPT-5.6 comparison](/blog/how-i-use-openai-gpt-5-6-based-on-175000-tests). GPT-6 has three model families: Luna, Sol, and Astra. Each family supports multiple reasoning-effort settings: `non-reasoning`, `low`, `medium`, `high`, `xhigh`, and `max`. That raises the practical question: should you increase effort, or move up to a more capable family?
 
-I compared Artificial Analysis Intelligence Index results, cost per task, and time per task. The published intelligence index rises with effort across all three families.
+I compared results from the Artificial Analysis Intelligence Index, cost per task, and time per task. The published intelligence index rises with effort across all three families.
 
 ![GPT-6 effort ladders](/blog/01-effort-vs-class-plot-01.png)
 
 ## Intelligence vs cost
 
-Of course, intelligence is not the only metric we worry about.  Cost is a major consideration. Higher effort generally buys more Intelligence Index points, but costs more and takes longer. The biggest practical contrast is between Luna and Astra: Luna at `max` costs about $0.07 per task and takes 5.7 minutes, scoring 37. Astra at `max` costs about$3.26 and takes 7.8 minutes, scoring 53 (higher score better). Also notice that we never want to use `non-reasoning`, which is always more expensive and less intelligent than `low` for Luna and Sol.
+Of course, intelligence is not the only metric we worry about.  Cost is a major consideration. Higher effort generally buys more Intelligence Index points, but costs more and takes longer. The biggest practical contrast is between Luna and Astra: Luna at `max` costs about $0.07 per task and takes 5.7 minutes, scoring 37. Astra at `max` costs about $3.26 and takes 7.8 minutes, scoring 53 (higher score better). Also note that we never want to use `non-reasoning`, which is always more expensive and less intelligent than `low` for Luna and Sol.
 
 ![GPT-6 cost versus intelligence by family](/blog/01-effort-vs-class-plot-02a.png)
 
-The analysis becomes clearer with a **Pareto frontier**, which was the analysis we chose for GPT-5.6. A model is on the intelligence-vs-cost Pareto frontier when no other model is both cheaper and more intelligent. In other words, each frontier option represents a point where you cannot improve one dimension without giving up something in the other.
+The analysis becomes clearer with a **Pareto frontier**, which is the same analysis we used for GPT-5.6. A model is on the intelligence-vs-cost Pareto frontier when no other model is both cheaper and more intelligent. In other words, each frontier option represents a point where you cannot improve one dimension without giving up something in the other.
 
 ![GPT-6 cost versus intelligence Pareto frontier](/blog/01-effort-vs-class-plot-02b.png)
 
-Compared with GPT-5.6, there is a more clear tradeoff. So the new Pareto frontier has us starting with GPT-6 Luna `low` and increasing to `max` before migrating to GPT-6 Sol `med` and increasing to `max`.  This was the same pareto-optimal tradeoff we found with GPT-5.6. Put differently, GPT-5.6 Terra was simply not competitive on the pareto frontier and this may be the reason behind OpenAI not releasing Terra with GPT-6.
+Compared with GPT-5.6, the tradeoff is clearer. So the new Pareto frontier starts with GPT-6 Luna `low` and increasing to `max` before migrating to GPT-6 Sol `med` and increasing to `max`.  This was the same pareto-optimal tradeoff we found with GPT-5.6. Put differently, GPT-5.6 Terra wasn't competitive on the Pareto frontier, which may be why OpenAI didn't release Terra with GPT-6.
 
 Finally, after GPT-6 Sol `max`, we would switch to GPT-6 Astra `medium`, increasing to `max`.  This represents a higher (and more costly) intelligence tier and is where you go for ultimate performance.
 
 ## Intelligence vs time
 
-While cost is probably the most important metric; time is the other. Below we see the tradeoff between intelligence and time. The data did not have timing results for for `medium` reasoning-effort times, so I have not plotted them below. Again, we never want to use `non-reasoning`, which is always slower and less intelligent than `low` for Luna and Sol.
+While cost is probably the most important metric, time matters too. Below we see the tradeoff between intelligence and time. The underlying data lacked timing results for `medium` reasoning-effort times, so they are missing in the plot below. As with the intelligence-vs-cost Pareto frontier, we never want to use `non-reasoning`, which is always slower and less intelligent than `low` for Luna and Sol.
 
 ![GPT-6 time versus intelligence by family](/blog/01-effort-vs-class-plot-02c.png)
 
-We get dramatically different results when we look at time instead of cost.  We can see that Sol `low` and Luna `xhigh` have similar intelligence performance but Luna is about 3 times cheaper but Sol is 5 times faster.  The intelligence-vs-time Pareto frontier helps better illustrate the tradeoffs.
+We get dramatically different results when we look at time instead of cost.  We can see that Sol `low` and Luna `xhigh` have similar intelligence performance but Luna is about 3 times cheaper but Sol is 5 times faster.  The intelligence-vs-time Pareto frontier better illustrates the tradeoff.
 
 ![GPT-6 time versus intelligence Pareto frontier](/blog/01-effort-vs-class-plot-02d.png)
 
-Following the Pareto frontier, we start at Luna `low` and move directly to Sol `low` before moving to Astra `low` and  moving up reasoning levels to Astra `max`.  Whereas we stuck to the lower families (exhausting at `max`) when we were concerned about cost, we tend to immediately jump  to the higher families when we are concerned about time.  And whereas before, the `low` reasoning efforts never made the Pareto frontier, suddenly it makes sense to use  when we care about time.
+Following the Pareto frontier, we start at Luna `low` and move directly to Sol `low` before moving to Astra `low` and moving up reasoning levels to Astra `max`.  Whereas we stuck to the lower families (exhausting at `max`) when we were concerned about cost, we tend to jump immediately to the higher families when time is the concern.  Whereas before, the `low` reasoning efforts never made the Pareto frontier, they suddenly make sense when we care about time.
 
 ## Does effort beat moving up a family?
 
@@ -49,7 +49,7 @@ Across selected paired benchmark comparisons, score gains in intelligence are po
 | Sol max → Astra max      | 16         | +12.31    | +6.00       | \[+4.25, +24.00\] |
 
 
-The takeaway isn’t that more effort always beats moving up a family. Raising effort helps across all three families, but moving from Luna `max` to Sol `max` gives the biggest median gain in these comparisons. Median gains are probably more reliable since mean gains are driven by significant performance on a few benchmarks rather than broad performance gains.
+The takeaway isn’t that more effort always beats moving up a family. Raising effort helps across all three families, but moving from Luna `max` to Sol `max` gives the biggest median gain in these comparisons. Median gains are probably more reliable, since mean gains are driven by strong performance on a few benchmarks rather than broad gains.
 
 ## The simple rule
 
