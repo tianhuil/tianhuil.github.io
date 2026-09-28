@@ -1,0 +1,49 @@
+---
+title: "How I use OpenAI's GPT-6, based on benchmark tradeoffs"
+date: '2026-09-26'
+excerpt: 'GPT-6 results suggest increasing reasoning effort pays off—but cost and latency rise sharply, and the best model family depends on your budget.'
+---
+
+This is a follow-up to [my earlier GPT-5.6 comparison](/blog/how-i-use-openai-gpt-5-6-based-on-175000-tests). GPT-6 has three model families in this snapshot: Luna, Sol, and Astra. Each family supports multiple reasoning-effort settings: `non-reasoning`, `low`, `medium`, `high`, `xhigh`, and `max`. That raises the practical question: should you increase effort, or move up to a more capable family?
+
+I compared Artificial Analysis Intelligence Index results, cost per task, and time per task. The published Index rises with effort across all three families.
+
+![GPT-6 effort ladders](/blog/01-effort-vs-class-plot-01.png)
+
+## Intelligence, cost, and latency
+
+Higher effort generally buys more Intelligence Index points, but costs more and takes longer. The biggest practical contrast is between Luna and Astra: Luna at `max` costs about $0.07 per task and takes 5.7 minutes, scoring 37. Astra at `max` costs about $3.26 and takes 7.8 minutes, scoring 53.
+
+![GPT-6 cost versus intelligence by family](/blog/01-effort-vs-class-plot-02a.png)
+
+![GPT-6 cost versus intelligence Pareto frontier](/blog/01-effort-vs-class-plot-02b.png)
+
+The cost figures use the chart's Total series. This captures observed token use rather than assuming each model uses the same number of tokens. Time is minutes per Index task; it excludes time-to-first-token and overhead. Some chart labels for medium-effort times were unavailable, so I have not estimated them.
+
+![GPT-6 time versus intelligence by family](/blog/01-effort-vs-class-plot-02c.png)
+
+![GPT-6 time versus intelligence Pareto frontier](/blog/01-effort-vs-class-plot-02d.png)
+
+## Does effort beat moving up a family?
+
+Across selected paired benchmark comparisons, median score gains are positive in every case:
+
+| Comparison | Benchmarks | Mean gain | Median gain | Bootstrap 95% CI |
+|---|---:|---:|---:|---:|
+| Luna medium → Luna max | 13 | +24.92 | +8.00 | [+5.92, +60.92] |
+| Sol medium → Sol max | 14 | +31.07 | +5.00 | [+4.14, +80.57] |
+| Astra medium → Astra max | 14 | +10.50 | +2.50 | [+1.64, +26.50] |
+| Luna max → Sol max | 15 | +21.60 | +9.00 | [+7.07, +46.60] |
+| Sol max → Astra max | 16 | +12.31 | +6.00 | [+4.25, +24.00] |
+
+![GPT-6 benchmark scores by effort and family](/blog/01-effort-vs-class-plot-03.png)
+
+The pattern is not “effort always beats a larger model.” Luna medium-to-max has a larger median gain than Astra medium-to-max, but moving Luna max to Sol max has the largest median gain of the cross-family comparisons. Mean gains are much larger than medians because a few benchmark charts have unusually large deltas.
+
+These are paired benchmark-chart summaries, not repeated task-level trials. Charts can use different scales and are not independent task samples. The intervals resample benchmark charts; the Wilcoxon tests use the same paired differences. P-values are unadjusted across five exploratory comparisons. Treat these as directional evidence, not a guarantee for any specific workload.
+
+## The simple rule
+
+Start with Luna and raise effort until quality is sufficient. Move to Sol or Astra when the workload benefits enough to justify the much higher observed cost. Higher effort improves the published Index within each family, but every step has a cost and latency tradeoff; benchmark averages cannot tell you which setting wins on your own tasks.
+
+*Snapshot captured September 25–26, 2026. Analysis: Artificial Analysis chart aggregates; cost uses the Total series.*
