@@ -12,15 +12,21 @@ I compared Artificial Analysis Intelligence Index results, cost per task, and ti
 
 ## Intelligence vs cost
 
-Higher effort generally buys more Intelligence Index points, but costs more and takes longer. The biggest practical contrast is between Luna and Astra: Luna at `max` costs about $0.07 per task and takes 5.7 minutes, scoring 37. Astra at `max` costs about $3.26 and takes 7.8 minutes, scoring 53.
+Higher effort generally buys more Intelligence Index points, but costs more and takes longer. The biggest practical contrast is between Luna and Astra: Luna at `max` costs about $0.07 per task and takes 5.7 minutes, scoring 37. Astra at `max` costs about $3.26 and takes 7.8 minutes, scoring 53 (higher score better).
 
 ![GPT-6 cost versus intelligence by family](/blog/01-effort-vs-class-plot-02a.png)
 
+The analysis becomes clearer with a Pareto frontier, which was the analysis we chose for GPT-5.6. A model is on the intelligence-vs-cost Pareto frontier when no other model is both cheaper and more intelligent. In other words, each frontier option represents a point where you cannot improve one dimension without giving up something in the other.
+
 ![GPT-6 cost versus intelligence Pareto frontier](/blog/01-effort-vs-class-plot-02b.png)
+
+Compared with GPT-5.6, there is a more clear tradeoff. So the new Pareto frontier has us starting with GPT-6 Luna `low` and increasing to `max` before migrating to GPT-6 Sol `med` and increasing to `max`.  This was the same pareto-optimal tradeoff we found with GPT-5.6. Put differently, GPT-5.6 Terra was simply not competitive on the pareto frontier and this may be the reason behind OpenAI not releasing Terra with GPT-6.
+
+Finally, after GPT-6 Sol `max`, we would switch to GPT-6 Astra `medium`, increasing to `max`.  This represents a higher (and more costly) intelligence tier and is where you go for ultimate performance.
 
 ## Intelligence vs latency
 
-The cost figures use the chart's Total series. This captures observed token use rather than assuming each model uses the same number of tokens. Time is minutes per Index task; it excludes time-to-first-token and overhead. Some chart labels for medium-effort times were unavailable, so I have not estimated them.
+Time is minutes per Index task; it excludes time-to-first-token and overhead. Some chart labels for medium-effort times were unavailable, so I have not estimated them.
 
 ![GPT-6 time versus intelligence by family](/blog/01-effort-vs-class-plot-02c.png)
 
