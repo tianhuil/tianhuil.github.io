@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
@@ -26,13 +28,21 @@ jobs:
       - run: pnpm run typecheck
       - run: pnpm run check:frontmatter
       - run: pnpm test
+
       - run: pnpm run build
+
+      - name: Check local blog links
+        uses: lycheeverse/lychee-action@v2.6.1
+        with:
+          lycheeVersion: v0.20.1
+          args: --offline --no-progress --root-dir ${{ github.workspace }}/out --index-files index.html out/blog/*.html out/blog/**/*.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build-and-deploy
     runs-on: ubuntu-latest
     environment:
