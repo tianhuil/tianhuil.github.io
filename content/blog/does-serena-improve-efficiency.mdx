@@ -1,6 +1,6 @@
 ---
 title: 'Does Serena actually improve your agent''s efficiency?'
-date: '2026-09-24'
+date: '2026-10-05'
 excerpt: 'A 550-task paired comparison shows how Serena influences agent behavior, cost and time.'
 ---
 ## What is Serena and why would I use it?
@@ -33,7 +33,7 @@ On this benchmark, the default setup didn't deliver on the central claim. It may
 
 ## Where the extra cost comes from
 
-So where do the extra cost and time come from? Serena is meant to replace several generic tool calls with one precise call. In serena-default, it partly does. The agent makes **2.1 fewer** non-Serena tool calls (Read, Bash, Write, Edit) per task on average, but **5.9 more** Serena calls, for a net **3.8 more tool calls** per task. Turns rise by less than tool calls, **0.8** per task, because the agent often makes several tool calls in one turn. Strict mode adds even more: **8.4 more** Serena calls and, instead of falling, **2.5 more** non-Serena calls, for **10.8 more tool calls** and **7.2 more turns** per task.
+So where do the extra cost and time come from? Serena is meant to replace several generic tool calls with one precise call. In serena-default, it partly does. The agent makes **2.1 fewer** non-Serena tool calls (Read, Bash, Write, Edit) per task on average, but **5.9 more** Serena calls, for a net **3.8 more tool calls** per task. Turns rise by less, **0.8** per task, because the agent often makes several tool calls in one turn. Strict mode adds even more: **8.4 more** Serena calls and, instead of falling, **2.5 more** non-Serena calls, for **10.8 more tool calls** and **7.2 more turns** per task.
 
 ![Paired change in turns and tool calls against control](/blog/05-paired-turns-and-tool-calls-plot-01.png)
 
@@ -69,7 +69,7 @@ Strict mode's **9.0-point** drop in pass rate is uneven across benchmarks. QuixB
 
 ![Paired pass-rate change on all benchmarks, QuixBugs only, and excluding QuixBugs](/blog/09-strict-pass-rate-loss-plot-01.png)
 
-On QuixBugs, strict mode solved **27.5 points** fewer tasks than control. The cause is specific to this benchmark. Each task asks the agent to fix one line in a small program and write out the complete fixed file, and the grader checks that exactly one line changed. The programs end with a docstring below the function. Strict mode blocks the Read call, so the agent looks up the function with Serena instead. Serena returns the function's body, but not the docstring below it, because that docstring isn't part of any symbol; Serena is blind to this comment string. The agent then writes the fixed function without the docstring. The fix is correct, but the one-line check fails. This happened on **24** QuixBugs tasks in strict mode, against 3 in control.
+On QuixBugs, strict mode solved **27.5 points** fewer tasks than control. The cause is specific to this benchmark. Each task asks the agent to fix one line in a small program and write out the complete fixed file, and the grader checks that exactly one line changed. The programs end with a docstring below the function. Strict mode blocks the Read call, so the agent looks up the function with Serena instead. Serena returns the function's body, but not the docstring below it, because that docstring isn't part of any symbol. The agent then writes the fixed function without the docstring. The fix is correct, but the one-line check fails. This happened on **24** QuixBugs tasks in strict mode, against 3 in control.
 
 Without QuixBugs, strict mode still solves **5.8 points** fewer tasks than control (p=0.004). The agent can't read any source file directly for the whole task, and on the large repositories the gate rejects 9 to 21 reads and code searches per task. It also tests less. Outside QuixBugs, it runs a test in **5.4 points** fewer tasks than control, and on FeatureBench, the benchmark with the most blocked calls, the share falls from 43% to 24%. We can't show that less testing causes the failures, but both suggest an agent working with a narrower view of the code.
 
@@ -77,7 +77,7 @@ Without QuixBugs, strict mode still solves **5.8 points** fewer tasks than contr
 
 Serena gives the agent 23 IDE-style tools and promises that it will work faster and more efficiently. On this 550-task benchmark, it did neither. With the default setup, the pass rate didn't change meaningfully, while the typical task cost **21% more** and took **21% longer**. Forcing the agent to use Serena made things worse on every measure: **9 percentage points** fewer tasks solved, **37% more** cost and **46% more** time.
 
-The breakdown explains why. The agent used Serena almost entirely for lookups, and most of those went to three of the 23 tools. It rarely touched the editing tools. Those lookups didn't reduce the text sent to the model. Input tokens rose on almost every benchmark, partly because Serena's tool definitions are sent along for every request. Each task gained extra turns and tool calls, and the agent reached its first edit later and at higher cost. The overhead was largest on small tasks, but it was also clear on large, real-world repositories, where code-aware navigation should help most.
+The breakdown explains why. The agent used Serena almost entirely for lookups, and most of those went to three of the 23 tools. It rarely touched the editing tools. Those lookups didn't reduce the text sent to the model. Input tokens rose on almost every benchmark, partly because Serena's tool definitions ride along on every request. Each task gained extra turns and tool calls, and the agent reached its first edit later and at higher cost. The overhead was largest on small tasks, but it was also clear on large, real-world repositories, where code-aware navigation should help most.
 
 We didn't test Serena's paid JetBrains backend, other models, or other harnesses, and Serena may still help on codebases or tasks this benchmark doesn't cover. If you do install Serena, keep the default setup and let the agent decide when to call it. Forcing it made every result worse.
 
