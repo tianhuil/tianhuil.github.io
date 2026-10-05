@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
@@ -40,6 +42,7 @@ jobs:
           path: ./out
 
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build-and-deploy
     runs-on: ubuntu-latest
     environment:
