@@ -1,0 +1,99 @@
+---
+title: 'Does context-mode make your sessions cheaper?'
+date: '2026-10-07'
+excerpt: 'A 600-task paired comparison shows how context-mode changes an agent''s context, its number of turns, and the cost of each session.'
+---
+## What is context-mode?
+
+As your agent works by reading and editing files, reasoning, and running bash commands, it accumulates context. Everything it has seen and said so far is sent back to the model on every new turn. Think of the context as working memory, but the more you add, the more expensive the conversation gets. [context-mode](https://github.com/mksglu/context-mode) is an extension that tries to keep raw data out of that context. Instead of dumping a large command output or file into the conversation, the agent runs code in a sandbox and gets back only what it asked for. Its README promises that "315 KB becomes 5.4 KB. 98% reduction."
+
+It does this with a set of new tools the agent can call, such as:
+
+- `ctx_execute`: runs code or a shell command in a sandbox and returns only what it prints.
+- `ctx_execute_file`: runs code over a file instead of reading the whole file into context.
+- `ctx_batch_execute`: runs several commands in one call and indexes their output for later search.
+
+The idea, in the README's words, is to "program the analysis, not compute it": write a small script that prints a summary rather than reading 50 files into the conversation.
+
+## A 600-task comparison
+
+We ran 600 software engineering tasks with [Pi](https://github.com/badlogic/pi-mono) powered by `gpt-5.6-luna` (medium reasoning), in two arms:
+
+- **no extension:** plain Pi.
+- **context-mode:** Pi with context-mode installed through its Pi extension (npm `context-mode@1.0.169`).
+
+Both arms ran the same task IDs. We compare each task against itself across the two arms. For cost and tokens we report the median task's change; that keeps a few very expensive tasks from dominating the result.
+
+## Main results
+
+The first thing to notice is that the pass rate stayed within noise: **+3.0 percentage points** (95% CI ±3.3, p=0.085). The  insignificant change is expected, since context-mode doesn't promise to raise the pass rate.  But the median task **cost 40% more** with context-mode (which is significant). 
+
+![Pass rate and cost per task, context-mode vs. no extension](/blog/06-blog-figures-plot-01.png)
+
+Digging deeper, both the number of agent turns (model calls) and the input tokens went up.  On average, the agent took **8% more turns** per task, and the median task sent **more than twice as much input** to the model (+134%). Two factors explain most of the cost increase.
+
+![Change in agent turns and input tokens](/blog/06-blog-figures-plot-02.png)
+
+What factors are driving this?
+
+### Factor 1: tool definitions on every call
+
+As said before, the context is paid for on every call. And tools are part of the context: each tool comes with a description that tells the model what it does and how to use it.
+
+The context-mode extension adds **11 tool definitions** to the agent's context. It also adds a short routing note to the agent's first request: "Read/edit files → ctx_execute_file. Multi-command research → ctx_batch_execute." Together they amount to **6,922 tokens** on every call.
+
+For scale: without the extension, a model call in these tasks sends about **9,200 input tokens** (the median task's average per call). context-mode adds its 6,922 tokens on top of each of those calls. To break even, it has to remove about 6,900 tokens of tool output from what every call sends, which is three quarters of those 9,200.
+
+That is challenging, considering that in **39%** of the tasks the agent never called a context-mode tool at all. Those tasks still paid for the extra tool definitions on every call.
+
+To see how much of the extra cost comes from just tool-definition tokens, we re-priced every context-mode task with the tool definitions removed from every call, and compared it with the same task without the extension. As measured, the median task costs about **40%** more. Without the tool definitions, it costs about **13%** more. So the tool definitions account for about **70%** of the extra cost:
+
+![Share of tasks that used context-mode, and share of the extra cost from the tool definitions](/blog/06-blog-figures-plot-04.png)
+
+### Factor 2: fewer tools in parallel, so more turns
+
+The other 30% has other causes. The clearest one is the number of turns.
+
+A model can ask for several tools in a single turn. Reading three files at once costs one turn, not three. Every tool that runs alongside another saves the agent a trip back to the model, and each of those trips resends the whole conversation.
+
+With context-mode, the agent did the same amount of work, but it did less of it in parallel:
+
+![Tool calls, model calls, and model calls that ran several tools at once](/blog/06-blog-figures-plot-03.png)
+
+Tool calls per task barely changed (**20.1 vs. 19.8**). But turns that ran two or more tools at once fell by about half (**2.1 to 1.1** per task), so the same tool calls took **1.4 more turns**. Most of the extra turns come early, while the agent explores the codebase before its first edit.
+
+A likely trigger is the routing note quoted above. Its "Read/edit files → ctx_execute_file" conflicts with Pi's own instructions to use its `read` and `edit` tools, and the agent often stops to weigh the two before acting.
+
+How much do these extra turns cost? As a rough estimate, we subtracted each task's extra early turns (about 1.3 per task), pricing each one at the average cost of that task's early turns. That brings the median task's increase from about 13% to about 7%. That makes the extra turns about **14%** of the extra cost, roughly half of what the tool definitions left unexplained. They cost less than you might expect because they come early, while the conversation is still short. The rest is too small to pin down: likely a mix of minor effects and noise.
+
+## Which tools did the agent actually use?
+
+When the agent did reach for context-mode, it used only a small part of it:
+
+![ctx_* tool calls by tool](/blog/06-blog-figures-plot-06.png)
+
+Almost all calls (**97%**) went to the three "run something" tools. The knowledge-base side of the extension, fetching pages and searching indexed output, was barely touched.
+
+Running code wasn't new to the agent either. Without the extension, it already ran code through `bash` in **77%** of tasks: one-line Python scripts, test runs, and small helper programs. In tasks where context-mode was used, its tools mostly replaced `bash` commands one for one:
+
+![Commands by kind, no extension vs. context-mode](/blog/08-code-via-bash-plot-01.png)
+
+The agent explored the codebase with the same number of commands either way (**9.3** per task), just with about 4 of them routed through context-mode. The one real change is more small code runs, mostly scripts that process a file.
+
+And most of those calls weren't shrunk. `ctx_execute` and `ctx_execute_file` only index a large output, and return a short summary instead, when the agent says what it is looking for (the `intent` parameter). The agent did that in only **16%** of its calls. In two thirds of them it didn't, and the tool returned everything the code printed, exactly as `bash` would have.
+
+## Was there a cost saving mechanism?
+
+context-mode's pitch is that the savings grow with the amount of raw output an agent handles, so the place to look for them is the largest tasks. We sorted tasks into four equal groups by size (total tokens) and compared each group. A task's size is the average of the tokens it used with and without the extension, so neither version decides which group it lands in. On average, a task used about 24,000 tokens in the smallest group, 124,000 in the second, 344,000 in the third, and 972,000 in the largest:
+
+![Median change in cost, input tokens, and output tokens by task size, and average tokens per task in each quarter](/blog/06-blog-figures-plot-05.png)
+
+The extra cost does shrink as tasks get bigger: from **+86%** for the median task in the smallest quarter to about **+24%** in the two largest. But it never turns into a saving. Input tokens show why: the 6,900-token overhead is huge next to a small task's context (**+529%** input) and small next to a large one's (**+42%**). This is the fixed overhead being diluted, not context-mode removing tokens.
+
+Output tokens barely move for the median task, even in the largest quarter (**−4%**, within noise). The clearest output savings came from a handful of FeatureBench tasks where the agent without the extension got stuck rewriting large files, writing over 100,000 output tokens. Such runaway sessions are rare, so this is not a saving you can count on.
+
+## Conclusion
+
+On this set of software engineering tasks, the median task cost about **40% more** with context-mode without a significant change in the pass rate. Most of that is the fixed price of installing it: 6,900 tokens of tool definitions sent with every call, whether or not the agent uses the tools. About half of the rest comes from the agent working one step at a time early in the task.
+
+When the agent did use context-mode, it mostly swapped `bash` commands for `ctx_*` calls that returned the same output. context-mode is built for sessions that pull in huge raw outputs such as browser snapshots, API responses or long logs. Typical coding tasks, where the agent reads a few files and runs some tests, don't produce enough raw output to make the trade worthwhile. If your sessions do look like that, measure before you install: the cost of carrying the extension may not outweigh any savings from the context-mode. 
