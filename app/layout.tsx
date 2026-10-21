@@ -116,6 +116,7 @@ export default function RootLayout({
         <div className="hero-bg" />
         <Navbar />
         <main className='container mx-auto px-4 pt-32'>{children}</main>
+        <footer className='text-transparent'>subtree-deploy-check</footer>
       </body>
     </html>
   )
